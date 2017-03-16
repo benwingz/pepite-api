@@ -5,7 +5,9 @@ module.exports = function(app) {
   var config = require('./config');
   var jwt = require('jsonwebtoken');
 
-  //mongoose.connect(config.database);
+  var User = require('./app/models/user.model');
+
+  mongoose.connect(config.database);
   app.set('superSecret', config.secret);
 
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,6 +34,29 @@ module.exports = function(app) {
   });
   apiRoutes.get('/', function(req, res) {
     res.json('welcome to Pepite API');
+  });
+
+  apiRoutes.get('/users', function(req, res){
+    User.find().then(
+      function(users) {
+        res.json(users);
+      },
+      function(error){
+        console.log(error);
+      })
+  });
+
+  apiRoutes.get('/user/:id', function(req, res){
+    console.log('id', req.params.id);
+    User.findById(req.params.id ,function(err, user) {
+        if(err) {
+          res.json({ success: false, message: 'Failed to find user.'})
+        } else {
+          console.log("user", user);
+          res.json(user);
+        }
+      }
+    );
   });
   //apiRoutes.post('/user', user.createUser);
 

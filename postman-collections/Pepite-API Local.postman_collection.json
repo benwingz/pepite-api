@@ -17,6 +17,28 @@
 				"description": "Api root endpoint"
 			},
 			"response": []
+		},
+		{
+			"name": "/users",
+			"request": {
+				"url": "localhost:8080/api/users/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "API users endpoint"
+			},
+			"response": []
+		},
+		{
+			"name": "/user/:id",
+			"request": {
+				"url": "localhost:8080/api/user/58ca9645304609075babf8e4",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Api specific user endpoint"
+			},
+			"response": []
 		}
 	]
 }
