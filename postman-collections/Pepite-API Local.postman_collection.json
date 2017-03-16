@@ -2,41 +2,83 @@
 	"variables": [],
 	"info": {
 		"name": "Pepite-API Local",
-		"_postman_id": "2f088ba4-88cb-3a65-75a5-021cfcb91b79",
+		"_postman_id": "03ac96c0-2585-5f25-1c88-3a3f9c011a37",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "/",
+			"name": "GET /",
 			"request": {
 				"url": "localhost:8080/api",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Api root endpoint"
 			},
 			"response": []
 		},
 		{
-			"name": "/users",
+			"name": "GET /users",
 			"request": {
 				"url": "localhost:8080/api/users/",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API users endpoint"
 			},
 			"response": []
 		},
 		{
-			"name": "/user/:id",
+			"name": "GET /user/:id",
 			"request": {
 				"url": "localhost:8080/api/user/58ca9645304609075babf8e4",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Api specific user endpoint"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /user",
+			"request": {
+				"url": "localhost:8080/api/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "Ben",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "lastname",
+							"value": "Roullet",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "API for user creation\nparams:\n-firstname:String\n-lastname:String"
 			},
 			"response": []
 		}
