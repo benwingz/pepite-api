@@ -1,0 +1,22 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Pepite-API Local",
+		"_postman_id": "2f088ba4-88cb-3a65-75a5-021cfcb91b79",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/",
+			"request": {
+				"url": "localhost:8080/api",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Api root endpoint"
+			},
+			"response": []
+		}
+	]
+}
