@@ -6,6 +6,8 @@ module.exports = function(app) {
   var jwt = require('jsonwebtoken');
 
   var userController = require('./app/controllers/user.controller');
+  var phaseController = require('./app/controllers/phase.controller');
+
   var User = require('./app/models/user.model');
 
   mongoose.connect(config.database);
@@ -39,10 +41,15 @@ module.exports = function(app) {
     res.json('welcome to Pepite API');
   });
 
+  //User routes
   apiRoutes.get('/users', userController.getAllUser);
   apiRoutes.get('/user/:id', userController.findOneById);
   apiRoutes.post('/user', userController.createUser);
   apiRoutes.delete('/user', userController.deleteUser);
+
+  //Phase routes
+  apiRoutes.get('/phases', phaseController.getAllPhases);
+  apiRoutes.get('/phase/:id/categories', phaseController.getPhaseCategories);
   //apiRoutes.post('/user', user.createUser);
 
   //apiRoutes.post('/authenticate', user.authenticate);
