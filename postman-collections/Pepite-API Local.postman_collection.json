@@ -66,19 +66,68 @@
 					"urlencoded": [
 						{
 							"key": "firstname",
-							"value": "Ben",
+							"value": "Romain",
 							"type": "text",
 							"enabled": true
 						},
 						{
 							"key": "lastname",
-							"value": "Roullet",
+							"value": "Tête",
 							"type": "text",
 							"enabled": true
 						}
 					]
 				},
 				"description": "API for user creation\nparams:\n-firstname:String\n-lastname:String"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /user",
+			"request": {
+				"url": "localhost:8080/api/user",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "58cabecb9ed301764c894067",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "API endpoint to delete user:\nParams:\n-id"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /phases",
+			"request": {
+				"url": "localhost:8080/api/phases",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "API endpoint for get phases"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /phase/:id/categories",
+			"request": {
+				"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "API endpoint for getting inner phase categories\nparams:\n-id:String"
 			},
 			"response": []
 		}
