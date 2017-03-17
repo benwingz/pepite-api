@@ -5,7 +5,12 @@ module.exports = function(app) {
   var config = require('./config');
   var jwt = require('jsonwebtoken');
 
-  //mongoose.connect(config.database);
+  var userController = require('./app/controllers/user.controller');
+  var phaseController = require('./app/controllers/phase.controller');
+
+  var User = require('./app/models/user.model');
+
+  mongoose.connect(config.database);
   app.set('superSecret', config.secret);
 
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -13,7 +18,7 @@ module.exports = function(app) {
 
   var apiRoutes = express.Router();
 
-  //unauthenticate routes
+  //Middleware CORS
   apiRoutes.use(function(req,res,next){
     res.contentType('application/json');
 
@@ -30,9 +35,21 @@ module.exports = function(app) {
       next();
     }
   });
+
+  //unauthenticate routes
   apiRoutes.get('/', function(req, res) {
     res.json('welcome to Pepite API');
   });
+
+  //User routes
+  apiRoutes.get('/users', userController.getAllUser);
+  apiRoutes.get('/user/:id', userController.findOneById);
+  apiRoutes.post('/user', userController.createUser);
+  apiRoutes.delete('/user', userController.deleteUser);
+
+  //Phase routes
+  apiRoutes.get('/phases', phaseController.getAllPhases);
+  apiRoutes.get('/phase/:id/categories', phaseController.getPhaseCategories);
   //apiRoutes.post('/user', user.createUser);
 
   //apiRoutes.post('/authenticate', user.authenticate);
