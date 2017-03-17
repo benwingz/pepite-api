@@ -16,7 +16,7 @@ module.exports = function(app) {
 
   var apiRoutes = express.Router();
 
-  //unauthenticate routes
+  //Middleware CORS
   apiRoutes.use(function(req,res,next){
     res.contentType('application/json');
 
@@ -33,6 +33,8 @@ module.exports = function(app) {
       next();
     }
   });
+
+  //unauthenticate routes
   apiRoutes.get('/', function(req, res) {
     res.json('welcome to Pepite API');
   });
@@ -40,6 +42,7 @@ module.exports = function(app) {
   apiRoutes.get('/users', userController.getAllUser);
   apiRoutes.get('/user/:id', userController.findOneById);
   apiRoutes.post('/user', userController.createUser);
+  apiRoutes.delete('/user', userController.deleteUser);
   //apiRoutes.post('/user', user.createUser);
 
   //apiRoutes.post('/authenticate', user.authenticate);
