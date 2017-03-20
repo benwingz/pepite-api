@@ -36,5 +36,7 @@
 ```
 [{"_id":"58cbef162cf6ff44cf7e52a4","title":"Être actif et autonome","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a5","title":"Travailler en équipe","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a6","title":"Être curieux, écouter et explorer","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a7","title":"S'engager et accepter le risque","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]}]
 ```
-lancer le serveur: `node server.js`
-lancer le watcher pour la mise à jour de la doc via postman: `node postman-watcher.js`
+
+
+###lancer le serveur: `node server.js`
+###lancer le watcher pour la mise à jour de la doc via postman: `node postman-watcher.js`
