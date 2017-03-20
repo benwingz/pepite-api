@@ -1,8 +1,15 @@
-var chokidar = require('chokidar');
+//console.log(process.env.PATH);
 var fs = require('fs');
 
-var watcher = chokidar.watch('./postman-collections/*json', {
-  persistent: true
+console.log('PATH', process.env.PATH);
+
+fs.readFile(__dirname + '/' + process.env.PATH, function(err, data) {
+  if(err) {
+    console.log(err);
+  } else {
+    console.log(data);
+    populateReadme(JSON.parse(data));
+  }
 });
 
 var populateReadme = function(data) {
@@ -17,19 +24,6 @@ var populateReadme = function(data) {
     }
   }
   content += '\n\n### lancer le serveur: `node server.js`\n';
-  content += '### lancer le watcher pour la mise à jour de la doc via postman: `node postman-watcher.js`\n';
+  console.log(content);
   fs.writeFileSync('README.md', content);
 }
-
-var fileChanged = function(path) {
-  console.log(`File ${__dirname}${path} Changed`);
-  fs.readFile(__dirname + '/' + path, function(err, data) {
-    if(err) {
-      console.log(err);
-    } else {
-      populateReadme(JSON.parse(data));
-    }
-  })
-}
-
-watcher.on('change', path => fileChanged(path));
