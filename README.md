@@ -38,5 +38,5 @@
 ```
 
 
-###lancer le serveur: `node server.js`
-###lancer le watcher pour la mise à jour de la doc via postman: `node postman-watcher.js`
+### lancer le serveur: `node server.js`
+### lancer le watcher pour la mise à jour de la doc via postman: `node postman-watcher.js`

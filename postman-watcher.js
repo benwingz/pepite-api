@@ -16,8 +16,8 @@ var populateReadme = function(data) {
       content += '```\n' + data.item[i].response[0].body + '\n```\n';
     }
   }
-  content += '\n\n###lancer le serveur: `node server.js`\n';
-  content += '###lancer le watcher pour la mise à jour de la doc via postman: `node postman-watcher.js`\n';
+  content += '\n\n### lancer le serveur: `node server.js`\n';
+  content += '### lancer le watcher pour la mise à jour de la doc via postman: `node postman-watcher.js`\n';
   fs.writeFileSync('README.md', content);
 }
 
