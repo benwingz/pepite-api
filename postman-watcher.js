@@ -18,7 +18,6 @@ var populateReadme = function(data) {
     content += 'lancer le serveur: `node server.js`\n';
     content += 'lancer le watcher pour la mise à jour de la doc via postman: `node postman-watcher.js`';
   }
-  console.log(content);
   fs.writeFileSync('README.md', content);
 }
 
