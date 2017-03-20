@@ -1,0 +1,1 @@
+git diff --cached --name-status | awk '$2 == "postman-collections/pepiteapicollection.json" {system("PATH="$2" /usr/local/bin/node postman-watcher.js")}' | git add README.md | git commit -m ":memo: Update readme for api contract"
