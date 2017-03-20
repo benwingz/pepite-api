@@ -15,5 +15,8 @@
     "Nodejs"
   ],
   "author": "Benjamin ROULLET",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "chokidar": "^1.6.1"
+  }
 }
