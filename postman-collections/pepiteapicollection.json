@@ -21,7 +21,7 @@
 			},
 			"response": [
 				{
-					"id": "b8667e36-4cb1-49f6-b51c-0495ccf0f730",
+					"id": "7c86afe6-be74-4a05-b70f-c225b5922827",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api",
@@ -109,7 +109,7 @@
 			},
 			"response": [
 				{
-					"id": "b767f4a5-f841-481c-aed9-c4e57688c8b8",
+					"id": "e33dde82-a724-451b-9bd5-4fee6d837f22",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -197,7 +197,7 @@
 			},
 			"response": [
 				{
-					"id": "62e2923e-7cb5-4d73-aff4-bcb1773cea4e",
+					"id": "3e420b3b-3f73-465c-b7e4-7f8c0fff9948",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/58ca9645304609075babf8e4",
@@ -304,7 +304,7 @@
 			},
 			"response": [
 				{
-					"id": "a5544a54-ab8f-4aad-901a-9399dd9ac038",
+					"id": "a60c7306-62b8-4a9f-8b4c-14d4e672b7a3",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -429,7 +429,7 @@
 			},
 			"response": [
 				{
-					"id": "966c9e10-75c5-4016-8f31-6c6f1608fd6b",
+					"id": "47217cc7-bda4-41c3-b2b9-9f153d8503d9",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -528,11 +528,11 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "API endpoint for get phases"
+				"description": "API endpoint for phases"
 			},
 			"response": [
 				{
-					"id": "8a8ecc15-323d-45bd-b06d-adeb90697e9b",
+					"id": "a2f41130-acd5-426c-bd34-0fcbeaaaa9c3",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -617,7 +617,7 @@
 			},
 			"response": [
 				{
-					"id": "b25e4b7c-2ff7-47fa-9f95-5cfad6fc94a9",
+					"id": "c4c7c04b-ef43-4b7f-836a-89a5a14ec2ea",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
