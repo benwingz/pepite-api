@@ -43,7 +43,7 @@ Params:
 [{"_id":"58cbf51666828a4c94e5b48a","title":"Avoir un comportement entrepreneurial","__v":0,"categories":[]}]
 ```
 * **GET /phase/:id/categories**
-** API endpoint for getting phase categories
+** API endpoint for getting categories from phase
 params:
 -id:String**
     * Output exemple:
@@ -53,3 +53,8 @@ params:
 
 
 ### lancer le serveur: `node server.js`
+** For automation README.md population file with postman collection:
+* [Follow this link] to clone the pre-commit hooks in you `.git/hooks/` directory
+* Make sure you have node installed and add postman-readme-populate.js at the root of your project
+* Make sure you have only one postman collection in root `postman-collections` directory
+* Change the collection and add it to a git commit and :tada:
