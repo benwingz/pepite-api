@@ -37,7 +37,7 @@ Params:
 {"success":true,"message":"Utilsateur supprimé"}
 ```
 * **GET /phases**
-** API endpoint for phases**
+** API endpoint for display phases**
     * Output exemple:
 ```
 [{"_id":"58cbf51666828a4c94e5b48a","title":"Avoir un comportement entrepreneurial","__v":0,"categories":[]}]
