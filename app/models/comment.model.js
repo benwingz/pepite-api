@@ -9,7 +9,7 @@ module.exports = mongoose.model('Comment', new Schema({
     ref:'Grade'
   },
   _user: {
-    type: Scema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User'
   },
   content: String,

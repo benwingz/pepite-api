@@ -8,6 +8,7 @@ module.exports = function(app) {
   var userController = require('./app/controllers/user.controller');
   var phaseController = require('./app/controllers/phase.controller');
   var gradeController = require('./app/controllers/grade.controller');
+  var commentController = require('./app/controllers/comment.controller');
 
   var User = require('./app/models/user.model');
 
@@ -57,6 +58,13 @@ module.exports = function(app) {
   apiRoutes.get('/grade/:id', gradeController.findOneGradeById);
   apiRoutes.post('/grade', gradeController.createGrade);
   apiRoutes.delete('/grade', gradeController.deleteGrade);
+
+  //Comment routes
+  apiRoutes.get('/comments', commentController.getAllComments);
+  apiRoutes.get('/comment/:id', commentController.findOneCommentById);
+  apiRoutes.post('/comment', commentController.createComment);
+  apiRoutes.delete('/comment', commentController.deleteComment);
+  apiRoutes.get('/grade/:id/comments', commentController.getCommentsGrade)
   //apiRoutes.post('/user', user.createUser);
 
   //apiRoutes.post('/authenticate', user.authenticate);
