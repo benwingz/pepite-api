@@ -27,6 +27,11 @@
 params:
 -firstname:String
 -lastname:String**
+  * **Parmeters requested:**
+    * key: firstname:text
+    * example: newuser
+    * key: lastname:text
+    * example: newuser
   * Output exemple:
 ```
 {"success":true,"message":"Utilisateur enregistré"}
@@ -73,6 +78,13 @@ params:
 
 * **POST /grade**
   * **Add a grade**
+  * **Parmeters requested:**
+    * key: user:text
+    * example: 58ca9645304609075babf8e4
+    * key: category:text
+    * example: 58cbef162cf6ff44cf7e52a5
+    * key: value:text
+    * example: 4
   * Output exemple:
 ```
 {"success":true,"message":"Évaluation enregistré"}
@@ -86,7 +98,7 @@ params:
 ```
 
 * **GET /comments**
-  * **Get all comments **
+  * **Get all comments**
   * Output exemple:
 ```
 {"success":false,"message":"Aucuns commentaires"}
@@ -97,6 +109,13 @@ params:
 
 * **POST /comment**
   * **Add comment to a grade**
+  * **Parmeters requested:**
+    * key: grade:text
+    * example: 58d285ea81c13b14abe4d325
+    * key: user:text
+    * example: 58caba32b0f0d870e464e589
+    * key: content:text
+    * example: Hey this is an  awesome comment
   * Output exemple:
 ```
 {"success":true,"message":"Commentaire ajouté"}
