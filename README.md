@@ -40,7 +40,7 @@ Params:
 ** API endpoint for display phases**
     * Output exemple:
 ```
-[{"_id":"58cbf51666828a4c94e5b48a","title":"Avoir un comportement entrepreneurial","__v":0,"categories":[]}]
+[{"_id":"58cbf51666828a4c94e5b48a","title":"Avoir un comportement entrepreneurial","__v":0,"categories":[]},{"_id":"58d240abd7c48775d6db32ca","title":"Faire émerger l'opportunité d'entreprendre","categories":[]},{"_id":"58d240c7d7c48775d6db32cb","title":"Construire le projet","categories":[]},{"_id":"58d240d9d7c48775d6db32cc","title":"Lancer le projet","categories":[]}]
 ```
 * **GET /phase/:id/categories**
 ** API endpoint for getting phase's categories
@@ -48,7 +48,7 @@ params:
 -id:String**
     * Output exemple:
 ```
-[{"_id":"58cbef162cf6ff44cf7e52a4","title":"Être actif et autonome","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a5","title":"Travailler en équipe","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a6","title":"Être curieux, écouter et explorer","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a7","title":"S'engager et accepter le risque","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]}]
+[{"_id":"58cbef162cf6ff44cf7e52a4","title":"Être actif et autonome","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":["Faire preuve d'initiative","Être force de proposition","Impulser l'action","Porter ses propositions","Être autonome : capacité à décider de ses buts et de ses moyens"]},{"_id":"58cbef162cf6ff44cf7e52a5","title":"Travailler en équipe","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":["Travailler en équipe","Écouter les autres","Aller chercher des ressources et des compétences"]},{"_id":"58cbef162cf6ff44cf7e52a6","title":"Être curieux, écouter et explorer","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":["Capacité à apprendre","Capacité à se remettre en cause","Capacité à explorer, à sortir du cadre","Intelligence situationnelle"]},{"_id":"58cbef162cf6ff44cf7e52a7","title":"S'engager et accepter le risque","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":["Prendre des risques : oser, accepter et s'approprier le changement","Évaluer les risques","Se projeter dans l'inconnu","Surmonter les obstacles"]}]
 ```
 
 
