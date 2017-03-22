@@ -23,11 +23,5 @@ module.exports = mongoose.model('Grade', new Schema({
   validator_eval: {
     value: Number,
     date: Date
-  },
-  comments: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Comments'
-    }
-  ]
+  }
 }));
