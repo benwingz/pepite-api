@@ -7,6 +7,7 @@ module.exports = function(app) {
 
   var userController = require('./app/controllers/user.controller');
   var phaseController = require('./app/controllers/phase.controller');
+  var gradeController = require('./app/controllers/grade.controller');
 
   var User = require('./app/models/user.model');
 
@@ -50,6 +51,12 @@ module.exports = function(app) {
   //Phase routes
   apiRoutes.get('/phases', phaseController.getAllPhases);
   apiRoutes.get('/phase/:id/categories', phaseController.getPhaseCategories);
+
+  //Grade routes
+  apiRoutes.get('/grades', gradeController.getAllGrades);
+  apiRoutes.get('/grade/:id', gradeController.findOneGradeById);
+  apiRoutes.post('/grade', gradeController.createGrade);
+  apiRoutes.delete('/grade', gradeController.deleteGrade);
   //apiRoutes.post('/user', user.createUser);
 
   //apiRoutes.post('/authenticate', user.authenticate);

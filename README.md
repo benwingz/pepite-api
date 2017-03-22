@@ -50,11 +50,35 @@ params:
 ```
 [{"_id":"58cbef162cf6ff44cf7e52a4","title":"Être actif et autonome","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a5","title":"Travailler en équipe","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a6","title":"Être curieux, écouter et explorer","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a7","title":"S'engager et accepter le risque","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]}]
 ```
+* **GET /grades**
+  * **Get all grades**
+  * Output exemple:
+```
+[{"_id":"58d285ea81c13b14abe4d325","_category":{"_id":"58cbef162cf6ff44cf7e52a4","title":"Être actif et autonome","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":["Faire preuve d'initiative","Être force de proposition","Impulser l'action","Porter ses propositions","Être autonome : capacité à décider de ses buts et de ses moyens"]},"_user":{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},"__v":0,"comments":[],"user_eval":{"value":5,"date":"2017-03-22T14:10:50.475Z"}},{"_id":"58d2861681c13b14abe4d326","_category":{"_id":"58cbef162cf6ff44cf7e52a5","title":"Travailler en équipe","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":["Travailler en équipe","Écouter les autres","Aller chercher des ressources et des compétences"]},"_user":{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},"__v":0,"comments":[],"user_eval":{"value":4,"date":"2017-03-22T14:11:34.318Z"}}]
+```
+* **GET /grade/:id**
+  * **Get a specific grade**
+  * Output exemple:
+```
+{"_id":"58d2861681c13b14abe4d326","_category":{"_id":"58cbef162cf6ff44cf7e52a5","title":"Travailler en équipe","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":["Travailler en équipe","Écouter les autres","Aller chercher des ressources et des compétences"]},"_user":{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},"__v":0,"comments":[],"user_eval":{"value":4,"date":"2017-03-22T14:11:34.318Z"}}
+```
+* **POST /grade**
+  * **Add a grade**
+  * Output exemple:
+```
+{"success":true,"message":"Évaluation enregistré"}
+```
+* **DELETE /grade**
+  * **Delete a specific grade**
+  * Output exemple:
+```
+{"success":true,"message":"Évaluation supprimé"}
+```
 
 
 ### lancer le serveur: `node server.js`
 **For automation README.md population file with postman collection:**
-* [Follow this link](http://git.skilvioo.net/team/api-doc-hook) to clone the pre-commit hooks in you `.git/hooks/` directory
+* [Follow this link](http://git.skilvioo.net/team/api-doc-hook) to clone the pre-commit hooks in your `.git/hooks/` directory
 * Make sure you have node installed and add postman-readme-populate.js at the root of your project
 * Make sure you have only one postman collection in root `postman-collections` directory
 * Change the collection and add it to a git commit and :tada:
