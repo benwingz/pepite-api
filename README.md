@@ -29,7 +29,7 @@
 -firstname:text (example: newuser)```
 ```
 -lastname:text (example: newuser)```
-___  * Output exemple:
+  * Output exemple:
 ```
 {"success":true,"message":"Utilisateur enregistré"}
 ```
@@ -39,7 +39,7 @@ ___  * Output exemple:
   * Parmeters requested:
 ```
 -id:text (example: 58cabecb9ed301764c894067)```
-___  * Output exemple:
+  * Output exemple:
 ```
 {"success":true,"message":"Utilsateur supprimé"}
 ```
@@ -81,7 +81,7 @@ ___  * Output exemple:
 -category:text (example: 58cbef162cf6ff44cf7e52a5)```
 ```
 -value:text (example: 4)```
-___  * Output exemple:
+  * Output exemple:
 ```
 {"success":true,"message":"Évaluation enregistré"}
 ```
@@ -91,7 +91,7 @@ ___  * Output exemple:
   * Parmeters requested:
 ```
 -id:text (example: 58d2827f908bc013ff916fa7)```
-___  * Output exemple:
+  * Output exemple:
 ```
 {"success":true,"message":"Évaluation supprimé"}
 ```
@@ -115,13 +115,13 @@ ___  * Output exemple:
 -user:text (example: 58caba32b0f0d870e464e589)```
 ```
 -content:text (example: Hey this is an  awesome comment)```
-___  * Output exemple:
+  * Output exemple:
 ```
 {"success":true,"message":"Commentaire ajouté"}
 ```
 
 * **GET /grade/:id/comments**
-  * Description: Get all comments on a specific grade
+  * Description: API endpoint to get all comments on a specific grade
   * Output exemple:
 ```
 [{"_id":"58d28dd25d3efc1b48e3d9ee","_grade":"58d285ea81c13b14abe4d325","_user":{"_id":"58caba32b0f0d870e464e589","firstname":"Ben","lastname":"Roullet","__v":0},"content":"Hey this is an  awesome comment","date":"2017-03-22T14:44:34.929Z","__v":0},{"_id":"58d28eb9d7dd821b8490dc4c","_grade":"58d285ea81c13b14abe4d325","_user":{"_id":"58cb9f4314d81a0919acb2b0","firstname":"Romain","lastname":"Tête","__v":0},"content":"Hey cool down dude","date":"2017-03-22T14:48:25.303Z","__v":0}]
