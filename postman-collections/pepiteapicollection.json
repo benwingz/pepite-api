@@ -21,7 +21,7 @@
 			},
 			"response": [
 				{
-					"id": "8ae44d23-0518-49cc-aeef-43be24ce5ea1",
+					"id": "b12a9016-9f56-450b-aaac-4c54284f143b",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api",
@@ -109,7 +109,7 @@
 			},
 			"response": [
 				{
-					"id": "e64d0a69-a345-49fc-8584-ff0a63d8098e",
+					"id": "d2adc212-fb2b-4c45-b516-0f1e559f7b29",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -197,7 +197,7 @@
 			},
 			"response": [
 				{
-					"id": "207aa3a5-7eb2-4d26-8480-333ae5181a3a",
+					"id": "9a01cabe-9d74-456b-bf87-42983d2c0be5",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/58ca9645304609075babf8e4",
@@ -304,7 +304,7 @@
 			},
 			"response": [
 				{
-					"id": "1e7104ea-2601-4c5d-b4f5-70d4829999ef",
+					"id": "f4aac055-5282-488e-a186-6ac7e017e0be",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -429,7 +429,7 @@
 			},
 			"response": [
 				{
-					"id": "3f8d395b-75ca-4e0c-8a96-7ce011c77c91",
+					"id": "d41fab10-e95e-4fd7-b475-9cdfb7211b08",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -528,12 +528,85 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "API endpoint for display phases"
+				"description": "API endpoint for display phases "
 			},
 			"response": [
 				{
-					"id": "cad89117-3e3a-4d11-8295-d6e9e8d29c62",
+					"id": "31efdcc3-7369-4809-ab45-3929bbca8c88",
 					"name": "default",
+					"originalRequest": {
+						"url": "localhost:8080/api/phases",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "108",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Mar 2017 13:16:39 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6c-a/UynNe65KcABvO6DrAz2zi7bUw\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 70,
+					"body": "[{\"_id\":\"58cbf51666828a4c94e5b48a\",\"title\":\"Avoir un comportement entrepreneurial\",\"__v\":0,\"categories\":[]}]"
+				},
+				{
+					"id": "30442abc-5a28-4024-bda2-6cca8f43b58d",
+					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
 						"method": "GET",
@@ -617,8 +690,81 @@
 			},
 			"response": [
 				{
-					"id": "c579e2d9-782e-4208-b1a2-12f5a475666e",
+					"id": "46651b2b-9f4b-44ad-be88-8f790ed228cf",
 					"name": "default",
+					"originalRequest": {
+						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "519",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Mar 2017 13:16:50 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"207-+H/cvWNYJpKmU4l1+aDJrDwByOY\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 28,
+					"body": "[{\"_id\":\"58cbef162cf6ff44cf7e52a4\",\"title\":\"Être actif et autonome\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a5\",\"title\":\"Travailler en équipe\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a6\",\"title\":\"Être curieux, écouter et explorer\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a7\",\"title\":\"S'engager et accepter le risque\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]}]"
+				},
+				{
+					"id": "929f834c-b0e7-4098-8bfd-dde10d328bdf",
+					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
 						"method": "GET",
