@@ -26,11 +26,9 @@
   * Description: API endpoint for user creation
   * Parmeters requested:
 ```
-firstname:text (example: newuser)
+-firstname:text (example: newuser)```
 ```
-```
-lastname:text (example: newuser)
-```
+-lastname:text (example: newuser)```
   * Output exemple:
 ```
 {"success":true,"message":"Utilisateur enregistré"}
@@ -52,8 +50,6 @@ lastname:text (example: newuser)
 
 * **GET /phase/:id/categories**
   * Description: API endpoint for getting phase's categories
-params:
--id:String
   * Output exemple:
 ```
 [{"_id":"58cbef162cf6ff44cf7e52a4","title":"Être actif et autonome","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a5","title":"Travailler en équipe","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a6","title":"Être curieux, écouter et explorer","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]},{"_id":"58cbef162cf6ff44cf7e52a7","title":"S'engager et accepter le risque","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":[]}]
@@ -77,14 +73,11 @@ params:
   * Description: Add a grade
   * Parmeters requested:
 ```
-user:text (example: 58ca9645304609075babf8e4)
+-user:text (example: 58ca9645304609075babf8e4)```
 ```
+-category:text (example: 58cbef162cf6ff44cf7e52a5)```
 ```
-category:text (example: 58cbef162cf6ff44cf7e52a5)
-```
-```
-value:text (example: 4)
-```
+-value:text (example: 4)```
   * Output exemple:
 ```
 {"success":true,"message":"Évaluation enregistré"}
@@ -111,14 +104,11 @@ value:text (example: 4)
   * Description: Add comment to a grade
   * Parmeters requested:
 ```
-grade:text (example: 58d285ea81c13b14abe4d325)
+-grade:text (example: 58d285ea81c13b14abe4d325)```
 ```
+-user:text (example: 58caba32b0f0d870e464e589)```
 ```
-user:text (example: 58caba32b0f0d870e464e589)
-```
-```
-content:text (example: Hey this is an  awesome comment)
-```
+-content:text (example: Hey this is an  awesome comment)```
   * Output exemple:
 ```
 {"success":true,"message":"Commentaire ajouté"}

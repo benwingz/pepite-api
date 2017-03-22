@@ -21,7 +21,7 @@
 			},
 			"response": [
 				{
-					"id": "53199187-ef48-4bb0-9504-1996ca7f26c2",
+					"id": "1b4085e3-a8f7-495d-a3f0-a4abd1352188",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api",
@@ -109,7 +109,7 @@
 			},
 			"response": [
 				{
-					"id": "bcf9488d-5086-4b62-9fc3-767e5efda567",
+					"id": "6b804326-b239-4792-a587-dd0e803e6b97",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -197,7 +197,7 @@
 			},
 			"response": [
 				{
-					"id": "52375375-7e45-4e9c-b9c0-10e396e4e9cb",
+					"id": "b353fa39-0352-4ac4-9ff0-bcfc37c2871b",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/58ca9645304609075babf8e4",
@@ -304,7 +304,7 @@
 			},
 			"response": [
 				{
-					"id": "2104ebde-fcff-4a76-8741-15b7b1b43623",
+					"id": "a9cf822f-31fe-46fd-942f-651952309c21",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -429,7 +429,7 @@
 			},
 			"response": [
 				{
-					"id": "bbf9863d-1dcb-44cc-a446-fa964ac85779",
+					"id": "a6d8b4b2-cf87-467b-a4da-6345f5571c8a",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -532,7 +532,7 @@
 			},
 			"response": [
 				{
-					"id": "398fc6f5-0c8a-4299-b80d-e90e1685eef6",
+					"id": "59b0a5c9-0d39-4ec9-ad0c-4ebd96660e78",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -605,7 +605,7 @@
 					"body": "[{\"_id\":\"58cbf51666828a4c94e5b48a\",\"title\":\"Avoir un comportement entrepreneurial\",\"__v\":0,\"categories\":[]}]"
 				},
 				{
-					"id": "a974af79-86f6-4df8-a40d-848eec1b2ee6",
+					"id": "51fca946-e017-4cf7-94f8-c1110933bdb5",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -686,11 +686,11 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "API endpoint for getting phase's categories\nparams:\n-id:String"
+				"description": "API endpoint for getting phase's categories"
 			},
 			"response": [
 				{
-					"id": "ad201b65-7030-43b5-8e3e-9b96b98488a3",
+					"id": "e7aeea50-4253-4674-870c-64a44eb1c681",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -763,7 +763,7 @@
 					"body": "[{\"_id\":\"58cbef162cf6ff44cf7e52a4\",\"title\":\"Être actif et autonome\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a5\",\"title\":\"Travailler en équipe\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a6\",\"title\":\"Être curieux, écouter et explorer\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a7\",\"title\":\"S'engager et accepter le risque\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]}]"
 				},
 				{
-					"id": "cc4a94fb-9064-482a-a317-dd7eac903417",
+					"id": "3da6f21f-8a6c-4121-9a73-033b5fd5bb7d",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -848,7 +848,7 @@
 			},
 			"response": [
 				{
-					"id": "c25d5884-7d60-4bdd-90cc-683848f51caf",
+					"id": "65215c4d-634b-45c3-976e-e97f44df4071",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grades",
@@ -939,7 +939,7 @@
 			},
 			"response": [
 				{
-					"id": "43833409-5da4-42bc-8202-66af7d53fff1",
+					"id": "501660e3-b9cd-4743-86a4-7dbab8516024",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d2861681c13b14abe4d326",
@@ -1059,7 +1059,7 @@
 			},
 			"response": [
 				{
-					"id": "6dca4d05-62aa-4ea5-8997-1cada4e4af87",
+					"id": "a0e329ee-e353-41b7-8ba3-64038f158944",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1189,7 +1189,7 @@
 			},
 			"response": [
 				{
-					"id": "3f38628d-d152-4f51-b684-eb4503f76233",
+					"id": "867b7952-4672-46b7-acf0-674013a281a7",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1291,7 +1291,7 @@
 			},
 			"response": [
 				{
-					"id": "fe7cb036-7221-44de-93fd-9e1e0e11e3b0",
+					"id": "49ca1af8-a58e-456b-b621-bdaa9d8ca393",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
@@ -1364,7 +1364,7 @@
 					"body": "{\"success\":false,\"message\":\"Aucuns commentaires\"}"
 				},
 				{
-					"id": "cf7c3dbf-774d-4f71-a787-ee0d7ed27ad2",
+					"id": "c6cdf9ea-6a5f-4bd2-aa91-83bffc2ad9c2",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
@@ -1488,7 +1488,7 @@
 			},
 			"response": [
 				{
-					"id": "8db0624e-4760-4e34-afd6-daeed000a9aa",
+					"id": "94367009-8705-442a-b81c-c22a2f237279",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comment",
@@ -1603,7 +1603,7 @@
 			},
 			"response": [
 				{
-					"id": "3c770ec2-80dc-44af-8f24-c265e8960644",
+					"id": "0a87c1cc-b38e-409e-ae62-0584c51cf9a3",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d285ea81c13b14abe4d325/comments",
