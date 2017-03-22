@@ -23,14 +23,12 @@
 ```
 
 * **POST /user**
-  * Description: API endpoint for user creation
+  * Description: API endpoint to add user
   * Parmeters requested:
 ```
 -firstname:text (example: newuser)```
-
 ```
 -lastname:text (example: newuser)```
-
   * Output exemple:
 ```
 {"success":true,"message":"Utilisateur enregistré"}
@@ -41,7 +39,6 @@
   * Parmeters requested:
 ```
 -id:text (example: 58cabecb9ed301764c894067)```
-
   * Output exemple:
 ```
 {"success":true,"message":"Utilsateur supprimé"}
@@ -80,13 +77,10 @@
   * Parmeters requested:
 ```
 -user:text (example: 58ca9645304609075babf8e4)```
-
 ```
 -category:text (example: 58cbef162cf6ff44cf7e52a5)```
-
 ```
 -value:text (example: 4)```
-
   * Output exemple:
 ```
 {"success":true,"message":"Évaluation enregistré"}
@@ -97,7 +91,6 @@
   * Parmeters requested:
 ```
 -id:text (example: 58d2827f908bc013ff916fa7)```
-
   * Output exemple:
 ```
 {"success":true,"message":"Évaluation supprimé"}
@@ -118,13 +111,10 @@
   * Parmeters requested:
 ```
 -grade:text (example: 58d285ea81c13b14abe4d325)```
-
 ```
 -user:text (example: 58caba32b0f0d870e464e589)```
-
 ```
 -content:text (example: Hey this is an  awesome comment)```
-
   * Output exemple:
 ```
 {"success":true,"message":"Commentaire ajouté"}
