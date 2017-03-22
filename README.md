@@ -16,7 +16,7 @@
 ```
 
 * **GET /user/:id**
-  * Description: Api specific user endpoint
+  * Description: API specific user endpoint
   * Output exemple:
 ```
 {"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"}
@@ -25,8 +25,12 @@
 * **POST /user**
   * Description: API endpoint for user creation
   * Parmeters requested:
-  -firstname:text (example: newuser)
-  -lastname:text (example: newuser)
+```
+firstname:text (example: newuser)
+```
+```
+lastname:text (example: newuser)
+```
   * Output exemple:
 ```
 {"success":true,"message":"Utilisateur enregistré"}
@@ -72,9 +76,15 @@ params:
 * **POST /grade**
   * Description: Add a grade
   * Parmeters requested:
-  -user:text (example: 58ca9645304609075babf8e4)
-  -category:text (example: 58cbef162cf6ff44cf7e52a5)
-  -value:text (example: 4)
+```
+user:text (example: 58ca9645304609075babf8e4)
+```
+```
+category:text (example: 58cbef162cf6ff44cf7e52a5)
+```
+```
+value:text (example: 4)
+```
   * Output exemple:
 ```
 {"success":true,"message":"Évaluation enregistré"}
@@ -100,9 +110,15 @@ params:
 * **POST /comment**
   * Description: Add comment to a grade
   * Parmeters requested:
-  -grade:text (example: 58d285ea81c13b14abe4d325)
-  -user:text (example: 58caba32b0f0d870e464e589)
-  -content:text (example: Hey this is an  awesome comment)
+```
+grade:text (example: 58d285ea81c13b14abe4d325)
+```
+```
+user:text (example: 58caba32b0f0d870e464e589)
+```
+```
+content:text (example: Hey this is an  awesome comment)
+```
   * Output exemple:
 ```
 {"success":true,"message":"Commentaire ajouté"}
