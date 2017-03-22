@@ -29,7 +29,7 @@
 -firstname:text (example: newuser)```
 ```
 -lastname:text (example: newuser)```
-  * Output exemple:
+___  * Output exemple:
 ```
 {"success":true,"message":"Utilisateur enregistré"}
 ```
@@ -39,7 +39,7 @@
   * Parmeters requested:
 ```
 -id:text (example: 58cabecb9ed301764c894067)```
-  * Output exemple:
+___  * Output exemple:
 ```
 {"success":true,"message":"Utilsateur supprimé"}
 ```
@@ -81,17 +81,17 @@
 -category:text (example: 58cbef162cf6ff44cf7e52a5)```
 ```
 -value:text (example: 4)```
-  * Output exemple:
+___  * Output exemple:
 ```
 {"success":true,"message":"Évaluation enregistré"}
 ```
 
 * **DELETE /grade**
-  * Description: Delete a specific grade
+  * Description: API endpoint to delete a specific grade
   * Parmeters requested:
 ```
 -id:text (example: 58d2827f908bc013ff916fa7)```
-  * Output exemple:
+___  * Output exemple:
 ```
 {"success":true,"message":"Évaluation supprimé"}
 ```
@@ -115,7 +115,7 @@
 -user:text (example: 58caba32b0f0d870e464e589)```
 ```
 -content:text (example: Hey this is an  awesome comment)```
-  * Output exemple:
+___  * Output exemple:
 ```
 {"success":true,"message":"Commentaire ajouté"}
 ```
