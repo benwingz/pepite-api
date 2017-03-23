@@ -7,6 +7,8 @@ module.exports = function(app) {
 
   var userController = require('./app/controllers/user.controller');
   var phaseController = require('./app/controllers/phase.controller');
+  var gradeController = require('./app/controllers/grade.controller');
+  var commentController = require('./app/controllers/comment.controller');
 
   var User = require('./app/models/user.model');
 
@@ -50,6 +52,22 @@ module.exports = function(app) {
   //Phase routes
   apiRoutes.get('/phases', phaseController.getAllPhases);
   apiRoutes.get('/phase/:id/categories', phaseController.getPhaseCategories);
+
+  //Grade routes
+  apiRoutes.get('/grades', gradeController.getAllGrades);
+  apiRoutes.get('/grade/:id', gradeController.findOneGradeById);
+  apiRoutes.post('/grade', gradeController.createGrade);
+  apiRoutes.delete('/grade', gradeController.deleteGrade);
+  apiRoutes.get('/category/:id/grades', gradeController.getCategoryGrade);
+  apiRoutes.patch('/grade', gradeController.patchGrade);
+
+  //Comment routes
+  apiRoutes.get('/comments', commentController.getAllComments);
+  apiRoutes.get('/comment/:id', commentController.findOneCommentById);
+  apiRoutes.post('/comment', commentController.createComment);
+  apiRoutes.delete('/comment', commentController.deleteComment);
+  apiRoutes.get('/grade/:id/comments', commentController.getCommentsGrade)
+  apiRoutes.patch('/comment', commentController.patchComment);
   //apiRoutes.post('/user', user.createUser);
 
   //apiRoutes.post('/authenticate', user.authenticate);
