@@ -98,6 +98,15 @@
 
 * **PATCH /grade**
   * Description: API endpoint to update grade
+  * Parmeters requested:
+```
+-id:text (example: 58d285ea81c13b14abe4d325)```
+```
+-user_eval.value:text (example: 3)```
+```
+-validator_eval.value:text (example: 1)```
+```
+-_validator:text (example: 58caba32b0f0d870e464e589)```
   * Output exemple:
 ```
 {"n":1,"nModified":1,"ok":1}
@@ -153,6 +162,11 @@
 
 * **PATCH /comment**
   * Description: API endpoint to update comment
+  * Parmeters requested:
+```
+-id:text (example: 58d28dd25d3efc1b48e3d9ee)```
+```
+-content:text (example: It's my awesome comment !!!)```
   * Output exemple:
 ```
 {"n":1,"nModified":1,"ok":1}
