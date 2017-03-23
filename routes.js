@@ -59,6 +59,7 @@ module.exports = function(app) {
   apiRoutes.post('/grade', gradeController.createGrade);
   apiRoutes.delete('/grade', gradeController.deleteGrade);
   apiRoutes.get('/category/:id/grades', gradeController.getCategoryGrade);
+  apiRoutes.patch('/grade', gradeController.patchGrade);
 
   //Comment routes
   apiRoutes.get('/comments', commentController.getAllComments);
@@ -66,6 +67,7 @@ module.exports = function(app) {
   apiRoutes.post('/comment', commentController.createComment);
   apiRoutes.delete('/comment', commentController.deleteComment);
   apiRoutes.get('/grade/:id/comments', commentController.getCommentsGrade)
+  apiRoutes.patch('/comment', commentController.patchComment);
   //apiRoutes.post('/user', user.createUser);
 
   //apiRoutes.post('/authenticate', user.authenticate);

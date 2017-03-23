@@ -11,7 +11,7 @@ exports.getAllGrades = function(req, res){
     .populate('_validator')
     .then(
       function(grades) {
-        if(grades.length > 0) {
+        if (grades.length > 0) {
           res.json(grades);
         } else {
           errorHandler.error(res, "Aucune évaluation");
@@ -28,7 +28,7 @@ exports.findOneGradeById = function(req, res){
     .populate('_user')
     .populate('_validator')
     .exec(function(err, grade) {
-      if(err) {
+      if (err) {
         errorHandler.error(res, 'Impossible de trouver cette évaluation.');
       } else {
         res.json(grade);
@@ -38,11 +38,11 @@ exports.findOneGradeById = function(req, res){
 };
 
 exports.createGrade = function(req, res) {
-  if(!req.body.user || !req.body.category || !req.body.value) {
+  if (!req.body.user || !req.body.category || !req.body.value) {
     errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'évaluation");
   } else {
     Grade.findOne({_category: req.body.category, _user: req.body.user}, function(err, user){
-      if(user) {
+      if (user) {
         errorHandler.error(res, 'Une évaluation existe déjà pour cette catégorie');
       } else {
         var newGrade = new Grade({
@@ -54,7 +54,7 @@ exports.createGrade = function(req, res) {
           }
         });
         newGrade.save(function(err){
-          if(err) {
+          if (err) {
             errorHandler.error(res, "L'évaluation n'a pas pu être créé");
           } else {
             res.json({ success: true, message: 'Évaluation enregistrée'});
@@ -81,14 +81,33 @@ exports.getCategoryGrade = function(req, res) {
     .populate('_user')
     .populate('_validator')
     .exec(function(err, grades) {
-      if(err) {
+      if (err) {
         errorHandler.error(res, "Impossible de récupérer l'évaluation de cette catégorie");
       } else {
-        if(grades.length > 0) {
+        if (grades.length > 0) {
           res.json(grades);
         } else {
           errorHandler.error(res, "Aucune note pour cette catégorie");
         }
       }
     })
-}
+};
+
+exports.patchGrade = function(req, res) {
+  console.log("body", req.body);
+  if (req.body['user_eval.value']) {
+    req.body['user_eval.date'] = new Date();
+  }
+  if (req.body['validator_eval.value'] && req.body._validator) {
+    req.body['validator_eval.date'] = new Date();
+  } else {
+    delete req.body['validator_eval.value'];
+  }
+  Grade.update({_id: req.body.id}, req.body, function(err, raw) {
+    if (err) {
+      errorHandler(res, "Impossible de mettre à jour cette évaluation");
+    } else {
+      res.json(raw);
+    }
+  });
+};

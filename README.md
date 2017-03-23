@@ -96,6 +96,13 @@
 {"success":true,"message":"Évaluation supprimé"}
 ```
 
+* **PATCH /grade**
+  * Description: API endpoint to update grade
+  * Output exemple:
+```
+{"n":1,"nModified":1,"ok":1}
+```
+
 * **GET /category/:id/grades**
   * Description: API endpoint to retrieve grades by category
   * Output exemple:
@@ -132,6 +139,23 @@
   * Output exemple:
 ```
 [{"_id":"58d28dd25d3efc1b48e3d9ee","_grade":"58d285ea81c13b14abe4d325","_user":{"_id":"58caba32b0f0d870e464e589","firstname":"Ben","lastname":"Roullet","__v":0},"content":"Hey this is an  awesome comment","date":"2017-03-22T14:44:34.929Z","__v":0},{"_id":"58d28eb9d7dd821b8490dc4c","_grade":"58d285ea81c13b14abe4d325","_user":{"_id":"58cb9f4314d81a0919acb2b0","firstname":"Romain","lastname":"Tête","__v":0},"content":"Hey cool down dude","date":"2017-03-22T14:48:25.303Z","__v":0}]
+```
+
+* **DELETE /comment**
+  * Description: API endpoint to delete comment
+  * Parmeters requested:
+```
+-id:text (example: 58d28eb9d7dd821b8490dc4c)```
+  * Output exemple:
+```
+{"success":true,"message":"Commentaire supprimée"}
+```
+
+* **PATCH /comment**
+  * Description: API endpoint to update comment
+  * Output exemple:
+```
+{"n":1,"nModified":1,"ok":1}
 ```
 
 

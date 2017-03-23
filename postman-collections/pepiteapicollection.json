@@ -21,7 +21,7 @@
 			},
 			"response": [
 				{
-					"id": "5814926b-f612-4d5b-8655-c3d6e1f9a3c4",
+					"id": "82d20036-1b3e-4ecf-bc42-ef7eb69859f8",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api",
@@ -109,7 +109,7 @@
 			},
 			"response": [
 				{
-					"id": "77aebd0e-7e22-4bec-ad3c-46abf8eb8da1",
+					"id": "aa207b06-65a3-4063-974b-eec40466c40f",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -197,7 +197,7 @@
 			},
 			"response": [
 				{
-					"id": "da650477-bdf3-4d11-af44-adfed985cfe3",
+					"id": "9e069d38-4f5c-46c8-8743-aa8d8dad1c25",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/58ca9645304609075babf8e4",
@@ -304,7 +304,7 @@
 			},
 			"response": [
 				{
-					"id": "3df5a3f9-a4ed-4c53-a89a-55b0de417504",
+					"id": "fe47b05b-3f0d-4fac-9449-e86960f072cb",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -429,7 +429,7 @@
 			},
 			"response": [
 				{
-					"id": "62df7001-e10a-48f9-b621-c145c429f240",
+					"id": "071ac782-8a48-42d5-8b30-a47cdf0811a4",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -532,7 +532,7 @@
 			},
 			"response": [
 				{
-					"id": "5649ea94-bad9-4ea0-ac86-29a3c1bf84cd",
+					"id": "0eccb5f4-e0bf-4c19-ae19-feb3d3e9feb9",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -605,7 +605,7 @@
 					"body": "[{\"_id\":\"58cbf51666828a4c94e5b48a\",\"title\":\"Avoir un comportement entrepreneurial\",\"__v\":0,\"categories\":[]}]"
 				},
 				{
-					"id": "d1ba5c74-eb72-4383-8051-174b29455f44",
+					"id": "d36fb411-00be-48d0-9afc-2dce4f92dd21",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -690,7 +690,7 @@
 			},
 			"response": [
 				{
-					"id": "240810f0-f237-4d60-9ee4-6df3e24921a2",
+					"id": "71b6d267-8c71-412d-8aa3-c80ed1c9175d",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -763,7 +763,7 @@
 					"body": "[{\"_id\":\"58cbef162cf6ff44cf7e52a4\",\"title\":\"Être actif et autonome\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a5\",\"title\":\"Travailler en équipe\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a6\",\"title\":\"Être curieux, écouter et explorer\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a7\",\"title\":\"S'engager et accepter le risque\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]}]"
 				},
 				{
-					"id": "b728e0a8-cc08-425c-903f-f34527e47833",
+					"id": "5211b6f1-d01b-44d5-a073-6cd7b357eb02",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -848,7 +848,7 @@
 			},
 			"response": [
 				{
-					"id": "8a055bf7-1cd3-4923-91fb-2d97c54af536",
+					"id": "b2cf7602-f359-4df8-b97d-3c4d1e3eb6d2",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grades",
@@ -939,7 +939,7 @@
 			},
 			"response": [
 				{
-					"id": "41ce6235-8657-427c-9db6-9ee29b497f27",
+					"id": "f4d96420-ae78-4427-9cca-7132ea9704a2",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d2861681c13b14abe4d326",
@@ -1059,7 +1059,7 @@
 			},
 			"response": [
 				{
-					"id": "8142f1af-8250-42ec-ad79-410616450db4",
+					"id": "26fbf5e4-908f-4299-8b05-80da5647b11b",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1189,7 +1189,7 @@
 			},
 			"response": [
 				{
-					"id": "c7e1956d-51b3-433e-8f8f-5d85e25a31f0",
+					"id": "e941e29a-1fd6-4ac3-ae2a-be6501356ae1",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1281,6 +1281,160 @@
 			]
 		},
 		{
+			"name": "PATCH /grade",
+			"request": {
+				"url": "http://localhost:8080/api/grade",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "58d285ea81c13b14abe4d325",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "user_eval.value",
+							"value": "3",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "validator_eval.value",
+							"value": "1",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "_validator",
+							"value": "58caba32b0f0d870e464e589",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "API endpoint to update grade"
+			},
+			"response": [
+				{
+					"id": "2e16be49-322e-4d00-9ab3-4235f4f0d0f0",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/grade",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "58d285ea81c13b14abe4d325",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "user_eval.value",
+									"value": "3",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "validator_eval.value",
+									"value": "1",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "_validator",
+									"value": "58caba32b0f0d870e464e589",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Mar 2017 09:49:26 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 15,
+					"body": "{\"n\":1,\"nModified\":1,\"ok\":1}"
+				}
+			]
+		},
+		{
 			"name": "GET /category/:id/grades",
 			"request": {
 				"url": "http://localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/grades",
@@ -1291,7 +1445,7 @@
 			},
 			"response": [
 				{
-					"id": "3a59b7b5-d875-4d73-8d0d-04a052bc9272",
+					"id": "f23d9075-e39f-4394-ab14-f4bfca0c93e0",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/grades",
@@ -1376,7 +1530,7 @@
 			},
 			"response": [
 				{
-					"id": "d4161b38-1289-41c9-a8ea-931e395bdc8c",
+					"id": "9911d9e4-76e0-44b9-a693-2768f5d10610",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
@@ -1449,7 +1603,7 @@
 					"body": "{\"success\":false,\"message\":\"Aucuns commentaires\"}"
 				},
 				{
-					"id": "bb099123-00bf-47f6-a341-2cbbefd9314d",
+					"id": "abd28063-6aa1-4c8a-8704-e18160ad7b4a",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
@@ -1573,7 +1727,7 @@
 			},
 			"response": [
 				{
-					"id": "8a340265-69be-4ce2-95b6-dc9b20b81de8",
+					"id": "a960fd3b-fa2d-4723-9d8c-652e085ffad7",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comment",
@@ -1688,7 +1842,7 @@
 			},
 			"response": [
 				{
-					"id": "d2db0791-5e1b-4a80-9e8a-c2df2aab4666",
+					"id": "ce115e36-db33-4bb9-8cb6-b110a5f9d463",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d285ea81c13b14abe4d325/comments",
@@ -1759,6 +1913,350 @@
 					"cookie": [],
 					"responseTime": 31,
 					"body": "[{\"_id\":\"58d28dd25d3efc1b48e3d9ee\",\"_grade\":\"58d285ea81c13b14abe4d325\",\"_user\":{\"_id\":\"58caba32b0f0d870e464e589\",\"firstname\":\"Ben\",\"lastname\":\"Roullet\",\"__v\":0},\"content\":\"Hey this is an  awesome comment\",\"date\":\"2017-03-22T14:44:34.929Z\",\"__v\":0},{\"_id\":\"58d28eb9d7dd821b8490dc4c\",\"_grade\":\"58d285ea81c13b14abe4d325\",\"_user\":{\"_id\":\"58cb9f4314d81a0919acb2b0\",\"firstname\":\"Romain\",\"lastname\":\"Tête\",\"__v\":0},\"content\":\"Hey cool down dude\",\"date\":\"2017-03-22T14:48:25.303Z\",\"__v\":0}]"
+				}
+			]
+		},
+		{
+			"name": "DELETE /comment",
+			"request": {
+				"url": "http://localhost:8080/api/comment",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "58d28eb9d7dd821b8490dc4c",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "API endpoint to delete comment"
+			},
+			"response": [
+				{
+					"id": "91f6d7bf-e244-498a-9d4c-15dd9b221d3e",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/comment",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "58d28eb9d7dd821b8490dc4c",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Mar 2017 10:20:39 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"33-7kvMsgajEzb9+cB669zbOaB9Cdo\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 38,
+					"body": "{\"success\":true,\"message\":\"Commentaire supprimée\"}"
+				}
+			]
+		},
+		{
+			"name": "PATCH /comment",
+			"request": {
+				"url": "http://localhost:8080/api/comment",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "58d28dd25d3efc1b48e3d9ee",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "content",
+							"value": "It's my awesome comment !!!",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "API endpoint to update comment"
+			},
+			"response": [
+				{
+					"id": "4e1b6edd-5d73-44ab-9071-b02d7ae6d651",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/comment",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "58d28dd25d3efc1b48e3d9ee",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "content",
+									"value": "It's my awesome comment !!!",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Mar 2017 10:17:31 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 38,
+					"body": "{\"n\":1,\"nModified\":1,\"ok\":1}"
+				},
+				{
+					"id": "4f2fba16-7812-49f6-8f1d-f0d03386354b",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/comment",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "58d28dd25d3efc1b48e3d9ee",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "content",
+									"value": "It's my awesome comment !!!",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": ""
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": ""
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": ""
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": ""
+						},
+						{
+							"key": "Content-Length",
+							"value": "28",
+							"name": "Content-Length",
+							"description": ""
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": ""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Mar 2017 10:17:31 GMT",
+							"name": "Date",
+							"description": ""
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\"",
+							"name": "ETag",
+							"description": ""
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": 38,
+					"body": "{\"n\":1,\"nModified\":1,\"ok\":1}"
 				}
 			]
 		}

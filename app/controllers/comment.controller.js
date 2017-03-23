@@ -70,3 +70,17 @@ exports.getCommentsGrade = function(req, res) {
     }
   })
 }
+
+exports.patchComment = function(req, res) {
+  if (req.body.content) {
+    Comment.update({_id: req.body.id}, {content: req.body.content, date: new Date()}, function(err, raw) {
+      if (err) {
+        errorHandler(res, "Impossible de mettre à jour ce commentaire");
+      } else {
+        res.json(raw);
+      }
+    });
+  } else {
+    errorHandler.error(res, "Paramètre manquant");
+  }
+}
