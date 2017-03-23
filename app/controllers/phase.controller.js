@@ -8,7 +8,7 @@ var errorHandler = require('../service/error.service');
 exports.getAllPhases = function(req, res) {
   Phase.find().then(
     function(phases) {
-      if(phases.length == 0) {
+      if (phases.length == 0) {
         errorHandler.error(res, 'Aucune phase récupérable');
       } else {
         res.json(phases);
@@ -22,10 +22,10 @@ exports.getAllPhases = function(req, res) {
 
 exports.getPhaseCategories = function(req, res) {
   Phase.findOne({ _id: req.params.id}, function(err, phase) {
-      if(phase) {
+      if (phase) {
         Category.find({ _phase: phase._id}).then(
           function(categories) {
-            if(categories.length > 0) {
+            if (categories.length > 0) {
               res.json(categories);
             } else {
               errorHandler.error(res, "Aucune catégorie n'est présente dans cette phase");

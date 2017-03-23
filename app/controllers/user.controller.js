@@ -17,7 +17,7 @@ exports.getAllUser = function(req, res){
 
 exports.findOneById = function(req, res){
   User.findById(req.params.id ,function(err, user) {
-      if(err) {
+      if (err) {
         errorHandler.error(res, 'Impossible de trouver cet utilisateur.');
       } else {
         console.log("user", user);
@@ -32,12 +32,12 @@ exports.createUser = function(req, res) {
     errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'utilisateur");
   } else {
     User.findOne({firstname: req.body.firstname, lastname: req.body.lastname}, function(err, user){
-      if(user) {
+      if (user) {
         errorHandler.error(res, 'Un utilisateur similaire existe déjà');
       } else {
         var newUser = new User({firstname: req.body.firstname, lastname: req.body.lastname});
         newUser.save(function(err){
-          if(err) {
+          if (err) {
             errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
           } else {
             res.json({ success: true, message: 'Utilisateur enregistré'});
