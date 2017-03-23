@@ -96,6 +96,9 @@
 {"success":true,"message":"Évaluation supprimé"}
 ```
 
+* **GET /category/:id/grades**
+  * Description: API endpoint to retrieve grades by category
+
 * **GET /comments**
   * Description: API endpoint for retrieve all comments 
   * Output exemple:

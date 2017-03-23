@@ -6,21 +6,28 @@ var errorHandler = require('../service/error.service');
 
 
 exports.getAllGrades = function(req, res){
-  Grade.find().populate('_category').populate('_user').then(
-    function(grades) {
-      if(grades.length > 0) {
-        res.json(grades);
-      } else {
-        errorHandler.error(res, "Aucune évaluation");
+  Grade.find()
+    .populate('_user')
+    .populate('_validator')
+    .then(
+      function(grades) {
+        if(grades.length > 0) {
+          res.json(grades);
+        } else {
+          errorHandler.error(res, "Aucune évaluation");
+        }
+      },
+      function(error){
+        errorHandler.error(res, "Impossible de récupérer les évaluations");
       }
-    },
-    function(error){
-      errorHandler.error(res, "Impossible de récupérer les évaluations");
-    })
+    );
 };
 
 exports.findOneGradeById = function(req, res){
-  Grade.findById(req.params.id).populate('_category').populate('_user').exec(function(err, grade) {
+  Grade.findById(req.params.id)
+    .populate('_user')
+    .populate('_validator')
+    .exec(function(err, grade) {
       if(err) {
         errorHandler.error(res, 'Impossible de trouver cette évaluation.');
       } else {
@@ -68,3 +75,20 @@ exports.deleteGrade = function(req, res) {
 
   })
 };
+
+exports.getCategoryGrade = function(req, res) {
+  Grade.find({ _category:req.params.id })
+    .populate('_user')
+    .populate('_validator')
+    .exec(function(err, grades) {
+      if(err) {
+        errorHandler.error(res, "Impossible de récupérer l'évaluation de cette catégorie");
+      } else {
+        if(grades.length > 0) {
+          res.json(grades);
+        } else {
+          errorHandler.error(res, "Aucune note pour cette catégorie");
+        }
+      }
+    })
+}
