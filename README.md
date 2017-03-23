@@ -98,6 +98,10 @@
 
 * **GET /category/:id/grades**
   * Description: API endpoint to retrieve grades by category
+  * Output exemple:
+```
+[{"_id":"58d285ea81c13b14abe4d325","_category":"58cbef162cf6ff44cf7e52a4","_user":{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},"__v":0,"user_eval":{"value":5,"date":"2017-03-22T14:10:50.475Z"}}]
+```
 
 * **GET /comments**
   * Description: API endpoint for retrieve all comments 

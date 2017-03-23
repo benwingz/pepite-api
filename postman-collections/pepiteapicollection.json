@@ -21,7 +21,7 @@
 			},
 			"response": [
 				{
-					"id": "82b28d8b-97b9-49f2-a42d-d397dd2be233",
+					"id": "5814926b-f612-4d5b-8655-c3d6e1f9a3c4",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api",
@@ -109,7 +109,7 @@
 			},
 			"response": [
 				{
-					"id": "ab5e1df1-2228-4930-8496-6aad8ba862e0",
+					"id": "77aebd0e-7e22-4bec-ad3c-46abf8eb8da1",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -197,7 +197,7 @@
 			},
 			"response": [
 				{
-					"id": "93ae11d4-fb6e-4c6f-aa94-043bff521dda",
+					"id": "da650477-bdf3-4d11-af44-adfed985cfe3",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/58ca9645304609075babf8e4",
@@ -304,7 +304,7 @@
 			},
 			"response": [
 				{
-					"id": "dfff5f89-2f67-4b38-b8ed-c201e29f66da",
+					"id": "3df5a3f9-a4ed-4c53-a89a-55b0de417504",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -429,7 +429,7 @@
 			},
 			"response": [
 				{
-					"id": "b6a143a1-673c-4693-9b8c-6bca832b9cfd",
+					"id": "62df7001-e10a-48f9-b621-c145c429f240",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -532,7 +532,7 @@
 			},
 			"response": [
 				{
-					"id": "9e0fbb2e-dcbc-4d26-bb69-96eb6cccac10",
+					"id": "5649ea94-bad9-4ea0-ac86-29a3c1bf84cd",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -605,7 +605,7 @@
 					"body": "[{\"_id\":\"58cbf51666828a4c94e5b48a\",\"title\":\"Avoir un comportement entrepreneurial\",\"__v\":0,\"categories\":[]}]"
 				},
 				{
-					"id": "1fbb4dc2-fbac-4a0b-96c8-67ecb825cb68",
+					"id": "d1ba5c74-eb72-4383-8051-174b29455f44",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -690,7 +690,7 @@
 			},
 			"response": [
 				{
-					"id": "3e00fcfb-4a94-4fc5-9783-d6625c8e926f",
+					"id": "240810f0-f237-4d60-9ee4-6df3e24921a2",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -763,7 +763,7 @@
 					"body": "[{\"_id\":\"58cbef162cf6ff44cf7e52a4\",\"title\":\"Être actif et autonome\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a5\",\"title\":\"Travailler en équipe\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a6\",\"title\":\"Être curieux, écouter et explorer\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]},{\"_id\":\"58cbef162cf6ff44cf7e52a7\",\"title\":\"S'engager et accepter le risque\",\"_phase\":\"58cbf51666828a4c94e5b48a\",\"__v\":0,\"skills\":[]}]"
 				},
 				{
-					"id": "68c16137-73b2-410c-a87e-633232c374d3",
+					"id": "b728e0a8-cc08-425c-903f-f34527e47833",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -848,7 +848,7 @@
 			},
 			"response": [
 				{
-					"id": "5aab2786-c273-4553-8ff4-bdfa685200bb",
+					"id": "8a055bf7-1cd3-4923-91fb-2d97c54af536",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grades",
@@ -939,7 +939,7 @@
 			},
 			"response": [
 				{
-					"id": "c7e30d16-f5d5-45fa-a090-afce2bcc75d8",
+					"id": "41ce6235-8657-427c-9db6-9ee29b497f27",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d2861681c13b14abe4d326",
@@ -1059,7 +1059,7 @@
 			},
 			"response": [
 				{
-					"id": "bff5f49d-9e0d-47a1-9595-a02ad14b9d93",
+					"id": "8142f1af-8250-42ec-ad79-410616450db4",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1189,7 +1189,7 @@
 			},
 			"response": [
 				{
-					"id": "cff0fcbe-2848-4a46-8210-103306ae4db8",
+					"id": "c7e1956d-51b3-433e-8f8f-5d85e25a31f0",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1289,7 +1289,81 @@
 				"body": {},
 				"description": "API endpoint to retrieve grades by category"
 			},
-			"response": []
+			"response": [
+				{
+					"id": "3a59b7b5-d875-4d73-8d0d-04a052bc9272",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/grades",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "276",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Mar 2017 08:44:43 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"114-/yHzarG00BUfbwoskUdvE4Mn+Wg\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 29,
+					"body": "[{\"_id\":\"58d285ea81c13b14abe4d325\",\"_category\":\"58cbef162cf6ff44cf7e52a4\",\"_user\":{\"_id\":\"58ca9645304609075babf8e4\",\"lastname\":\"Blanc\",\"firstname\":\"Nicolas\",\"_comment\":\"virgin student for auto-eval scenario\"},\"__v\":0,\"user_eval\":{\"value\":5,\"date\":\"2017-03-22T14:10:50.475Z\"}}]"
+				}
+			]
 		},
 		{
 			"name": "GET /comments",
@@ -1302,7 +1376,7 @@
 			},
 			"response": [
 				{
-					"id": "ab69230c-c009-4ec3-8624-94f991bf34bc",
+					"id": "d4161b38-1289-41c9-a8ea-931e395bdc8c",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
@@ -1375,7 +1449,7 @@
 					"body": "{\"success\":false,\"message\":\"Aucuns commentaires\"}"
 				},
 				{
-					"id": "128d8645-ed24-4f51-a33e-380cfd57e582",
+					"id": "bb099123-00bf-47f6-a341-2cbbefd9314d",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
@@ -1499,7 +1573,7 @@
 			},
 			"response": [
 				{
-					"id": "2679779c-b964-4b90-a05e-a07a388522ec",
+					"id": "8a340265-69be-4ce2-95b6-dc9b20b81de8",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comment",
@@ -1614,7 +1688,7 @@
 			},
 			"response": [
 				{
-					"id": "b52296ed-02af-4356-abf8-bb03d91d695b",
+					"id": "d2db0791-5e1b-4a80-9e8a-c2df2aab4666",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d285ea81c13b14abe4d325/comments",
