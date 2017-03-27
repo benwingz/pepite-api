@@ -20,7 +20,6 @@ exports.findOneById = function(req, res){
       if (err) {
         errorHandler.error(res, 'Impossible de trouver cet utilisateur.');
       } else {
-        console.log("user", user);
         res.json(user);
       }
     }
