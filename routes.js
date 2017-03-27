@@ -12,8 +12,8 @@ module.exports = function(app) {
 
   var User = require('./app/models/user.model');
 
-  mongoose.connect(config.database);
-  app.set('superSecret', config.secret);
+  mongoose.connect(config[process.env.ENV].database);
+  app.set('superSecret', config[process.env.ENV].secret);
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
@@ -28,7 +28,6 @@ module.exports = function(app) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Origin');
 
-    console.log(req.method);
     // intercept OPTIONS method
     if ('OPTIONS' == req.method) {
       res.send(200);
