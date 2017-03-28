@@ -5,6 +5,8 @@ var commenttest = require('./models/comment');
 var gradetest = require('./models/grade');
 
 var integrationUser = require('./endpoints/user');
+var integrationPhase = require('./endpoints/phase');
+var integrationGrade = require('./endpoints/grade');
 
 var User = require('../app/models/user.model');
 
@@ -15,3 +17,5 @@ commenttest.test();
 gradetest.test();
 
 integrationUser.test();
+integrationPhase.test();
+integrationGrade.test();
