@@ -8,5 +8,7 @@ app.use(morgan('dev'));
 
 require('./routes')(app);
 
-app.listen(port);
+var server = app.listen(port);
 console.log('Pepite API is up at http://localhost/' + port + '/api/');
+
+module.exports = server;
