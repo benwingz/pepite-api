@@ -94,7 +94,6 @@ exports.getCategoryGrade = function(req, res) {
 };
 
 exports.patchGrade = function(req, res) {
-  console.log("body", req.body);
   if (req.body['user_eval.value']) {
     req.body['user_eval.date'] = new Date();
   }
