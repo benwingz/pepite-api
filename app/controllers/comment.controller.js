@@ -26,7 +26,7 @@ exports.findOneCommentById = function(req, res){
       if (err) {
         errorHandler.error(res, 'Impossible de trouver ce commentaire.');
       } else {
-        res.json(grade);
+        res.json(comment);
       }
     }
   );
