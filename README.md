@@ -65,6 +65,13 @@
 [{"_id":"58d285ea81c13b14abe4d325","_category":{"_id":"58cbef162cf6ff44cf7e52a4","title":"Être actif et autonome","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":["Faire preuve d'initiative","Être force de proposition","Impulser l'action","Porter ses propositions","Être autonome : capacité à décider de ses buts et de ses moyens"]},"_user":{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},"__v":0,"comments":[],"user_eval":{"value":5,"date":"2017-03-22T14:10:50.475Z"}},{"_id":"58d2861681c13b14abe4d326","_category":{"_id":"58cbef162cf6ff44cf7e52a5","title":"Travailler en équipe","_phase":"58cbf51666828a4c94e5b48a","__v":0,"skills":["Travailler en équipe","Écouter les autres","Aller chercher des ressources et des compétences"]},"_user":{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},"__v":0,"comments":[],"user_eval":{"value":4,"date":"2017-03-22T14:11:34.318Z"}}]
 ```
 
+* **GET user/:id/grades**
+  * Description: API endpoint to get grades of user
+  * Output exemple:
+```
+[{"_id":"58d285ea81c13b14abe4d325","_category":"58cbef162cf6ff44cf7e52a4","_user":{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},"__v":0,"_validator":{"_id":"58caba32b0f0d870e464e589","firstname":"Ben","lastname":"Roullet","__v":0},"validator_eval":{"value":1,"date":"2017-03-23T09:49:26.773Z"},"user_eval":{"value":3,"date":"2017-03-23T09:49:26.773Z"}},{"_id":"58d2861681c13b14abe4d326","_category":"58cbef162cf6ff44cf7e52a5","_user":{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},"__v":0,"user_eval":{"value":4,"date":"2017-03-22T14:11:34.318Z"}}]
+```
+
 * **GET /grade/:id**
   * Description: Get a specific grade
   * Output exemple:
