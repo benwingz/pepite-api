@@ -8,6 +8,22 @@
 "welcome to Pepite API"
 ```
 
+* **POST authenticate/**
+  * Description: API endpoint to autheticate
+  * Parmeters requested:
+```
+-email:text (example: jules.vernes@skilvioo.com)```
+```
+-firstname:text (example: Jules)```
+```
+-lastname:text (example: Vernes)```
+```
+-password:text (example: 20000lieux)```
+  * Output exemple:
+```
+{"success":true,"message":"Authentification réuissite","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwic2VsZWN0ZWQiOnt9LCJnZXR0ZXJzIjp7fSwid2FzUG9wdWxhdGVkIjpmYWxzZSwiYWN0aXZlUGF0aHMiOnsicGF0aHMiOnsiX192IjoiaW5pdCIsImVtYWlsIjoiaW5pdCIsImxhc3RuYW1lIjoiaW5pdCIsImZpcnN0bmFtZSI6ImluaXQiLCJfaWQiOiJpbml0In0sInN0YXRlcyI6eyJpZ25vcmUiOnt9LCJkZWZhdWx0Ijp7fSwiaW5pdCI6eyJfX3YiOnRydWUsImVtYWlsIjp0cnVlLCJsYXN0bmFtZSI6dHJ1ZSwiZmlyc3RuYW1lIjp0cnVlLCJfaWQiOnRydWV9LCJtb2RpZnkiOnt9LCJyZXF1aXJlIjp7fX0sInN0YXRlTmFtZXMiOlsicmVxdWlyZSIsIm1vZGlmeSIsImluaXQiLCJkZWZhdWx0IiwiaWdub3JlIl19LCJlbWl0dGVyIjp7ImRvbWFpbiI6bnVsbCwiX2V2ZW50cyI6e30sIl9ldmVudHNDb3VudCI6MCwiX21heExpc3RlbmVycyI6MH19LCJpc05ldyI6ZmFsc2UsIl9kb2MiOnsiX192IjowLCJlbWFpbCI6ImJlbi5yb3VsbGV0QHNraWx2aW9vLmNvbSIsImxhc3RuYW1lIjoiUm91bGxldCIsImZpcnN0bmFtZSI6IkJlbiIsIl9pZCI6IjU4Y2FiYTMyYjBmMGQ4NzBlNDY0ZTU4OSJ9LCJpYXQiOjE0OTA3OTA3NTgsImV4cCI6MTQ5MTM5NTU1OH0.ElZfo4DMGdv-B0xMOMOqqc9zGGLyja-aRKplxWYaIHo"}
+```
+
 * **GET /users**
   * Description: API users endpoint
   * Output exemple:
@@ -29,6 +45,8 @@
 -firstname:text (example: newuser)```
 ```
 -lastname:text (example: newuser)```
+```
+-email:text (example: new@email.com)```
   * Output exemple:
 ```
 {"success":true,"message":"Utilisateur enregistré"}
@@ -38,7 +56,7 @@
   * Description: API endpoint to delete user:
   * Parmeters requested:
 ```
--id:text (example: 58cabecb9ed301764c894067)```
+-id:text (example: 58dbaa37b0787c1152dcfb14)```
   * Output exemple:
 ```
 {"success":true,"message":"Utilsateur supprimé"}
@@ -173,7 +191,7 @@
 ```
 -id:text (example: 58d28dd25d3efc1b48e3d9ee)```
 ```
--content:text (example: It's my awesome comment !!!)```
+-content:text (example: J'ai un tatouage à plusieurs dimensions !!!)```
   * Output exemple:
 ```
 {"n":1,"nModified":1,"ok":1}

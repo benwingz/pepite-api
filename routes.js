@@ -42,35 +42,11 @@ module.exports = function(app) {
     res.json('welcome to Pepite API');
   });
 
-  //User routes
-  apiRoutes.get('/users', userController.getAllUser);
-  apiRoutes.get('/user/:id', userController.findOneById);
-  apiRoutes.post('/user', userController.createUser);
-  apiRoutes.delete('/user', userController.deleteUser);
-
   //Phase routes
   apiRoutes.get('/phases', phaseController.getAllPhases);
   apiRoutes.get('/phase/:id/categories', phaseController.getPhaseCategories);
 
-  //Grade routes
-  apiRoutes.get('/grades', gradeController.getAllGrades);
-  apiRoutes.get('/user/:id/grades', gradeController.getAllGradesByUser);
-  apiRoutes.get('/grade/:id', gradeController.findOneGradeById);
-  apiRoutes.post('/grade', gradeController.createGrade);
-  apiRoutes.delete('/grade', gradeController.deleteGrade);
-  apiRoutes.get('/category/:id/grades', gradeController.getCategoryGrade);
-  apiRoutes.patch('/grade', gradeController.patchGrade);
-
-  //Comment routes
-  apiRoutes.get('/comments', commentController.getAllComments);
-  apiRoutes.get('/comment/:id', commentController.findOneCommentById);
-  apiRoutes.post('/comment', commentController.createComment);
-  apiRoutes.delete('/comment', commentController.deleteComment);
-  apiRoutes.get('/grade/:id/comments', commentController.getCommentsGrade)
-  apiRoutes.patch('/comment', commentController.patchComment);
-  //apiRoutes.post('/user', user.createUser);
-
-  //apiRoutes.post('/authenticate', user.authenticate);
+  apiRoutes.post('/authenticate', userController.authenticate);
 
   apiRoutes.use(function(req,res,next){
 
@@ -100,7 +76,30 @@ module.exports = function(app) {
   });
 
   //authenticate routes
-  //apiRoutes.get('/me', user.findUser);
+
+  //User routes
+  apiRoutes.get('/users', userController.getAllUser);
+  apiRoutes.get('/user/:id', userController.findOneById);
+  apiRoutes.post('/user', userController.createUser);
+  apiRoutes.delete('/user', userController.deleteUser);
+
+  //Grade routes
+  apiRoutes.get('/grades', gradeController.getAllGrades);
+  apiRoutes.get('/user/:id/grades', gradeController.getAllGradesByUser);
+  apiRoutes.get('/grade/:id', gradeController.findOneGradeById);
+  apiRoutes.post('/grade', gradeController.createGrade);
+  apiRoutes.delete('/grade', gradeController.deleteGrade);
+  apiRoutes.get('/category/:id/grades', gradeController.getCategoryGrade);
+  apiRoutes.patch('/grade', gradeController.patchGrade);
+
+  //Comment routes
+  apiRoutes.get('/comments', commentController.getAllComments);
+  apiRoutes.get('/comment/:id', commentController.findOneCommentById);
+  apiRoutes.post('/comment', commentController.createComment);
+  apiRoutes.delete('/comment', commentController.deleteComment);
+  apiRoutes.get('/grade/:id/comments', commentController.getCommentsGrade)
+  apiRoutes.patch('/comment', commentController.patchComment);
+  //apiRoutes.post('/user', user.createUser);
 
   app.use('/api', apiRoutes);
 }

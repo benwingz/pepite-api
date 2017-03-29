@@ -1,11 +1,11 @@
 module.exports = {
 
   'DEV': {
-    'secret': process.env.JWT_SECRET,
+    'secret': 'jwtsecretdev',
     'database': "localhost:27017/local"
   },
   'TEST': {
-    'secret': process.env.JWT_SECRET,
+    'secret': 'jwtsecretdtest',
     'database': "localhost:27017/test"
   }
 
