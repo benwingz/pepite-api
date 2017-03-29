@@ -26,9 +26,9 @@ function doCreateUser(firstname, lastname, email, password) {
   var newUser = new User({
     firstname: firstname,
     lastname: lastname,
-    email: email,
-    password: passwordService.encryptPassword(password)
+    email: email
   });
+  passwordService.setUserPassword(newUser, password);
   return newUser.save();
 }
 
@@ -53,14 +53,14 @@ exports.authenticate = function(req, res){
       if(err) throw err;
       if(user) {
 
-        if (passwordService.checkPassword(req.body.password, user)) {
+        if (passwordService.checkPassword(user, req.body.password)) {
           res.json({
             success: true,
             message: 'Authentification réuissite',
             token: generateToken(user)
           });
         } else {
-          res.status(403).send({error: 'Mot de passe erroné'});
+          res.status(401).send({error: 'Mot de passe erroné'});
         }
       } else {
         doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
