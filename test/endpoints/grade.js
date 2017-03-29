@@ -121,6 +121,41 @@ exports.test = function(){
       });
     });
 
+    describe('GET user/:id/grades', () => {
+      it('should get all the grade when there is one', (done) => {
+        let user = new User({
+          firstname: 'Lino',
+          lastname: 'Ventura'
+        });
+        user.save();
+        let phase = new Phase({
+          title: "Les bon films"
+        });
+        phase.save();
+        let category = new Category({
+          title: 'Tonton flingeur',
+          skills: ['Pas touche a grisby salope'],
+          _phase: phase._id
+        });
+        category.save();
+        let grade = new Grade({
+          _category: category._id,
+          _user: user._id,
+          user_eval: {value: 5}
+        })
+        grade.save(function() {
+          chai.request(server)
+            .get('/api/user/' + user._id + '/grades')
+            .end((err, res) => {
+              res.should.have.property('status', 200);
+              res.body.should.be.an.Array;
+              res.body.length.should.be.equal(1);
+              done();
+            });
+        });
+      });
+    });
+
     describe('GET grade/:id', () => {
       it('should get a specific grade', (done) => {
         let user = new User({
