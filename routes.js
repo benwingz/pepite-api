@@ -54,6 +54,7 @@ module.exports = function(app) {
 
   //Grade routes
   apiRoutes.get('/grades', gradeController.getAllGrades);
+  apiRoutes.get('/user/:id/grades', gradeController.getAllGradesByUser);
   apiRoutes.get('/grade/:id', gradeController.findOneGradeById);
   apiRoutes.post('/grade', gradeController.createGrade);
   apiRoutes.delete('/grade', gradeController.deleteGrade);

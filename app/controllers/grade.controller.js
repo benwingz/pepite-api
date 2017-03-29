@@ -23,6 +23,26 @@ exports.getAllGrades = function(req, res){
     );
 };
 
+exports.getAllGradesByUser = function(req, res) {
+  if (req.params.id) {
+    Grade.find({_user: req.params.id})
+      .populate('_user')
+      .populate('_validator')
+      .then(
+        function(grades) {
+          if (grades.length > 0) {
+            res.json(grades);
+          } else {
+            errorHandler.error(res, "Aucune évaluation");
+          }
+        },
+        function(error){
+          errorHandler.error(res, "Impossible de récupérer les évaluations");
+        }
+      );
+  }
+}
+
 exports.findOneGradeById = function(req, res){
   Grade.findById(req.params.id)
     .populate('_user')
