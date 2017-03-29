@@ -39,8 +39,7 @@ exports.authenticate = function(req, res){
       if(err) {
         res.status(403).json({error: "Token invalid"});
       } else {
-        console.log(decoded);
-        var user = decoded._doc;
+        var user = decoded;
 
         res.json({
           success: true,
