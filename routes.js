@@ -58,10 +58,8 @@ module.exports = function(app) {
     if (token) {
       jwt.verify(token, app.get('superSecret'), function(err, decoded) {
         if (err) {
-          console.log('Token invalid');
           return res.json({ success: false, message: 'Failed to authenticate token.'})
         } else {
-          console.log('Token valid');
           req.decode = decoded;
           next();
         }

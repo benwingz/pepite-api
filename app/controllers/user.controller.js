@@ -109,7 +109,7 @@ exports.createUser = function(req, res) {
       if (user) {
         errorHandler.error(res, 'Un utilisateur similaire existe déjà');
       } else {
-        doCreateUser(req.body.firstname, req.body.lastname, req.body.email)
+        doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
           .then((user) => {
             if (user) {
               res.json({ success: true, message: 'Utilisateur enregistré'});
