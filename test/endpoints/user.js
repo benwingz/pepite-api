@@ -1,27 +1,25 @@
-var chai = require('chai');
-var chaiHttp = require('chai-http');
+const chai = require('chai');
+const chaiHttp = require('chai-http');
 process.env.ENV = 'TEST';
-var server = require('../../server');
-var should = chai.should;
+const server = require('../../server');
+const should = chai.should;
 
 var User = require('../../app/models/user.model');
-
 chai.use(chaiHttp);
 
-exports.test = function(){
+exports.test = function(token){
 
   describe('Users', function(){
 
     beforeEach((done) => {
-      User.remove({}, (err) => {
-        done();
-      });
+      User.remove({}, done);
     });
 
     describe('GET users', () => {
       it('should get all the users when there is not', (done) => {
         chai.request(server)
           .get('/api/users')
+          .set('authorization', 'Bearer ' + token)
           .end((err, res) => {
             res.should.have.property('status', 200);
             res.body.should.be.an.Array;
@@ -35,10 +33,13 @@ exports.test = function(){
       it('it should post user', (done) => {
         let user = {
           firstname: 'Lino',
-          lastname: 'Ventura'
+          lastname: 'Ventura',
+          email: 'lino.ventura@tonton.gun',
+          password: 'TouchePasAuGrisby'
         }
         chai.request(server)
           .post('/api/user')
+          .set('authorization', 'Bearer ' + token)
           .send(user)
           .end((err, res) => {
             res.should.have.property('status', 200);
@@ -58,6 +59,7 @@ exports.test = function(){
         user.save();
         chai.request(server)
           .get('/api/users')
+          .set('authorization', 'Bearer ' + token)
           .end((err, res) => {
             res.should.have.property('status', 200);
             res.body.should.be.an.Array;
@@ -76,6 +78,7 @@ exports.test = function(){
         user.save();
         chai.request(server)
           .get('/api/user/' + user._id)
+          .set('authorization', 'Bearer ' + token)
           .end((err, res) => {
             res.should.have.property('status', 200);
             res.body.firstname.should.be.equal('Lino');
@@ -94,6 +97,7 @@ exports.test = function(){
         user.save();
         chai.request(server)
           .delete('/api/user')
+          .set('authorization', 'Bearer ' + token)
           .send({id: user._id})
           .end((err, res) => {
             res.should.have.property('status', 200);

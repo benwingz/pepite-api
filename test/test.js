@@ -1,15 +1,21 @@
-var usertest = require('./models/user');
-var phasetest = require('./models/phase');
-var categorytest = require('./models/category');
-var commenttest = require('./models/comment');
-var gradetest = require('./models/grade');
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+process.env.ENV = 'TEST';
+const server = require('../server');
+const should = chai.should;
 
-var integrationUser = require('./endpoints/user');
-var integrationPhase = require('./endpoints/phase');
-var integrationGrade = require('./endpoints/grade');
-var integrationComment = require('./endpoints/comment');
+const usertest = require('./models/user');
+const phasetest = require('./models/phase');
+const categorytest = require('./models/category');
+const commenttest = require('./models/comment');
+const gradetest = require('./models/grade');
 
-var User = require('../app/models/user.model');
+const integrationUser = require('./endpoints/user');
+const integrationPhase = require('./endpoints/phase');
+const integrationGrade = require('./endpoints/grade');
+const integrationComment = require('./endpoints/comment');
+
+let token;
 
 usertest.test();
 phasetest.test();
@@ -17,7 +23,24 @@ categorytest.test();
 commenttest.test();
 gradetest.test();
 
-integrationUser.test();
-integrationPhase.test();
-integrationGrade.test();
-integrationComment.test();
+describe('POST authenticate', () => {
+  it('should get the authentication token', (done) => {
+    let user = {
+      firstname: 'test',
+      lastname: 'test',
+      email: 'test@test.com',
+      password: 'thisisatest'
+    }
+    chai.request(server)
+      .post('/api/authenticate')
+      .send(user)
+      .end((err, res) => {
+        token = res.body.token;
+        integrationUser.test(token);
+        integrationPhase.test();
+        integrationGrade.test(token);
+        integrationComment.test(token);
+        done();
+      });
+  });
+});

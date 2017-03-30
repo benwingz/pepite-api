@@ -11,7 +11,7 @@ var Phase = require('../../app/models/phase.model');
 
 chai.use(chaiHttp);
 
-exports.test = function(){
+exports.test = function(token){
 
   describe('Grades', function(){
 
@@ -43,6 +43,7 @@ exports.test = function(){
       it('should get all the grades when there is none', (done) => {
         chai.request(server)
           .get('/api/grades')
+          .set('authorization', 'Bearer ' + token)
           .end((err, res) => {
             res.should.have.property('status', 200);
             res.body.success.should.be.equal(false);
@@ -76,6 +77,7 @@ exports.test = function(){
         }
         chai.request(server)
           .post('/api/grade')
+          .set('authorization', 'Bearer ' + token)
           .send(grade)
           .end((err, res) => {
             res.should.have.property('status', 200);
@@ -111,6 +113,7 @@ exports.test = function(){
         grade.save(function() {
           chai.request(server)
             .get('/api/grades')
+            .set('authorization', 'Bearer ' + token)
             .end((err, res) => {
               res.should.have.property('status', 200);
               res.body.should.be.an.Array;
@@ -146,6 +149,7 @@ exports.test = function(){
         grade.save(function() {
           chai.request(server)
             .get('/api/user/' + user._id + '/grades')
+            .set('authorization', 'Bearer ' + token)
             .end((err, res) => {
               res.should.have.property('status', 200);
               res.body.should.be.an.Array;
@@ -181,6 +185,7 @@ exports.test = function(){
         grade.save(() => {
           chai.request(server)
             .get('/api/grade/' + grade._id)
+            .set('authorization', 'Bearer ' + token)
             .end((err, res) => {
               res.should.have.property('status', 200);
               res.body.user_eval.value.should.be.equal(5);
@@ -215,6 +220,7 @@ exports.test = function(){
         grade.save(() => {
           chai.request(server)
             .delete('/api/grade')
+            .set('authorization', 'Bearer ' + token)
             .send({id: grade._id})
             .end((err, res) => {
               res.should.have.property('status', 200);
@@ -251,6 +257,7 @@ exports.test = function(){
         grade.save(() => {
           chai.request(server)
             .get('/api/category/' + category._id + '/grades')
+            .set('authorization', 'Bearer ' + token)
             .end((err, res) => {
               res.should.have.property('status', 200);
               res.body.should.be.an.Array;
@@ -286,6 +293,7 @@ exports.test = function(){
         grade.save(() => {
           chai.request(server)
             .patch('/api/grade')
+            .set('authorization', 'Bearer ' + token)
             .send({id: grade._id, user_eval: {value: 4}, validator_eval: {value: 3}, _validator: user._id})
             .end((err, res) => {
               res.should.have.property('status', 200);
