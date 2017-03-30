@@ -7,9 +7,9 @@ var errorHandler = require('../service/error.service');
 
 exports.getAllComments = function(req, res){
   Comment.find().populate('_category').populate('_user').then(
-    function(grades) {
-      if (grades.length > 0) {
-        res.json(grades);
+    function(comments) {
+      if (comments.length > 0) {
+        res.json(comments);
       } else {
         errorHandler.error(res, "Aucuns commentaires");
       }
@@ -22,11 +22,11 @@ exports.getAllComments = function(req, res){
 exports.findOneCommentById = function(req, res){
   Comment.findById(req.params.id)
     .populate('_user')
-    .exec(function(err, grade) {
+    .exec(function(err, comment) {
       if (err) {
         errorHandler.error(res, 'Impossible de trouver ce commentaire.');
       } else {
-        res.json(grade);
+        res.json(comment);
       }
     }
   );

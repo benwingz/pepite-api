@@ -11,7 +11,7 @@ var Category = require('../../app/models/category.model');
 
 chai.use(chaiHttp);
 
-exports.test = function(){
+exports.test = function(token){
 
   describe('Comment', function(){
 
@@ -43,6 +43,7 @@ exports.test = function(){
       it('should get all the comments when there is none', (done) => {
         chai.request(server)
           .get('/api/comments')
+          .set('authorization', 'Bearer ' + token)
           .end((err, res) => {
             res.should.have.property('status', 200);
             res.body.success.should.be.equal(false);
@@ -77,6 +78,7 @@ exports.test = function(){
         }
         chai.request(server)
           .post('/api/comment')
+          .set('authorization', 'Bearer ' + token)
           .send(comment)
           .end((err, res) => {
             console.log(res.body);
@@ -114,6 +116,7 @@ exports.test = function(){
         comment.save(function() {
           chai.request(server)
             .get('/api/grades')
+            .set('authorization', 'Bearer ' + token)
             .end((err, res) => {
               res.should.have.property('status', 200);
               res.body.should.be.an.Array;
@@ -150,6 +153,7 @@ exports.test = function(){
         comment.save(function() {
           chai.request(server)
             .get('/api/comment/' + comment._id)
+            .set('authorization', 'Bearer ' + token)
             .end((err, res) => {
               res.should.have.property('status', 200);
               res.body.content  .should.be.equal('Joyeux anniversaire');
@@ -185,6 +189,7 @@ exports.test = function(){
         comment.save(function() {
           chai.request(server)
             .delete('/api/comment')
+            .set('authorization', 'Bearer ' + token)
             .send({id: comment._id})
             .end((err, res) => {
               res.should.have.property('status', 200);
@@ -222,6 +227,7 @@ exports.test = function(){
         comment.save(function() {
           chai.request(server)
             .get('/api/grade/' + grade._id + '/comments')
+            .set('authorization', 'Bearer ' + token)
             .end((err, res) => {
               res.should.have.property('status', 200);
               res.body.should.be.an.Array;
@@ -258,6 +264,7 @@ exports.test = function(){
         comment.save(function() {
           chai.request(server)
             .patch('/api/comment')
+            .set('authorization', 'Bearer ' + token)
             .send({id: comment._id, content: 'Un bon bourre pif'})
             .end((err, res) => {
               res.should.have.property('status', 200);
