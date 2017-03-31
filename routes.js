@@ -9,6 +9,7 @@ module.exports = function(app) {
   var phaseController = require('./app/controllers/phase.controller');
   var gradeController = require('./app/controllers/grade.controller');
   var commentController = require('./app/controllers/comment.controller');
+  var pepiteController = require('./app/controllers/pepite.controller');
 
   var User = require('./app/models/user.model');
 
@@ -83,11 +84,11 @@ module.exports = function(app) {
   apiRoutes.patch('/user', userController.patchUser);
 
   //Pepite routes
-  // apiRoutes.get('/pepites', pepiteController.getAllPepites);
-  // apiRoutes.get('/pepite/:id', pepiteController.findOnePepite);
-  // apiRoutes.post('/pepite', pepiteController.createPepite);
-  // apiRoutes.delete('/pepite', pepiteController.deletePepite);
-  // apiRoutes.patch('/pepite', pepiteController.patchPepite);
+  apiRoutes.get('/pepites', pepiteController.getAllPepites);
+  apiRoutes.get('/pepite/:id', pepiteController.findOnePepite);
+  apiRoutes.post('/pepite', pepiteController.createPepite);
+  apiRoutes.delete('/pepite', pepiteController.deletePepite);
+  apiRoutes.patch('/pepite', pepiteController.patchPepite);
 
   //Grade routes
   apiRoutes.get('/grades', gradeController.getAllGrades);
