@@ -217,6 +217,50 @@
 {"n":1,"nModified":1,"ok":1}
 ```
 
+* **GET /pepites**
+  * Description: API endpoint to get all pepites
+  * Output exemple:
+```
+[{"_id":"58de2526a0589374306f0fd3","name":"Pépite Auvergne Rhône-alpes","creation_date":"2017-03-31T09:45:10.054Z","_admin":{"_id":"58dbc51b277baf2574ea916c","firstname":"Jules","lastname":"Vernes","email":"jules.vernes@skilvioo.com","__v":0},"__v":0}]
+```
+
+* **GET /pepite/:id**
+  * Description: API endpoint to get pepite by id
+
+* **POST /pepite**
+  * Description: API endpoint to create a pépite
+  * Parmeters requested:
+```
+-name:text (example: Pépite Auvergne Rhône-alpes)```
+```
+-admin:text (example: 58dbc51b277baf2574ea916c)```
+  * Output exemple:
+```
+{"success":true,"message":"La pépite a été créé"}
+```
+
+* **DELETE /pepite**
+  * Description: API endpoint to remove pepite
+  * Parmeters requested:
+```
+-id:text (example: 58de443ee518220ae496addb)```
+  * Output exemple:
+```
+{"success":true,"message":"Pépite supprimé"}
+```
+
+* **PATCH /pepite**
+  * Description: API endpoint to patch pepite
+  * Parmeters requested:
+```
+-id:text (example: 58de2526a0589374306f0fd3)```
+```
+-name:text (example: Pépite Region Parisienne)```
+  * Output exemple:
+```
+{"n":1,"nModified":1,"ok":1}
+```
+
 
 
 ### lancer le serveur: `node server.js`

@@ -21,7 +21,7 @@
 			},
 			"response": [
 				{
-					"id": "fd447e00-060e-438b-bf63-8f6bb8111b0f",
+					"id": "97bf6385-3cd2-4066-8fba-2ebb5b477e00",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api",
@@ -156,7 +156,7 @@
 			},
 			"response": [
 				{
-					"id": "a75d73ad-bc5d-4f88-9e86-9d00513170d4",
+					"id": "87c45a51-edb5-48c5-b6d6-2f016c9eefbd",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/authenticate/",
@@ -285,7 +285,7 @@
 			},
 			"response": [
 				{
-					"id": "ff121308-baee-4518-b8f6-402e41cb7d58",
+					"id": "4cd73e52-519f-4c58-9bc1-d0e336478899",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -362,7 +362,7 @@
 					"body": "[{\"_id\":\"58ca9645304609075babf8e4\",\"lastname\":\"Blanc\",\"firstname\":\"Nicolas\",\"_comment\":\"virgin student for auto-eval scenario\"},{\"_id\":\"58caba32b0f0d870e464e589\",\"firstname\":\"Ben\",\"lastname\":\"Roullet\",\"__v\":0},{\"_id\":\"58cb9f4314d81a0919acb2b0\",\"firstname\":\"Romain\",\"lastname\":\"Tête\",\"__v\":0}]"
 				},
 				{
-					"id": "73cea410-1e46-4266-b2aa-ef3569eba4d4",
+					"id": "18aba850-6a8c-4964-8f95-6fe0f79b843a",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -463,7 +463,7 @@
 			},
 			"response": [
 				{
-					"id": "3a41da65-b6c1-4276-9172-88e6b4934d18",
+					"id": "8134972f-0d10-4f2d-b3e7-4dfab2401f84",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/58dbc5c5277baf2574ea916d",
@@ -597,7 +597,7 @@
 			},
 			"response": [
 				{
-					"id": "e9902555-34ac-4df8-aee1-10690bda0af7",
+					"id": "e66fa4f9-68f0-4b2b-97d6-b223c7e00216",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -726,7 +726,7 @@
 			},
 			"response": [
 				{
-					"id": "d2bef317-9ccc-4194-b815-dfe6bc218185",
+					"id": "4af3c4b4-5ab9-44c2-b34d-fcd76ec3570d",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -873,7 +873,7 @@
 			},
 			"response": [
 				{
-					"id": "d9f49249-d7b9-4040-9229-237f9b10661a",
+					"id": "3d240350-99b4-4336-99a4-5f5ac629adbd",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/",
@@ -1009,7 +1009,7 @@
 			},
 			"response": [
 				{
-					"id": "b5beec5c-a3c2-4315-83bf-4ee8fc3bbe47",
+					"id": "f789d85c-cc11-449a-826c-0fd4bcd67d7a",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -1086,7 +1086,7 @@
 					"body": "[{\"_id\":\"58cbf51666828a4c94e5b48a\",\"title\":\"Avoir un comportement entrepreneurial\",\"__v\":0,\"categories\":[]}]"
 				},
 				{
-					"id": "2703e5d2-b382-4dd2-bbca-73e83303effb",
+					"id": "81dcc630-9ba8-43c0-be89-117310425cb7",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -1178,7 +1178,7 @@
 			},
 			"response": [
 				{
-					"id": "aaa5d16a-71ae-4894-8ad8-3b43de7163d2",
+					"id": "482443d3-88e3-491c-acbf-9e05bbdb9dfa",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -1276,7 +1276,7 @@
 			},
 			"response": [
 				{
-					"id": "d0ba77fd-e9f6-47b2-8250-e87504e957e3",
+					"id": "563348eb-6215-4950-9cc5-0f7f92afd431",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grades",
@@ -1374,7 +1374,7 @@
 			},
 			"response": [
 				{
-					"id": "11a5d8e3-f5ad-4cb5-ae74-bfa272ffd0c7",
+					"id": "3f2c8a71-2906-46b4-8c42-356bfb67ea12",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/user/58dbc5c5277baf2574ea916d/grades",
@@ -1483,7 +1483,7 @@
 			},
 			"response": [
 				{
-					"id": "e9aee314-6e35-422f-95c9-ba63671d091f",
+					"id": "cd5df0bf-bfb1-4781-901a-18306d2011a4",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d2861681c13b14abe4d326",
@@ -1611,7 +1611,7 @@
 			},
 			"response": [
 				{
-					"id": "b47a5086-597e-4aa3-8762-cb30e3fa1c8c",
+					"id": "e0e102ca-8949-49a8-8e60-65b7d7ade4e0",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1746,7 +1746,7 @@
 			},
 			"response": [
 				{
-					"id": "848d3079-59b7-4a5c-86cb-8400beb0d941",
+					"id": "60da5519-d94c-4e1a-a403-1a2cd301dcb2",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1887,7 +1887,7 @@
 			},
 			"response": [
 				{
-					"id": "61e6753a-ef7d-4848-b9b1-8bf7c8c59037",
+					"id": "b64eaa85-9f9e-4921-b5f5-01ef385cc635",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/grade",
@@ -2016,7 +2016,7 @@
 			},
 			"response": [
 				{
-					"id": "d8b63f03-6bb3-4a38-9bac-522dc6f9ce27",
+					"id": "d3f69588-0546-461b-9314-1b589e4abf1c",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/grades",
@@ -2114,7 +2114,7 @@
 			},
 			"response": [
 				{
-					"id": "d30b4f54-3ff3-450a-b21c-e6f7183daf33",
+					"id": "78aa2438-519d-424d-a872-b5bdee5defa6",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
@@ -2256,7 +2256,7 @@
 			},
 			"response": [
 				{
-					"id": "0c704e27-3c2d-47a9-a198-404ca91e700c",
+					"id": "4710cddd-6520-40ca-ab80-0bf3553331b8",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comment",
@@ -2379,7 +2379,7 @@
 			},
 			"response": [
 				{
-					"id": "5f3b4e7f-ec4e-416c-978f-b4d641975ac0",
+					"id": "65f0cef4-09e4-4566-bd97-ca57e2931c5d",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d285ea81c13b14abe4d325/comments",
@@ -2495,7 +2495,7 @@
 			},
 			"response": [
 				{
-					"id": "3221d1ce-ccd1-4c27-aea3-274aae3a1a2e",
+					"id": "eb638589-7c5c-4a5f-a42d-d1e55ad47d2e",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/comment",
@@ -2624,7 +2624,7 @@
 			},
 			"response": [
 				{
-					"id": "81fb6830-6a3c-4453-8550-2a355ae96530",
+					"id": "572dcece-0510-4de0-9e86-a95371265640",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/comment",
@@ -2717,6 +2717,536 @@
 					],
 					"cookie": [],
 					"responseTime": 38,
+					"body": "{\"n\":1,\"nModified\":1,\"ok\":1}"
+				}
+			]
+		},
+		{
+			"name": "GET /pepites",
+			"request": {
+				"url": "http://localhost:8080/api/pepites",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "API endpoint to get all pepites"
+			},
+			"response": [
+				{
+					"id": "734f4e39-e318-462a-91c6-cc89c1e9e621",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/pepites",
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"type": "text",
+								"enabled": true,
+								"disabled": false
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "254",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Mar 2017 09:47:19 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"fe-UKCkyjL9S6y+IrIp2xqVlWVUInM\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 59,
+					"body": "[{\"_id\":\"58de2526a0589374306f0fd3\",\"name\":\"Pépite Auvergne Rhône-alpes\",\"creation_date\":\"2017-03-31T09:45:10.054Z\",\"_admin\":{\"_id\":\"58dbc51b277baf2574ea916c\",\"firstname\":\"Jules\",\"lastname\":\"Vernes\",\"email\":\"jules.vernes@skilvioo.com\",\"__v\":0},\"__v\":0}]"
+				}
+			]
+		},
+		{
+			"name": "GET /pepite/:id",
+			"request": {
+				"url": "http://localhost:8080/api/pepite/58de2526a0589374306f0fd3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "API endpoint to get pepite by id"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /pepite",
+			"request": {
+				"url": "http://localhost:8080/api/pepite/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Pépite Auvergne Rhône-alpes",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "admin",
+							"value": "58dbc51b277baf2574ea916c",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "API endpoint to create a pépite"
+			},
+			"response": [
+				{
+					"id": "3c2fc283-3877-4074-880d-489b9bd0ec06",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/pepite/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": false
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"type": "text",
+								"enabled": true,
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Pépite Auvergne Rhône-alpes",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "admin",
+									"value": "58dbc51b277baf2574ea916c",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Mar 2017 09:45:10 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"36-RM2ce9I+yONFBNHq5LcSKEw6qyk\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 78,
+					"body": "{\"success\":true,\"message\":\"La pépite a été créé\"}"
+				}
+			]
+		},
+		{
+			"name": "DELETE /pepite",
+			"request": {
+				"url": "http://localhost:8080/api/pepite",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "58de443ee518220ae496addb",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "API endpoint to remove pepite"
+			},
+			"response": [
+				{
+					"id": "8f266ac4-4130-455b-9e63-04564e735e45",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/pepite",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"type": "text",
+								"enabled": true,
+								"disabled": false
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "58de443ee518220ae496addb",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "46",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Mar 2017 11:59:41 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2e-sca75oTT/QeKjltL7Y0gNeibRRI\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 22,
+					"body": "{\"success\":true,\"message\":\"Pépite supprimé\"}"
+				}
+			]
+		},
+		{
+			"name": "PATCH /pepite",
+			"request": {
+				"url": "http://localhost:8080/api/pepite",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "58de2526a0589374306f0fd3",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "name",
+							"value": "Pépite Region Parisienne",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "API endpoint to patch pepite"
+			},
+			"response": [
+				{
+					"id": "6a7e43d7-04f3-461c-bc10-b4673c8cce10",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/pepite",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"type": "text",
+								"enabled": true,
+								"disabled": false
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "58de2526a0589374306f0fd3",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "name",
+									"value": "Pépite Region Parisienne",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Mar 2017 12:01:43 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 42,
 					"body": "{\"n\":1,\"nModified\":1,\"ok\":1}"
 				}
 			]
