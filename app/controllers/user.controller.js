@@ -81,7 +81,7 @@ exports.authenticate = function(req, res){
 }
 
 exports.getAllUser = function(req, res){
-  User.find().then(
+  User.find().select('-password -salt').then(
     function(users) {
       res.json(users);
     },
@@ -102,7 +102,7 @@ exports.findOneById = function(req, res){
 };
 
 exports.createUser = function(req, res) {
-  if(!req.body.firstname || !req.body.lastname || !req.body.email) {
+  if(!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
     errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'utilisateur");
   } else {
     User.findOne({email: req.body.email}, function(err, user){
@@ -128,6 +128,20 @@ exports.deleteUser = function(req, res) {
       errorHandler.error(res, "Impossible de supprimer cet utilisateur");
     } else {
       res.json({success: true, message: "Utilsateur supprimé"});
+    }
+
+  })
+};
+
+exports.patchUser = function(req, res) {
+  if(req.body.password) {
+    passwordService.setUserPassword(req.body, req.body.password);
+  }
+  User.update({_id: req.body.id}, req.body, function(err, raw) {
+    if(err) {
+      errorHandler(res, 'Impossible de modifier cet utilisateur');
+    } else {
+      res.json(raw);
     }
 
   })

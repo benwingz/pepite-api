@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Pepite-API Local",
-		"_postman_id": "03ac96c0-2585-5f25-1c88-3a3f9c011a37",
+		"_postman_id": "fd25fc03-8983-d68d-553c-8c3c106b5c0c",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -21,13 +21,17 @@
 			},
 			"response": [
 				{
-					"id": "15088785-f3b4-4d3b-a60b-2ce9420d8948",
+					"id": "77e88c10-6ef1-4214-8163-7dd4f0147e71",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api",
 						"method": "GET",
 						"header": [],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -152,7 +156,7 @@
 			},
 			"response": [
 				{
-					"id": "e9f369a5-de09-4051-a5b0-9c504450e754",
+					"id": "d57da4f1-9e8d-4a76-830b-69f684e3a89c",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/authenticate/",
@@ -161,9 +165,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"enabled": true,
-								"description": "The mime type of this content",
-								"disabled": false
+								"description": ""
 							}
 						],
 						"body": {
@@ -194,7 +196,8 @@
 									"enabled": true
 								}
 							]
-						}
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -274,18 +277,25 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API users endpoint"
 			},
 			"response": [
 				{
-					"id": "94184e33-5968-4e85-9a9d-63a3098d04f5",
+					"id": "f5dffbcc-3a2f-4e82-8416-60430c294577",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
 						"method": "GET",
 						"header": [],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -350,6 +360,86 @@
 					"cookie": [],
 					"responseTime": 72,
 					"body": "[{\"_id\":\"58ca9645304609075babf8e4\",\"lastname\":\"Blanc\",\"firstname\":\"Nicolas\",\"_comment\":\"virgin student for auto-eval scenario\"},{\"_id\":\"58caba32b0f0d870e464e589\",\"firstname\":\"Ben\",\"lastname\":\"Roullet\",\"__v\":0},{\"_id\":\"58cb9f4314d81a0919acb2b0\",\"firstname\":\"Romain\",\"lastname\":\"Tête\",\"__v\":0}]"
+				},
+				{
+					"id": "84ada1b6-de8c-4f0f-9af8-fa23660246f3",
+					"name": "default",
+					"originalRequest": {
+						"url": "localhost:8080/api/users/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"enabled": true,
+								"disabled": false
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "464",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Mar 2017 08:21:41 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1d0-z1z2+cknGcNMPySyH90149W1UAE\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 22,
+					"body": "[{\"_id\":\"58dbc51b277baf2574ea916c\",\"firstname\":\"Jules\",\"lastname\":\"Vernes\",\"email\":\"jules.vernes@skilvioo.com\",\"__v\":0},{\"_id\":\"58dbc5c5277baf2574ea916d\",\"firstname\":\"ben\",\"lastname\":\"roullet\",\"email\":\"ben.rou@skilvioo.com\",\"__v\":0},{\"_id\":\"58dbd48d9e212f35421da6c2\",\"firstname\":\"ben\",\"lastname\":\"roullet\",\"email\":\"benjamin.roullet@gmail.com\",\"__v\":0},{\"_id\":\"58de0ef3156c8c57029fdd17\",\"firstname\":\"romain\",\"lastname\":\"tete\",\"email\":\"r.tete@skilvioo.net\",\"__v\":0}]"
 				}
 			]
 		},
@@ -365,12 +455,15 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API specific user endpoint"
 			},
 			"response": [
 				{
-					"id": "1bedb066-8f36-4545-8761-133183d7e97a",
+					"id": "5a96bee7-f674-4dfb-ade6-9e624dc7c641",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/58dbc5c5277baf2574ea916d",
@@ -379,11 +472,14 @@
 							{
 								"key": "authorization",
 								"value": "{{authorization}}",
-								"enabled": true,
-								"disabled": false
+								"description": ""
 							}
 						],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -473,19 +569,25 @@
 					"urlencoded": [
 						{
 							"key": "firstname",
-							"value": "newuser",
+							"value": "Romain",
 							"type": "text",
 							"enabled": true
 						},
 						{
 							"key": "lastname",
-							"value": "newuser",
+							"value": "Tête",
 							"type": "text",
 							"enabled": true
 						},
 						{
 							"key": "email",
-							"value": "new@email.com",
+							"value": "r.tete@skilvioo.com",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "123456",
 							"type": "text",
 							"enabled": true
 						}
@@ -495,7 +597,7 @@
 			},
 			"response": [
 				{
-					"id": "9c431408-7fbd-4405-92b9-aa98ff949dc8",
+					"id": "a9f6fc6e-d2fe-4c75-b84b-b3cedc785615",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -504,9 +606,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"enabled": true,
-								"description": "The mime type of this content",
-								"disabled": false
+								"description": ""
 							}
 						],
 						"body": {
@@ -525,7 +625,8 @@
 									"enabled": true
 								}
 							]
-						}
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -625,7 +726,7 @@
 			},
 			"response": [
 				{
-					"id": "1cf41333-2a0b-4d78-9b1f-778573fa2c19",
+					"id": "3a9cbcc5-4964-4eba-b06d-928d204c2981",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -634,9 +735,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"enabled": true,
-								"description": "The mime type of this content",
-								"disabled": false
+								"description": ""
 							}
 						],
 						"body": {
@@ -649,7 +748,8 @@
 									"enabled": true
 								}
 							]
-						}
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -718,23 +818,208 @@
 			]
 		},
 		{
+			"name": "PATCH /user/",
+			"request": {
+				"url": "localhost:8080/api/user/",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "58de0ef3156c8c57029fdd17",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email",
+							"value": "r.tete@skilvioo.net",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "firstname",
+							"value": "romain",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "lastname",
+							"value": "tete",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "API endpoint to patch user"
+			},
+			"response": [
+				{
+					"id": "d3322d92-6a5e-4b53-9682-b2a751d5d657",
+					"name": "default",
+					"originalRequest": {
+						"url": "localhost:8080/api/user/",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": false
+							},
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"type": "text",
+								"enabled": true,
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "58de0ef3156c8c57029fdd17",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "email",
+									"value": "r.tete@skilvioo.net",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "firstname",
+									"value": "romain",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "tete",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Mar 2017 08:20:58 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-9CSp0YZbwVi1S/g+0CyT4pOh1+k\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 55,
+					"body": "{\"n\":1,\"nModified\":1,\"ok\":1}"
+				}
+			]
+		},
+		{
 			"name": "GET /phases",
 			"request": {
 				"url": "localhost:8080/api/phases",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API endpoint for display phases "
 			},
 			"response": [
 				{
-					"id": "798414ef-7a93-49d1-bb4c-849f586c5f4f",
+					"id": "0a39c0e6-1b57-4798-96d2-d298087b3134",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
 						"method": "GET",
 						"header": [],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -801,13 +1086,17 @@
 					"body": "[{\"_id\":\"58cbf51666828a4c94e5b48a\",\"title\":\"Avoir un comportement entrepreneurial\",\"__v\":0,\"categories\":[]}]"
 				},
 				{
-					"id": "b01d1a1b-e16b-4069-a501-3af597b8f9d7",
+					"id": "6fa541fd-423f-4199-bf79-19498075507c",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
 						"method": "GET",
 						"header": [],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -881,18 +1170,25 @@
 				"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API endpoint for getting phase's categories"
 			},
 			"response": [
 				{
-					"id": "8b331aad-d0a5-42c8-b5a8-68d769369da1",
+					"id": "1533f35c-9d4e-4db5-be74-96aa96f174cb",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
 						"method": "GET",
 						"header": [],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -972,18 +1268,25 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API endpoint for retrieve all grades"
 			},
 			"response": [
 				{
-					"id": "ca813d4c-4b68-44c4-9026-f114b815307b",
+					"id": "16f60231-03ae-4acd-aa2d-2e1f62f82790",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grades",
 						"method": "GET",
 						"header": [],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -1063,12 +1366,15 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API endpoint to get grades of user"
 			},
 			"response": [
 				{
-					"id": "145507c0-d63e-4880-9361-ac46eefa77a8",
+					"id": "5c027153-1262-4d82-b71b-ef483cffa2cf",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/user/58dbc5c5277baf2574ea916d/grades",
@@ -1077,11 +1383,14 @@
 							{
 								"key": "authorization",
 								"value": "{{authorization}}",
-								"enabled": true,
-								"disabled": false
+								"description": ""
 							}
 						],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -1166,12 +1475,15 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get a specific grade"
 			},
 			"response": [
 				{
-					"id": "97fd9daf-c49b-4b28-9228-9a9123e5be8f",
+					"id": "b3d44cd8-c60e-4b19-9a38-c9f1a85f3118",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d2861681c13b14abe4d326",
@@ -1179,12 +1491,15 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"disabled": false
+								"description": ""
 							}
 						],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -1296,7 +1611,7 @@
 			},
 			"response": [
 				{
-					"id": "adbcfdb9-35dd-46e9-9ee6-65ab9a7cd594",
+					"id": "c349ef10-b355-482d-b34a-cf4458e24fe8",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1304,9 +1619,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"disabled": false
+								"description": ""
 							}
 						],
 						"body": {
@@ -1331,7 +1645,8 @@
 									"enabled": true
 								}
 							]
-						}
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -1431,7 +1746,7 @@
 			},
 			"response": [
 				{
-					"id": "18c48af8-4010-4528-b3e7-c501d41af38c",
+					"id": "af3b93cd-d017-4b87-a131-11cf49d99e2c",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1439,9 +1754,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"disabled": false
+								"description": ""
 							}
 						],
 						"body": {
@@ -1454,7 +1768,8 @@
 									"enabled": true
 								}
 							]
-						}
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -1572,7 +1887,7 @@
 			},
 			"response": [
 				{
-					"id": "ca31c7c4-1875-47a9-af1a-223f18f4b252",
+					"id": "709c11b2-5ef9-4708-befc-17badb906781",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/grade",
@@ -1580,9 +1895,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"disabled": false
+								"description": ""
 							}
 						],
 						"body": {
@@ -1613,7 +1927,8 @@
 									"enabled": true
 								}
 							]
-						}
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -1693,18 +2008,25 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API endpoint to retrieve grades by category"
 			},
 			"response": [
 				{
-					"id": "f4c3e39c-9858-4206-888a-525437f805e5",
+					"id": "378d7326-3ce0-49f9-a771-af2bb459c4f6",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/grades",
 						"method": "GET",
 						"header": [],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -1784,18 +2106,25 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API endpoint for retrieve all comments "
 			},
 			"response": [
 				{
-					"id": "cccd7f2c-249d-405f-b699-c1b310209a0e",
+					"id": "ceb33ac4-9c24-4ea3-8f97-363e631925b6",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
 						"method": "GET",
 						"header": [],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -1875,7 +2204,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Get a specific comment"
 			},
 			"response": []
@@ -1924,7 +2256,7 @@
 			},
 			"response": [
 				{
-					"id": "b924eefd-5e24-4597-bd4f-8a947a2be123",
+					"id": "0bb6914b-4d6a-4345-90b1-991fefb99385",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comment",
@@ -1932,10 +2264,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"name": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"disabled": false
+								"description": ""
 							}
 						],
 						"body": {
@@ -1960,7 +2290,8 @@
 									"enabled": true
 								}
 							]
-						}
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -2040,12 +2371,15 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "API endpoint to get all comments on a specific grade"
 			},
 			"response": [
 				{
-					"id": "427cedb2-dbfb-4e44-8235-384d31efdf66",
+					"id": "28cae224-5fa2-42cd-98be-57b8686eeb9a",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d285ea81c13b14abe4d325/comments",
@@ -2054,11 +2388,14 @@
 							{
 								"key": "authorization",
 								"value": "{{authorization}}",
-								"enabled": true,
-								"disabled": false
+								"description": ""
 							}
 						],
-						"body": {}
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -2158,7 +2495,7 @@
 			},
 			"response": [
 				{
-					"id": "4c328c48-8d1e-42da-b820-1b8bf4975348",
+					"id": "00fd8136-a7f8-4aca-99da-09fbcfecbbf2",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/comment",
@@ -2166,9 +2503,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"disabled": false
+								"description": ""
 							}
 						],
 						"body": {
@@ -2181,7 +2517,8 @@
 									"enabled": true
 								}
 							]
-						}
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,
@@ -2287,7 +2624,7 @@
 			},
 			"response": [
 				{
-					"id": "d7904f0b-36e2-4ce1-a891-a85920076991",
+					"id": "46e151a7-398a-43b7-891a-f844a2a1cb0d",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/comment",
@@ -2295,9 +2632,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"disabled": false
+								"description": ""
 							}
 						],
 						"body": {
@@ -2316,7 +2652,8 @@
 									"enabled": true
 								}
 							]
-						}
+						},
+						"description": ""
 					},
 					"status": "OK",
 					"code": 200,

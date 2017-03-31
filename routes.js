@@ -80,6 +80,14 @@ module.exports = function(app) {
   apiRoutes.get('/user/:id', userController.findOneById);
   apiRoutes.post('/user', userController.createUser);
   apiRoutes.delete('/user', userController.deleteUser);
+  apiRoutes.patch('/user', userController.patchUser);
+
+  //Pepite routes
+  // apiRoutes.get('/pepites', pepiteController.getAllPepites);
+  // apiRoutes.get('/pepite/:id', pepiteController.findOnePepite);
+  // apiRoutes.post('/pepite', pepiteController.createPepite);
+  // apiRoutes.delete('/pepite', pepiteController.deletePepite);
+  // apiRoutes.patch('/pepite', pepiteController.patchPepite);
 
   //Grade routes
   apiRoutes.get('/grades', gradeController.getAllGrades);
