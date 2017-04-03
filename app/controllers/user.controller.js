@@ -11,6 +11,7 @@ var passwordService = require('../service/password.service');
 
 function generateToken(user) {
   var payload = {
+    _id: user._id,
     email: user.email,
     firstname: user.firstname,
     lastname: user.lastname
@@ -44,7 +45,8 @@ exports.authenticate = function(req, res){
         res.json({
           success: true,
           message: 'Authentification réuissite',
-          token: generateToken(user)
+          token: generateToken(user),
+          user_id: user._id
         });
       }
     });
@@ -57,7 +59,8 @@ exports.authenticate = function(req, res){
           res.json({
             success: true,
             message: 'Authentification réuissite',
-            token: generateToken(user)
+            token: generateToken(user),
+            user_id: user._id
           });
         } else {
           res.status(401).send({error: 'Mot de passe erroné'});
@@ -69,7 +72,8 @@ exports.authenticate = function(req, res){
               res.json({
                 success: true,
                 message: 'Utilisateur enregistré',
-                token: generateToken(user)
+                token: generateToken(user),
+                user_id: user._id
               });
             } else {
               errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
@@ -90,7 +94,7 @@ exports.getAllUser = function(req, res){
     })
 };
 
-exports.findOneById = function(req, res){
+exports.findUserById = function(req, res){
   User.findById(req.params.id ,function(err, user) {
       if (err) {
         errorHandler.error(res, 'Impossible de trouver cet utilisateur.');

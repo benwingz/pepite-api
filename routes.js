@@ -78,7 +78,7 @@ module.exports = function(app) {
 
   //User routes
   apiRoutes.get('/users', userController.getAllUser);
-  apiRoutes.get('/user/:id', userController.findOneById);
+  apiRoutes.get('/user/:id', userController.findUserById);
   apiRoutes.post('/user', userController.createUser);
   apiRoutes.delete('/user', userController.deleteUser);
   apiRoutes.patch('/user', userController.patchUser);
