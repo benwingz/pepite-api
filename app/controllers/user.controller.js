@@ -11,6 +11,7 @@ var passwordService = require('../service/password.service');
 
 function generateToken(user) {
   var payload = {
+    _id: user._id,
     email: user.email,
     firstname: user.firstname,
     lastname: user.lastname
@@ -44,7 +45,8 @@ exports.authenticate = function(req, res){
         res.json({
           success: true,
           message: 'Authentification réuissite',
-          token: generateToken(user)
+          token: generateToken(user),
+          user_id: user._id
         });
       }
     });
@@ -57,7 +59,8 @@ exports.authenticate = function(req, res){
           res.json({
             success: true,
             message: 'Authentification réuissite',
-            token: generateToken(user)
+            token: generateToken(user),
+            user_id: user._id
           });
         } else {
           res.status(401).send({error: 'Mot de passe erroné'});
@@ -69,7 +72,8 @@ exports.authenticate = function(req, res){
               res.json({
                 success: true,
                 message: 'Utilisateur enregistré',
-                token: generateToken(user)
+                token: generateToken(user),
+                user_id: user._id
               });
             } else {
               errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
@@ -81,7 +85,7 @@ exports.authenticate = function(req, res){
 }
 
 exports.getAllUser = function(req, res){
-  User.find().then(
+  User.find().select('-password -salt').then(
     function(users) {
       res.json(users);
     },
@@ -90,7 +94,7 @@ exports.getAllUser = function(req, res){
     })
 };
 
-exports.findOneById = function(req, res){
+exports.findUserById = function(req, res){
   User.findById(req.params.id ,function(err, user) {
       if (err) {
         errorHandler.error(res, 'Impossible de trouver cet utilisateur.');
@@ -102,7 +106,7 @@ exports.findOneById = function(req, res){
 };
 
 exports.createUser = function(req, res) {
-  if(!req.body.firstname || !req.body.lastname || !req.body.email) {
+  if(!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
     errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'utilisateur");
   } else {
     User.findOne({email: req.body.email}, function(err, user){
@@ -128,6 +132,20 @@ exports.deleteUser = function(req, res) {
       errorHandler.error(res, "Impossible de supprimer cet utilisateur");
     } else {
       res.json({success: true, message: "Utilsateur supprimé"});
+    }
+
+  })
+};
+
+exports.patchUser = function(req, res) {
+  if(req.body.password) {
+    passwordService.setUserPassword(req.body, req.body.password);
+  }
+  User.update({_id: req.body.id}, req.body, function(err, raw) {
+    if(err) {
+      errorHandler(res, 'Impossible de modifier cet utilisateur');
+    } else {
+      res.json(raw);
     }
 
   })

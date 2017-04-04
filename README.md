@@ -28,7 +28,7 @@
   * Description: API users endpoint
   * Output exemple:
 ```
-[{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},{"_id":"58caba32b0f0d870e464e589","firstname":"Ben","lastname":"Roullet","__v":0},{"_id":"58cb9f4314d81a0919acb2b0","firstname":"Romain","lastname":"Tête","__v":0}]
+[{"_id":"58dbc51b277baf2574ea916c","firstname":"Jules","lastname":"Vernes","email":"jules.vernes@skilvioo.com","__v":0},{"_id":"58dbc5c5277baf2574ea916d","firstname":"ben","lastname":"roullet","email":"ben.rou@skilvioo.com","__v":0},{"_id":"58dbd48d9e212f35421da6c2","firstname":"ben","lastname":"roullet","email":"benjamin.roullet@gmail.com","__v":0},{"_id":"58de0ef3156c8c57029fdd17","firstname":"romain","lastname":"tete","email":"r.tete@skilvioo.net","__v":0}]
 ```
 
 * **GET /user/:id**
@@ -42,11 +42,13 @@
   * Description: API endpoint to add user
   * Parmeters requested:
 ```
--firstname:text (example: newuser)```
+-firstname:text (example: Romain)```
 ```
--lastname:text (example: newuser)```
+-lastname:text (example: Tête)```
 ```
--email:text (example: new@email.com)```
+-email:text (example: r.tete@skilvioo.com)```
+```
+-password:text (example: 123456)```
   * Output exemple:
 ```
 {"success":true,"message":"Utilisateur enregistré"}
@@ -62,11 +64,29 @@
 {"success":true,"message":"Utilsateur supprimé"}
 ```
 
+* **PATCH /user/**
+  * Description: API endpoint to patch user
+  * Parmeters requested:
+```
+-id:text (example: 58de0ef3156c8c57029fdd17)```
+```
+-password:text (example: 123456)```
+```
+-email:text (example: r.tete@skilvioo.net)```
+```
+-firstname:text (example: romain)```
+```
+-lastname:text (example: tete)```
+  * Output exemple:
+```
+{"n":1,"nModified":1,"ok":1}
+```
+
 * **GET /phases**
   * Description: API endpoint for display phases 
   * Output exemple:
 ```
-[{"_id":"58cbf51666828a4c94e5b48a","title":"Avoir un comportement entrepreneurial","__v":0,"categories":[]}]
+[{"_id":"58cbf51666828a4c94e5b48a","title":"Avoir un comportement entrepreneurial","__v":0,"categories":[]},{"_id":"58d240abd7c48775d6db32ca","title":"Faire émerger l'opportunité d'entreprendre","categories":[]},{"_id":"58d240c7d7c48775d6db32cb","title":"Construire le projet","categories":[]},{"_id":"58d240d9d7c48775d6db32cc","title":"Lancer le projet","categories":[]}]
 ```
 
 * **GET /phase/:id/categories**
@@ -192,6 +212,50 @@
 -id:text (example: 58d28dd25d3efc1b48e3d9ee)```
 ```
 -content:text (example: J'ai un tatouage à plusieurs dimensions !!!)```
+  * Output exemple:
+```
+{"n":1,"nModified":1,"ok":1}
+```
+
+* **GET /pepites**
+  * Description: API endpoint to get all pepites
+  * Output exemple:
+```
+[{"_id":"58de2526a0589374306f0fd3","name":"Pépite Auvergne Rhône-alpes","creation_date":"2017-03-31T09:45:10.054Z","_admin":{"_id":"58dbc51b277baf2574ea916c","firstname":"Jules","lastname":"Vernes","email":"jules.vernes@skilvioo.com","__v":0},"__v":0}]
+```
+
+* **GET /pepite/:id**
+  * Description: API endpoint to get pepite by id
+
+* **POST /pepite**
+  * Description: API endpoint to create a pépite
+  * Parmeters requested:
+```
+-name:text (example: Pépite Auvergne Rhône-alpes)```
+```
+-admin:text (example: 58dbc51b277baf2574ea916c)```
+  * Output exemple:
+```
+{"success":true,"message":"La pépite a été créé"}
+```
+
+* **DELETE /pepite**
+  * Description: API endpoint to remove pepite
+  * Parmeters requested:
+```
+-id:text (example: 58de443ee518220ae496addb)```
+  * Output exemple:
+```
+{"success":true,"message":"Pépite supprimé"}
+```
+
+* **PATCH /pepite**
+  * Description: API endpoint to patch pepite
+  * Parmeters requested:
+```
+-id:text (example: 58de2526a0589374306f0fd3)```
+```
+-name:text (example: Pépite Region Parisienne)```
   * Output exemple:
 ```
 {"n":1,"nModified":1,"ok":1}
