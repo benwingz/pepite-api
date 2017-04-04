@@ -1,16 +1,34 @@
 var mongoose = require('mongoose');
+var config = require('../../config');
 
 var Grade = require('../models/grade.model');
 
 var errorHandler = require('../service/error.service');
+var jwtService = require('../service/jwt.service');
 
 
 exports.getAllGrades = function(req, res){
+  if (req.headers['authorization']) {
+    var token = req.headers['authorization'].replace('Bearer ', '');
+    var resolved = jwtService.resolveJwt(token, config[process.env.ENV].secret);
+    if (resolved) {
+      var req = {
+        user: decoded._id
+      }
+    } else {
+      var req = {};
+    }
+  } else {
+    var req = {};
+  }
   Grade.find()
-    .populate('_user')
-    .populate('_validator')
-    .then(
-      function(grades) {
+    .populate({path:'_user', path:'_validator'})
+    .exec(
+      function(err, grades) {
+        if(err) {
+          errorHandler.error(res, "Impossible de récupérer les évaluations");
+          return;
+        }
         if (grades.length > 0) {
           res.json(grades);
         } else {
@@ -18,7 +36,7 @@ exports.getAllGrades = function(req, res){
         }
       },
       function(error){
-        errorHandler.error(res, "Impossible de récupérer les évaluations");
+
       }
     );
 };
