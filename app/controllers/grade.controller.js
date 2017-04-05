@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
+var BlueBirdPromise = require('bluebird');
 var config = require('../../config');
 
 var Grade = require('../models/grade.model');
+var Category = require('../models/category.model');
 
 var errorHandler = require('../service/error.service');
 var jwtService = require('../service/jwt.service');
@@ -114,21 +116,54 @@ exports.deleteGrade = function(req, res) {
   })
 };
 
-exports.getCategoryGrade = function(req, res) {
-  Grade.find({ _category:req.params.id })
+var categoryGrades = function(id) {
+  return Grade.find({ _category: id })
     .populate('_user')
     .populate('_validator')
-    .exec(function(err, grades) {
-      if (err) {
-        errorHandler.error(res, "Impossible de récupérer l'évaluation de cette catégorie");
+    .exec()
+}
+
+exports.getCategoryGrade = function(req, res) {
+  categoryGrades(req.params.id).then(function(grades) {
+      if (grades.length > 0) {
+        res.json(grades);
       } else {
-        if (grades.length > 0) {
-          res.json(grades);
-        } else {
-          errorHandler.error(res, "Aucune note pour cette catégorie");
-        }
+        errorHandler.error(res, "Aucune note pour cette catégorie");
       }
-    })
+    },
+    function(err) {
+      errorHandler.error(res, "Impossible de récupérer l'évaluation de cette catégorie");
+    }
+  )
+};
+
+exports.getPhaseGrade = function(req, res) {
+  Category.find({ _phase: req.params.id }, function(err, categories) {
+    if (err) {
+      errorHandler.error(res, "Impossible de récupérer les évaluations de cette phase");
+    } else {
+      if (categories.length > 0) {
+        var phaseGradePromises = [];
+        categories.map(function(category) {
+          phaseGradePromises.push(categoryGrades(category.id));
+        });
+        var phaseGrades = [];
+        BlueBirdPromise.each(phaseGradePromises, function(grades, index, length) {
+          grades.map(function(grade) {
+            phaseGrades.push(grade);
+          });
+        }).then(function() {
+          if (phaseGrades.length == 0) {
+            errorHandler.error(res, "Aucune note pour cette phase");
+          } else {
+            res.json(phaseGrades);
+          }
+        });
+      } else {
+        errorHandler.error(res, "Aucune note pour cette phase");
+      }
+    }
+  })
 };
 
 exports.patchGrade = function(req, res) {

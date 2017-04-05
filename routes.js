@@ -97,6 +97,7 @@ module.exports = function(app) {
   apiRoutes.post('/grade', gradeController.createGrade);
   apiRoutes.delete('/grade', gradeController.deleteGrade);
   apiRoutes.get('/category/:id/grades', gradeController.getCategoryGrade);
+  apiRoutes.get('/phase/:id/grades', gradeController.getPhaseGrade);
   apiRoutes.patch('/grade', gradeController.patchGrade);
 
   //Comment routes
