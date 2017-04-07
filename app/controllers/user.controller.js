@@ -56,8 +56,8 @@ exports.authenticate = function(req, res){
     });
   } else {
     User.findOne({email: req.body.email}, function(err, user) {
-      if(err) throw err;
-      if(user) {
+      if (err) throw err;
+      if (user) {
         if (passwordService.checkPassword(user, req.body.password)) {
           res.json({
             success: true,
@@ -69,19 +69,23 @@ exports.authenticate = function(req, res){
           res.status(401).send({error: 'Mot de passe erroné'});
         }
       } else {
-        doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
-          .then((user) => {
-            if (user) {
-              res.json({
-                success: true,
-                message: 'Utilisateur enregistré',
-                token: generateToken(user),
-                user_id: user._id
-              });
-            } else {
-              errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
-            }
-          })
+        if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.type) {
+          errorHandler.error(res, "Il manque un paramètre");
+        } else {
+          doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.type)
+            .then((user) => {
+              if (user) {
+                res.json({
+                  success: true,
+                  message: 'Utilisateur enregistré',
+                  token: generateToken(user),
+                  user_id: user._id
+                });
+              } else {
+                errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
+              }
+            });
+        }
       }
     })
   }
