@@ -24,7 +24,9 @@ exports.getAllGrades = function(req, res){
     case 'admin':
         queryBuilder.buildQueryFind(Grade,{
           find: {},
-          populate: ['_user', '_validator']
+          populate: [
+            {field: '_user', filter:'-password -salt -type'},
+            {field: '_validator', filter:'-password -salt -type'}]
         }).then(
           function(grades) {
             responseGrades(grades, res);
@@ -40,7 +42,9 @@ exports.getAllGrades = function(req, res){
           function(users) {
             queryBuilder.buildQueryFind(Grade, {
               find: {},
-              populate: ['_user','_validator'],
+              populate: [
+                {field: '_user', filter:'-password -salt -type'},
+                {field: '_validator', filter:'-password -salt -type'}],
               where: {_user: {$in: users}}
             }).then(
               function(grades) {
@@ -59,7 +63,9 @@ exports.getAllGrades = function(req, res){
         function(users) {
           queryBuilder.buildQueryFind(Grade, {
             find: {},
-            populate: ['_user','_validator'],
+            populate: [
+              {field: '_user', filter:'-password -salt -type'},
+              {field: '_validator', filter:'-password -salt -type'}],
             where: {_user: {$in: users}}
           }).then(
             function(grades) {
@@ -75,7 +81,9 @@ exports.getAllGrades = function(req, res){
     default:
       queryBuilder.buildQueryFind(Grade,{
         find: {_user: user._id},
-        populate: ['_user', '_validator']
+        populate: [
+          {field: '_user', filter:'-password -salt -type'},
+          {field: '_validator', filter:'-password -salt -type'}]
       }).then(
         function(grades) {
           responseGrades(grades, res)
@@ -90,8 +98,8 @@ exports.getAllGrades = function(req, res){
 exports.getAllGradesByUser = function(req, res) {
   if (req.params.id) {
     Grade.find({_user: req.params.id})
-      .populate('_user')
-      .populate('_validator')
+      .populate('_user', '-password -salt -type')
+      .populate('_validator', '-password -salt -type')
       .then(
         function(grades) {
           if (grades.length > 0) {
@@ -110,8 +118,8 @@ exports.getAllGradesByUser = function(req, res) {
 exports.findOneGradeById = function(req, res){
   var req = authRequest.concatRequestWithAuth(req, {});
   Grade.findById(req)
-    .populate('_user')
-    .populate('_validator')
+    .populate('_user', '-password -salt -type')
+    .populate('_validator', '-password -salt -type')
     .exec(function(err, grade) {
       if (err) {
         errorHandler.error(res, 'Impossible de trouver cette évaluation.');
@@ -176,7 +184,9 @@ exports.getCategoryGrade = function(req, res) {
     case 'admin':
       queryBuilder.buildQueryFind(Grade,{
         find: {_category: req.params.id},
-        populate: ['_user', '_validator']
+        populate: [
+          {field: '_user', filter:'-password -salt -type'},
+          {field: '_validator', filter:'-password -salt -type'}]
       }).then(
         function(grades) {
           responseGrades(grades, res);
@@ -190,7 +200,9 @@ exports.getCategoryGrade = function(req, res) {
     case 'validator':
       queryBuilder.buildQueryFind(Grade,{
         find: {_category: req.params.id},
-        populate: ['_user', '_validator'],
+        populate: [
+          {field: '_user', filter:'-password -salt -type'},
+          {field: '_validator', filter:'-password -salt -type'}],
         where: {_user: req.query.user}
       }).then(
         function(grades) {
@@ -204,7 +216,9 @@ exports.getCategoryGrade = function(req, res) {
     default:
       queryBuilder.buildQueryFind(Grade,{
         find: {_category: req.params.id},
-        populate: ['_user', '_validator'],
+        populate: [
+          {field: '_user', filter:'-password -salt -type'},
+          {field: '_validator', filter:'-password -salt -type'}],
         where: {_user: user._id}
       }).then(
         function(grades) {
@@ -230,21 +244,27 @@ exports.getPhaseGrade = function(req, res) {
             case 'admin':
               phaseGradePromises.push(queryBuilder.buildQueryFind(Grade,{
                 find: {_category: category.id},
-                populate: ['_user', '_validator']
+                populate: [
+                  {field: '_user', filter:'-password -salt -type'},
+                  {field: '_validator', filter:'-password -salt -type'}]
               }));
               break;
             case 'pepite-admin':
             case 'validator':
               phaseGradePromises.push(queryBuilder.buildQueryFind(Grade,{
                 find: {_category: category.id},
-                populate: ['_user', '_validator'],
+                populate: [
+                  {field: '_user', filter:'-password -salt -type'},
+                  {field: '_validator', filter:'-password -salt -type'}],
                 where: {_user: req.query.user}
               }));
               break;
             default:
               phaseGradePromises.push(queryBuilder.buildQueryFind(Grade,{
                 find: {_category: category.id},
-                populate: ['_user', '_validator'],
+                populate: [
+                  {field: '_user', filter:'-password'},
+                  {field: '_validator', filter:'-password'}],
                 where: {_user: user._id}
               }));
           }
