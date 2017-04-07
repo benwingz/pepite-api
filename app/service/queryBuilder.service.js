@@ -3,7 +3,11 @@ exports.buildQueryFind = function(model, queryParams) {
 
   if (queryParams['populate']) {
     for (populateIndex = 0; populateIndex < queryParams.populate.length -1; populateIndex ++) {
-      query.populate(queryParams.populate[populateIndex]);
+      if(queryParams.populate[populateIndex].filter) {
+        query.populate(queryParams.populate[populateIndex].field, queryParams.populate[populateIndex].filter);
+      } else {
+        query.populate(queryParams.populate[populateIndex].field);
+      }
     }
   }
 
