@@ -11,6 +11,10 @@ exports.buildQueryFind = function(model, queryParams) {
     }
   }
 
+  if(queryParams['select']) {
+    query.select(queryParams.select);
+  }
+
   if (queryParams['where']) {
     query.where(queryParams.where);
   }
