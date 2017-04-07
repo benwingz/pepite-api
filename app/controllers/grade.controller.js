@@ -3,44 +3,88 @@ var BlueBirdPromise = require('bluebird');
 var config = require('../../config');
 
 var Grade = require('../models/grade.model');
+var User = require('../models/user.model');
 var Category = require('../models/category.model');
 
 var errorHandler = require('../service/error.service');
-var jwtService = require('../service/jwt.service');
+var authRequest = require('../service/authrequest.service');
+var queryBuilder = require('../service/queryBuilder.service');
 
+var responseGrades = function(grades, res) {
+  if (grades.length > 0) {
+    res.json(grades);
+  } else {
+    errorHandler.error(res, "Aucune évaluation");
+  }
+}
 
 exports.getAllGrades = function(req, res){
-  if (req.headers['authorization']) {
-    var token = req.headers['authorization'].replace('Bearer ', '');
-    var resolved = jwtService.resolveJwt(token, config[process.env.ENV].secret);
-    if (resolved) {
-      var req = {
-        user: decoded._id
-      }
-    } else {
-      var req = {};
-    }
-  } else {
-    var req = {};
-  }
-  Grade.find()
-    .populate({path:'_user', path:'_validator'})
-    .exec(
-      function(err, grades) {
-        if(err) {
+  let user = authRequest.returnUser(req);
+  switch (user.type) {
+    case 'admin':
+        queryBuilder.buildQueryFind(Grade,{
+          find: {},
+          populate: ['_user', '_validator']
+        }).then(
+          function(grades) {
+            responseGrades(grades, res);
+          },
+          function(error) {
+            errorHandler.error(res, "Impossible de récupérer les évaluations");
+          }
+        );
+      break;
+    case 'pepite-admin':
+      queryBuilder.buildQueryFind(User,{find: {_pepite: user._pepite}})
+        .then(
+          function(users) {
+            queryBuilder.buildQueryFind(Grade, {
+              find: {},
+              populate: ['_user','_validator'],
+              where: {_user: {$in: users}}
+            }).then(
+              function(grades) {
+                responseGrades(grades, res);
+              },
+              function(error) {
+                errorHandler.error(res, "Impossible de récupérer les évaluations");
+              }
+            );
+          }
+        );
+      break;
+    case 'validator':
+    queryBuilder.buildQueryFind(User,{find: {_validator: user._id}})
+      .then(
+        function(users) {
+          queryBuilder.buildQueryFind(Grade, {
+            find: {},
+            populate: ['_user','_validator'],
+            where: {_user: {$in: users}}
+          }).then(
+            function(grades) {
+              responseGrades(grades, res);
+            },
+            function(error) {
+              errorHandler.error(res, "Impossible de récupérer les évaluations");
+            }
+          );
+        }
+      );
+      break;
+    default:
+      queryBuilder.buildQueryFind(Grade,{
+        find: {_user: user._id},
+        populate: ['_user', '_validator']
+      }).then(
+        function(grades) {
+          responseGrades(grades, res)
+        },
+        function(error) {
           errorHandler.error(res, "Impossible de récupérer les évaluations");
-          return;
         }
-        if (grades.length > 0) {
-          res.json(grades);
-        } else {
-          errorHandler.error(res, "Aucune évaluation");
-        }
-      },
-      function(error){
-
-      }
-    );
+      );
+  }
 };
 
 exports.getAllGradesByUser = function(req, res) {
@@ -64,7 +108,8 @@ exports.getAllGradesByUser = function(req, res) {
 }
 
 exports.findOneGradeById = function(req, res){
-  Grade.findById(req.params.id)
+  var req = authRequest.concatRequestWithAuth(req, {});
+  Grade.findById(req)
     .populate('_user')
     .populate('_validator')
     .exec(function(err, grade) {
@@ -106,7 +151,8 @@ exports.createGrade = function(req, res) {
 };
 
 exports.deleteGrade = function(req, res) {
-  Grade.deleteOne({ _id: req.body.id }, function(err) {
+  var req = authRequest.concatRequestWithAuth(req, { _id: req.body.id });
+  Grade.deleteOne(req, function(err) {
     if (err) {
       errorHandler.error(res, "Impossible de supprimer cette évaluation");
     } else {
@@ -116,36 +162,92 @@ exports.deleteGrade = function(req, res) {
   })
 };
 
-var categoryGrades = function(id) {
-  return Grade.find({ _category: id })
-    .populate('_user')
-    .populate('_validator')
-    .exec()
-}
+var categoryGradesHandler = function(error, grades, res) {
+  if (grades.length > 0) {
+    res.json(grades);
+  } else {
+    errorHandler.error(res, "Aucune note pour cette catégorie");
+  }
+};
 
 exports.getCategoryGrade = function(req, res) {
-  categoryGrades(req.params.id).then(function(grades) {
-      if (grades.length > 0) {
-        res.json(grades);
-      } else {
-        errorHandler.error(res, "Aucune note pour cette catégorie");
-      }
-    },
-    function(err) {
-      errorHandler.error(res, "Impossible de récupérer l'évaluation de cette catégorie");
-    }
-  )
+  let user = authRequest.returnUser(req);
+  switch (user.type) {
+    case 'admin':
+      queryBuilder.buildQueryFind(Grade,{
+        find: {_category: req.params.id},
+        populate: ['_user', '_validator']
+      }).then(
+        function(grades) {
+          responseGrades(grades, res);
+        },
+        function(error) {
+          errorHandler.error(res, 'Aucune note pour cette catégorie');
+        }
+      );
+      break;
+    case 'pepite-admin':
+    case 'validator':
+      queryBuilder.buildQueryFind(Grade,{
+        find: {_category: req.params.id},
+        populate: ['_user', '_validator'],
+        where: {_user: req.query.user}
+      }).then(
+        function(grades) {
+          responseGrades(grades, res);
+        },
+        function(error) {
+          errorHandler.error(res, 'Aucune note pour cette catégorie');
+        }
+      );
+      break;
+    default:
+      queryBuilder.buildQueryFind(Grade,{
+        find: {_category: req.params.id},
+        populate: ['_user', '_validator'],
+        where: {_user: user._id}
+      }).then(
+        function(grades) {
+          responseGrades(grades, res);
+        },
+        function(error) {
+          errorHandler.error(res, 'Aucune note pour cette catégorie');
+        }
+      );
+  }
 };
 
 exports.getPhaseGrade = function(req, res) {
-  Category.find({ _phase: req.params.id }, function(err, categories) {
-    if (err) {
-      errorHandler.error(res, "Impossible de récupérer les évaluations de cette phase");
-    } else {
-      if (categories.length > 0) {
+  var user = authRequest.returnUser(req);
+  queryBuilder.buildQueryFind(Category, {
+    find: {_phase: req.params.id}
+  }).then(
+    function(categories) {
+      if(categories.length > 0) {
         var phaseGradePromises = [];
         categories.map(function(category) {
-          phaseGradePromises.push(categoryGrades(category.id));
+          switch (user.type) {
+            case 'admin':
+              phaseGradePromises.push(queryBuilder.buildQueryFind(Grade,{
+                find: {_category: category.id},
+                populate: ['_user', '_validator']
+              }));
+              break;
+            case 'pepite-admin':
+            case 'validator':
+              phaseGradePromises.push(queryBuilder.buildQueryFind(Grade,{
+                find: {_category: category.id},
+                populate: ['_user', '_validator'],
+                where: {_user: req.query.user}
+              }));
+              break;
+            default:
+              phaseGradePromises.push(queryBuilder.buildQueryFind(Grade,{
+                find: {_category: category.id},
+                populate: ['_user', '_validator'],
+                where: {_user: user._id}
+              }));
+          }
         });
         var phaseGrades = [];
         BlueBirdPromise.each(phaseGradePromises, function(grades, index, length) {
@@ -153,17 +255,16 @@ exports.getPhaseGrade = function(req, res) {
             phaseGrades.push(grade);
           });
         }).then(function() {
-          if (phaseGrades.length == 0) {
-            errorHandler.error(res, "Aucune note pour cette phase");
-          } else {
-            res.json(phaseGrades);
-          }
+          responseGrades(phaseGrades, res);
         });
       } else {
-        errorHandler.error(res, "Aucune note pour cette phase");
+        errorHandler.error(res, "Impossible de récupérer les évaluations de cette phase");
       }
+    },
+    function(error) {
+      errorHandler.error(res, "Impossible de récupérer les évaluations de cette phase");
     }
-  })
+  );
 };
 
 exports.patchGrade = function(req, res) {
@@ -175,7 +276,8 @@ exports.patchGrade = function(req, res) {
   } else {
     delete req.body['validator_eval.value'];
   }
-  Grade.update({_id: req.body.id}, req.body, function(err, raw) {
+  var req = authRequest.concatRequestWithAuth(req, {_id: req.body.id});
+  Grade.update(req, req.body, function(err, raw) {
     if (err) {
       errorHandler(res, "Impossible de mettre à jour cette évaluation");
     } else {
