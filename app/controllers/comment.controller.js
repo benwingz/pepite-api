@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 var Comment = require('../models/comment.model');
 
 var errorHandler = require('../service/error.service');
+var authRequest = require('../service/authrequest.service');
+var queryBuilder = require('../service/queryBuilder.service');
 
 
 exports.getAllComments = function(req, res){
@@ -74,15 +76,20 @@ exports.getCommentsGrade = function(req, res) {
 }
 
 exports.patchComment = function(req, res) {
-  if (req.body.content) {
-    Comment.update({_id: req.body.id}, {content: req.body.content, date: new Date()}, function(err, raw) {
-      if (err) {
-        errorHandler(res, "Impossible de mettre à jour ce commentaire");
-      } else {
-        res.json(raw);
-      }
-    });
+  var user = authRequest.returnUser(req);
+  if(req.body.id == user._id) {
+    if (req.body.content) {
+      Comment.update({_id: req.body.id}, {content: req.body.content, date: new Date()}, function(err, raw) {
+        if (err) {
+          errorHandler(res, "Impossible de mettre à jour ce commentaire");
+        } else {
+          res.json(raw);
+        }
+      });
+    } else {
+      errorHandler.error(res, "Paramètre manquant");
+    }
   } else {
-    errorHandler.error(res, "Paramètre manquant");
+    errorHandler(res, "Impossible de mettre à jour ce commentaire");
   }
 }
