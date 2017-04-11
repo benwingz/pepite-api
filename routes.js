@@ -45,6 +45,7 @@ module.exports = function(app) {
 
   //Phase routes
   apiRoutes.get('/phases', phaseController.getAllPhases);
+  apiRoutes.get('/phase/:id', phaseController.getPhase);
   apiRoutes.get('/phase/:id/categories', phaseController.getPhaseCategories);
 
   apiRoutes.post('/authenticate', userController.authenticate);
