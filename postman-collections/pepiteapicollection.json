@@ -21,7 +21,7 @@
 			},
 			"response": [
 				{
-					"id": "97bf6385-3cd2-4066-8fba-2ebb5b477e00",
+					"id": "4ae6e906-c35e-4a28-bba4-ae89cede1444",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api",
@@ -156,7 +156,7 @@
 			},
 			"response": [
 				{
-					"id": "87c45a51-edb5-48c5-b6d6-2f016c9eefbd",
+					"id": "62bc9b40-d548-4fa1-8f65-2e57fd8a982a",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/authenticate/",
@@ -285,7 +285,7 @@
 			},
 			"response": [
 				{
-					"id": "4cd73e52-519f-4c58-9bc1-d0e336478899",
+					"id": "a9cc8fea-351d-4741-bdea-bd5e30c13e0f",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -362,7 +362,7 @@
 					"body": "[{\"_id\":\"58ca9645304609075babf8e4\",\"lastname\":\"Blanc\",\"firstname\":\"Nicolas\",\"_comment\":\"virgin student for auto-eval scenario\"},{\"_id\":\"58caba32b0f0d870e464e589\",\"firstname\":\"Ben\",\"lastname\":\"Roullet\",\"__v\":0},{\"_id\":\"58cb9f4314d81a0919acb2b0\",\"firstname\":\"Romain\",\"lastname\":\"Tête\",\"__v\":0}]"
 				},
 				{
-					"id": "18aba850-6a8c-4964-8f95-6fe0f79b843a",
+					"id": "bee219b4-4316-4655-979d-132c052c5878",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -463,7 +463,7 @@
 			},
 			"response": [
 				{
-					"id": "8134972f-0d10-4f2d-b3e7-4dfab2401f84",
+					"id": "2760eefb-f364-4776-8cfd-b1a57a68e26d",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/58dbc5c5277baf2574ea916d",
@@ -597,7 +597,7 @@
 			},
 			"response": [
 				{
-					"id": "e66fa4f9-68f0-4b2b-97d6-b223c7e00216",
+					"id": "c0f1a804-18f2-4d88-8718-54c83bd0579a",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -726,7 +726,7 @@
 			},
 			"response": [
 				{
-					"id": "4af3c4b4-5ab9-44c2-b34d-fcd76ec3570d",
+					"id": "dd758155-693b-479a-817d-bb45d7652ba0",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -873,7 +873,7 @@
 			},
 			"response": [
 				{
-					"id": "3d240350-99b4-4336-99a4-5f5ac629adbd",
+					"id": "3b5ec3ac-d719-4d17-9f2c-b7acbedb5e4a",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/",
@@ -1009,7 +1009,7 @@
 			},
 			"response": [
 				{
-					"id": "f789d85c-cc11-449a-826c-0fd4bcd67d7a",
+					"id": "c1167989-7332-44f8-b504-d17a3b003556",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -1086,7 +1086,7 @@
 					"body": "[{\"_id\":\"58cbf51666828a4c94e5b48a\",\"title\":\"Avoir un comportement entrepreneurial\",\"__v\":0,\"categories\":[]}]"
 				},
 				{
-					"id": "81dcc630-9ba8-43c0-be89-117310425cb7",
+					"id": "e0603055-2ece-4385-956e-2deacca427a6",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -1165,6 +1165,91 @@
 			]
 		},
 		{
+			"name": "GET /phase/:id",
+			"request": {
+				"url": "http://localhost:8080/api/phase/58cbf51666828a4c94e5b48a",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "API endpoint to get specific phase"
+			},
+			"response": [
+				{
+					"id": "6a62d376-2a42-44ba-9a2e-f0c1bdea26a1",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/phase/58cbf51666828a4c94e5b48a",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "100",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Apr 2017 09:42:44 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"64-bZev/jew9GjNM7BjSoNgkdFDKAQ\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 59,
+					"body": "{\"_id\":\"58cbf51666828a4c94e5b48a\",\"title\":\"Avoir un comportement entrepreneurial\",\"order\":0,\"__v\":0}"
+				}
+			]
+		},
+		{
 			"name": "GET /phase/:id/categories",
 			"request": {
 				"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -1178,7 +1263,7 @@
 			},
 			"response": [
 				{
-					"id": "482443d3-88e3-491c-acbf-9e05bbdb9dfa",
+					"id": "5b7c13e3-d50a-45a3-91ff-dc19b155bc02",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -1276,7 +1361,7 @@
 			},
 			"response": [
 				{
-					"id": "563348eb-6215-4950-9cc5-0f7f92afd431",
+					"id": "91a6cc4a-702e-4e06-ad4b-8fcb1834e87f",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grades",
@@ -1374,7 +1459,7 @@
 			},
 			"response": [
 				{
-					"id": "3f2c8a71-2906-46b4-8c42-356bfb67ea12",
+					"id": "19b7274c-7bae-4bc2-87d4-9215dfb1c7a9",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/user/58dbc5c5277baf2574ea916d/grades",
@@ -1483,7 +1568,7 @@
 			},
 			"response": [
 				{
-					"id": "cd5df0bf-bfb1-4781-901a-18306d2011a4",
+					"id": "a4472eac-780d-4b0a-93ee-baac003bf6f6",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d2861681c13b14abe4d326",
@@ -1611,7 +1696,7 @@
 			},
 			"response": [
 				{
-					"id": "e0e102ca-8949-49a8-8e60-65b7d7ade4e0",
+					"id": "ea679424-01fe-4c9a-b7a8-5ab6ad26e93d",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1746,7 +1831,7 @@
 			},
 			"response": [
 				{
-					"id": "60da5519-d94c-4e1a-a403-1a2cd301dcb2",
+					"id": "138a4291-5eea-41e6-8c1e-026b5c359e54",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1887,7 +1972,7 @@
 			},
 			"response": [
 				{
-					"id": "b64eaa85-9f9e-4921-b5f5-01ef385cc635",
+					"id": "2f084d3a-dff2-42c8-845e-e95074753788",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/grade",
@@ -1999,7 +2084,7 @@
 		{
 			"name": "GET /category/:id/grades",
 			"request": {
-				"url": "http://localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/grades",
+				"url": "http://localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/grades?user=58dbc5c5277baf2574ea916d",
 				"method": "GET",
 				"header": [
 					{
@@ -2008,15 +2093,12 @@
 						"description": ""
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"description": "API endpoint to retrieve grades by category"
 			},
 			"response": [
 				{
-					"id": "d3f69588-0546-461b-9314-1b589e4abf1c",
+					"id": "0a80eee2-ad9a-4d71-a1f8-6dbb02c1422e",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/grades",
@@ -2095,6 +2177,105 @@
 			]
 		},
 		{
+			"name": "GET /phase/:id/grades",
+			"request": {
+				"url": "http://localhost:8080/api/phase/58cbf51666828a4c94e5b48a/grades",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{authorization}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "API Endpoint to get all grades for a phase"
+			},
+			"response": [
+				{
+					"id": "37a46259-00a8-4dc3-a7ba-bd76d1f5ed69",
+					"name": "default",
+					"originalRequest": {
+						"url": "http://localhost:8080/api/phase/58cbf51666828a4c94e5b48a/grades",
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authorization}}",
+								"type": "text",
+								"enabled": true,
+								"disabled": false
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization, Access-Control-Allow-Origin",
+							"name": "Access-Control-Allow-Headers",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE",
+							"name": "Access-Control-Allow-Methods",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1228",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Apr 2017 09:26:43 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4cc-5uxsqclRByfbbRnC9/+5ElRRKos\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 116,
+					"body": "[{\"_id\":\"58d285ea81c13b14abe4d325\",\"_category\":\"58cbef162cf6ff44cf7e52a4\",\"_user\":{\"_id\":\"58dbc5c5277baf2574ea916d\",\"firstname\":\"ben\",\"lastname\":\"roullet\",\"email\":\"ben.rou@skilvioo.com\",\"password\":\"0167409f49435187f274ff62e23aee24a198043a1d94cd840d6392a8660e3cf3e2d095ede89c6ff8c72aca3d21671c473d25b9cdc4d9f0612115a9e63758b55b\",\"__v\":0,\"salt\":\"85d860cf7364dcd0b2b5b58a7c96bf52\"},\"__v\":0,\"_validator\":{\"_id\":\"58dbc51b277baf2574ea916c\",\"firstname\":\"Jules\",\"lastname\":\"Vernes\",\"email\":\"jules.vernes@skilvioo.com\",\"password\":\"181d3dc33536a4aa4331ed1205faa22e427a40a9bd3021745857ae3f04ad6a0c730e0d55731f82f4107b221f7bb7e7fedf0e3601294a7b9ff4817a4e2ecdeb59\",\"__v\":0},\"validator_eval\":{\"value\":1,\"date\":\"2017-03-29T12:40:14.613Z\"},\"user_eval\":{\"value\":3,\"date\":\"2017-03-29T12:40:14.613Z\"}},{\"_id\":\"58d2861681c13b14abe4d326\",\"_category\":\"58cbef162cf6ff44cf7e52a5\",\"_user\":{\"_id\":\"58dbc5c5277baf2574ea916d\",\"firstname\":\"ben\",\"lastname\":\"roullet\",\"email\":\"ben.rou@skilvioo.com\",\"password\":\"0167409f49435187f274ff62e23aee24a198043a1d94cd840d6392a8660e3cf3e2d095ede89c6ff8c72aca3d21671c473d25b9cdc4d9f0612115a9e63758b55b\",\"__v\":0,\"salt\":\"85d860cf7364dcd0b2b5b58a7c96bf52\"},\"__v\":0,\"user_eval\":{\"value\":4,\"date\":\"2017-03-22T14:11:34.318Z\"}}]"
+				}
+			]
+		},
+		{
 			"name": "GET /comments",
 			"request": {
 				"url": "localhost:8080/api/comments",
@@ -2114,7 +2295,7 @@
 			},
 			"response": [
 				{
-					"id": "78aa2438-519d-424d-a872-b5bdee5defa6",
+					"id": "e94d5630-b0a8-41e2-b5cf-c6051480afae",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
@@ -2256,7 +2437,7 @@
 			},
 			"response": [
 				{
-					"id": "4710cddd-6520-40ca-ab80-0bf3553331b8",
+					"id": "4262ae65-b571-4b33-b1da-cf04725a09d9",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comment",
@@ -2379,7 +2560,7 @@
 			},
 			"response": [
 				{
-					"id": "65f0cef4-09e4-4566-bd97-ca57e2931c5d",
+					"id": "754761ca-9b93-4025-aa93-f99fab376597",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d285ea81c13b14abe4d325/comments",
@@ -2495,7 +2676,7 @@
 			},
 			"response": [
 				{
-					"id": "eb638589-7c5c-4a5f-a42d-d1e55ad47d2e",
+					"id": "53d4c229-063f-4d5f-a9e3-8474bb96904d",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/comment",
@@ -2624,7 +2805,7 @@
 			},
 			"response": [
 				{
-					"id": "572dcece-0510-4de0-9e86-a95371265640",
+					"id": "92c876fc-86d6-4a5d-902f-f10056a6e3b4",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/comment",
@@ -2738,7 +2919,7 @@
 			},
 			"response": [
 				{
-					"id": "734f4e39-e318-462a-91c6-cc89c1e9e621",
+					"id": "a8a1ee8c-e625-4505-9781-0179069cc06f",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/pepites",
@@ -2875,7 +3056,7 @@
 			},
 			"response": [
 				{
-					"id": "3c2fc283-3877-4074-880d-489b9bd0ec06",
+					"id": "185750af-6e57-4062-b665-ca89427b35f1",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/pepite/",
@@ -3011,7 +3192,7 @@
 			},
 			"response": [
 				{
-					"id": "8f266ac4-4130-455b-9e63-04564e735e45",
+					"id": "7857bf50-480d-4326-838b-783613f76646",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/pepite",
@@ -3147,7 +3328,7 @@
 			},
 			"response": [
 				{
-					"id": "6a7e43d7-04f3-461c-bc10-b4673c8cce10",
+					"id": "f097bdb0-84f8-4980-9249-e007ed2985a1",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/pepite",
