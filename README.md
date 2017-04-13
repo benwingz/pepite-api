@@ -89,6 +89,13 @@
 [{"_id":"58cbf51666828a4c94e5b48a","title":"Avoir un comportement entrepreneurial","__v":0,"categories":[]},{"_id":"58d240abd7c48775d6db32ca","title":"Faire émerger l'opportunité d'entreprendre","categories":[]},{"_id":"58d240c7d7c48775d6db32cb","title":"Construire le projet","categories":[]},{"_id":"58d240d9d7c48775d6db32cc","title":"Lancer le projet","categories":[]}]
 ```
 
+* **GET /phase/:id**
+  * Description: API endpoint to get specific phase
+  * Output exemple:
+```
+{"_id":"58cbf51666828a4c94e5b48a","title":"Avoir un comportement entrepreneurial","order":0,"__v":0}
+```
+
 * **GET /phase/:id/categories**
   * Description: API endpoint for getting phase's categories
   * Output exemple:
@@ -162,6 +169,13 @@
   * Output exemple:
 ```
 [{"_id":"58d285ea81c13b14abe4d325","_category":"58cbef162cf6ff44cf7e52a4","_user":{"_id":"58ca9645304609075babf8e4","lastname":"Blanc","firstname":"Nicolas","_comment":"virgin student for auto-eval scenario"},"__v":0,"user_eval":{"value":5,"date":"2017-03-22T14:10:50.475Z"}}]
+```
+
+* **GET /phase/:id/grades**
+  * Description: API Endpoint to get all grades for a phase
+  * Output exemple:
+```
+[{"_id":"58d285ea81c13b14abe4d325","_category":"58cbef162cf6ff44cf7e52a4","_user":{"_id":"58dbc5c5277baf2574ea916d","firstname":"ben","lastname":"roullet","email":"ben.rou@skilvioo.com","password":"0167409f49435187f274ff62e23aee24a198043a1d94cd840d6392a8660e3cf3e2d095ede89c6ff8c72aca3d21671c473d25b9cdc4d9f0612115a9e63758b55b","__v":0,"salt":"85d860cf7364dcd0b2b5b58a7c96bf52"},"__v":0,"_validator":{"_id":"58dbc51b277baf2574ea916c","firstname":"Jules","lastname":"Vernes","email":"jules.vernes@skilvioo.com","password":"181d3dc33536a4aa4331ed1205faa22e427a40a9bd3021745857ae3f04ad6a0c730e0d55731f82f4107b221f7bb7e7fedf0e3601294a7b9ff4817a4e2ecdeb59","__v":0},"validator_eval":{"value":1,"date":"2017-03-29T12:40:14.613Z"},"user_eval":{"value":3,"date":"2017-03-29T12:40:14.613Z"}},{"_id":"58d2861681c13b14abe4d326","_category":"58cbef162cf6ff44cf7e52a5","_user":{"_id":"58dbc5c5277baf2574ea916d","firstname":"ben","lastname":"roullet","email":"ben.rou@skilvioo.com","password":"0167409f49435187f274ff62e23aee24a198043a1d94cd840d6392a8660e3cf3e2d095ede89c6ff8c72aca3d21671c473d25b9cdc4d9f0612115a9e63758b55b","__v":0,"salt":"85d860cf7364dcd0b2b5b58a7c96bf52"},"__v":0,"user_eval":{"value":4,"date":"2017-03-22T14:11:34.318Z"}}]
 ```
 
 * **GET /comments**

@@ -20,6 +20,20 @@ exports.getAllPhases = function(req, res) {
   );
 };
 
+exports.getPhase = function(req, res) {
+  Phase.findOne({_id: req.params.id}, function(err, phase) {
+    if (err) {
+      errorHandler.error(res, 'Impossible de récupérer la phase');
+    } else {
+      if (phase.length == 0) {
+        errorHandler.error(res, 'Aucune phase récupérable');
+      } else {
+        res.json(phase);
+      }
+    }
+  });
+};
+
 exports.getPhaseCategories = function(req, res) {
   Phase.findOne({ _id: req.params.id}, function(err, phase) {
       if (phase) {

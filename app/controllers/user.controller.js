@@ -7,6 +7,8 @@ var User = require('../models/user.model');
 
 var errorHandler = require('../service/error.service');
 var passwordService = require('../service/password.service');
+var authRequest = require('../service/authrequest.service');
+var queryBuilder = require('../service/queryBuilder.service');
 
 
 function generateToken(user) {
@@ -14,7 +16,9 @@ function generateToken(user) {
     _id: user._id,
     email: user.email,
     firstname: user.firstname,
-    lastname: user.lastname
+    lastname: user.lastname,
+    type: user.type,
+    _validator: user._validator
   }
   var newToken = jwt.sign(payload, config[process.env.ENV].secret, {
     expiresIn: 60*60*24*7 //expires in 7 days
@@ -23,11 +27,12 @@ function generateToken(user) {
   return newToken;
 }
 
-function doCreateUser(firstname, lastname, email, password) {
+function doCreateUser(firstname, lastname, email, password, type) {
   var newUser = new User({
     firstname: firstname,
     lastname: lastname,
-    email: email
+    email: email,
+    type: (type) ? type : 'user'
   });
   passwordService.setUserPassword(newUser, password);
   return newUser.save();
@@ -52,9 +57,8 @@ exports.authenticate = function(req, res){
     });
   } else {
     User.findOne({email: req.body.email}, function(err, user) {
-      if(err) throw err;
-      if(user) {
-
+      if (err) throw err;
+      if (user) {
         if (passwordService.checkPassword(user, req.body.password)) {
           res.json({
             success: true,
@@ -66,32 +70,81 @@ exports.authenticate = function(req, res){
           res.status(401).send({error: 'Mot de passe erroné'});
         }
       } else {
-        doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
-          .then((user) => {
-            if (user) {
-              res.json({
-                success: true,
-                message: 'Utilisateur enregistré',
-                token: generateToken(user),
-                user_id: user._id
-              });
-            } else {
-              errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
-            }
-          })
+        if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.type) {
+          errorHandler.error(res, "Il manque un paramètre");
+        } else {
+          doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.type)
+            .then((user) => {
+              if (user) {
+                res.json({
+                  success: true,
+                  message: 'Utilisateur enregistré',
+                  token: generateToken(user),
+                  user_id: user._id
+                });
+              } else {
+                errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
+              }
+            });
+        }
       }
     })
   }
 }
 
+var responseUsers = function(users, res) {
+  if(users.length > 0) {
+    res.json(users);
+  } else {
+    errorHandler.error(res, 'Aucuns utilisateurs présent');
+  }
+}
+
 exports.getAllUser = function(req, res){
-  User.find().select('-password -salt').then(
-    function(users) {
-      res.json(users);
-    },
-    function(error){
-      errorHandler.error(res, "Aucuns utilisateur trouvé");
-    })
+  var user = authRequest.returnUser(req);
+  switch (user.type) {
+    case 'admin':
+      queryBuilder.buildQueryFind(User,
+        {find: {},
+        select: '-password -salt'})
+        .then(
+          function(users) {
+            responseUsers(users, res);
+          },
+          function(error) {
+            errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
+          }
+        );
+      break;
+    case 'pepite-admin':
+      queryBuilder.buildQueryFind(User,{
+        find: {_validator: user._id},
+        select: '-password -salt -type'})
+        .then(
+          function(users) {
+            responseUsers(users, res);
+          },
+          function(error) {
+            errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
+          }
+        );
+      break;
+    case 'validator':
+      queryBuilder.buildQueryFind(User,{
+        find: {_validator: user._id},
+        select: '-password -salt -type'})
+        .then(
+          function(users) {
+            responseUsers(users, res);
+          },
+          function(error) {
+            errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
+          }
+        );
+      break;
+    default:
+      errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
+  }
 };
 
 exports.findUserById = function(req, res){
@@ -106,47 +159,62 @@ exports.findUserById = function(req, res){
 };
 
 exports.createUser = function(req, res) {
-  if(!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
-    errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'utilisateur");
+  var user = authRequest.returnUser(req);
+  if (['admin', 'pepite-admin'].indexOf(user.type) != -1) {
+    if(!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.type) {
+      errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'utilisateur");
+    } else {
+      User.findOne({email: req.body.email}, function(err, user){
+        if (user) {
+          errorHandler.error(res, 'Un utilisateur similaire existe déjà');
+        } else {
+          doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
+            .then((user) => {
+              if (user) {
+                res.json({ success: true, message: 'Utilisateur enregistré'});
+              } else {
+                errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
+              }
+            });
+        }
+      });
+    }
   } else {
-    User.findOne({email: req.body.email}, function(err, user){
-      if (user) {
-        errorHandler.error(res, 'Un utilisateur similaire existe déjà');
-      } else {
-        doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
-          .then((user) => {
-            if (user) {
-              res.json({ success: true, message: 'Utilisateur enregistré'});
-            } else {
-              errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
-            }
-          });
-      }
-    });
+    errorHandler.error(res, 'Impossible de modifier cet utilisateur');
   }
 };
 
 exports.deleteUser = function(req, res) {
-  User.deleteOne({ _id: req.body.id }, function(err) {
-    if (err) {
-      errorHandler.error(res, "Impossible de supprimer cet utilisateur");
-    } else {
-      res.json({success: true, message: "Utilsateur supprimé"});
-    }
+  var user = authRequest.returnUser(req);
+  if (['admin', 'pepite-admin'].indexOf(user.type) != -1) {
+    User.deleteOne({ _id: req.body.id }, function(err) {
+      if (err) {
+        errorHandler.error(res, "Impossible de supprimer cet utilisateur");
+      } else {
+        res.json({success: true, message: "Utilsateur supprimé"});
+      }
 
-  })
+    });
+  } else {
+    errorHandler.error(res, 'Impossible de modifier cet utilisateur');
+  }
 };
 
 exports.patchUser = function(req, res) {
-  if(req.body.password) {
-    passwordService.setUserPassword(req.body, req.body.password);
-  }
-  User.update({_id: req.body.id}, req.body, function(err, raw) {
-    if(err) {
-      errorHandler(res, 'Impossible de modifier cet utilisateur');
-    } else {
-      res.json(raw);
+  var user = authRequest.returnUser(req);
+  if (['admin', 'pepite-admin'].indexOf(user.type) != -1 || user._id == req.body.id) {
+    if(req.body.password) {
+      passwordService.setUserPassword(req.body, req.body.password);
     }
+    User.update({_id: req.body.id}, req.body, function(err, raw) {
+      if(err) {
+        errorHandler.error(res, 'Impossible de modifier cet utilisateur');
+      } else {
+        res.json(raw);
+      }
 
-  })
+    })
+  } else {
+    errorHandler.error(res, 'Impossible de modifier cet utilisateur');
+  }
 };

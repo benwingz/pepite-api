@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 var Comment = require('../models/comment.model');
 
 var errorHandler = require('../service/error.service');
+var authRequest = require('../service/authrequest.service');
+var queryBuilder = require('../service/queryBuilder.service');
 
 
 exports.getAllComments = function(req, res){
@@ -33,11 +35,11 @@ exports.findOneCommentById = function(req, res){
 };
 
 exports.createComment = function(req, res) {
-  if (!req.body.user || !req.body.grade || !req.body.content) {
+  if (!req.body.user || !req.body.category || !req.body.content) {
     errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'évaluation");
   } else {
     var newComment = new Comment({
-      _grade: req.body.grade,
+      _category: req.body.category,
       _user: req.body.user,
       content: req.body.content,
       date: new Date()
@@ -53,18 +55,39 @@ exports.createComment = function(req, res) {
 };
 
 exports.deleteComment = function(req, res) {
-  Comment.deleteOne({ _id: req.body.id }, function(err) {
-    if (err) {
-      errorHandler.error(res, "Impossible de supprimer ce commentaire");
-    } else {
-      res.json({success: true, message: "Commentaire supprimée"});
-    }
+  var user = authRequest.returnUser(req);
+  switch (user.type) {
+    case 'admin':
+    case 'pepite-admin':
+      Comment.deleteOne({ _id: req.params.id }, function(err) {
+        if (err) {
+          errorHandler.error(res, "Impossible de supprimer ce commentaire");
+        } else {
+          res.json({success: true, message: "Commentaire supprimée"});
+        }
+      })
+      break;
+    default:
+      Comment.deleteOne({ _id: req.params.id, _user: user._id }, function(err, query) {
+        if (err || query.deletedCount == 0) {
+          errorHandler.error(res, "Impossible de supprimer ce commentaire");
+        } else {
+          res.json({success: true, message: "Commentaire supprimée"});
+        }
+      })
 
-  })
+  }
 };
 
-exports.getCommentsGrade = function(req, res) {
-  Comment.find({_grade: req.params.id}).populate('_user').exec(function(err, comments) {
+exports.getCommentsCategory = function(req, res) {
+  var user = authRequest.returnUser(req);
+  console.log('user:', user);
+  Comment.find({
+    _category: req.params.id,
+    $or: [ {_user: user._id}, {_user: user._validator} ]
+  })
+    .populate('_user', '-salt -password -type')
+    .exec(function(err, comments) {
     if (err) {
       errorHandler.error(res, "Impossible de récupérer les commentaires de cette évaluation");
     } else {
@@ -74,15 +97,20 @@ exports.getCommentsGrade = function(req, res) {
 }
 
 exports.patchComment = function(req, res) {
-  if (req.body.content) {
-    Comment.update({_id: req.body.id}, {content: req.body.content, date: new Date()}, function(err, raw) {
-      if (err) {
-        errorHandler(res, "Impossible de mettre à jour ce commentaire");
-      } else {
-        res.json(raw);
-      }
-    });
+  var user = authRequest.returnUser(req);
+  if(req.body.id == user._id) {
+    if (req.body.content) {
+      Comment.update({_id: req.body.id}, {content: req.body.content, date: new Date()}, function(err, raw) {
+        if (err) {
+          errorHandler(res, "Impossible de mettre à jour ce commentaire");
+        } else {
+          res.json(raw);
+        }
+      });
+    } else {
+      errorHandler.error(res, "Paramètre manquant");
+    }
   } else {
-    errorHandler.error(res, "Paramètre manquant");
+    errorHandler(res, "Impossible de mettre à jour ce commentaire");
   }
 }

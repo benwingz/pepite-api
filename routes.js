@@ -45,6 +45,7 @@ module.exports = function(app) {
 
   //Phase routes
   apiRoutes.get('/phases', phaseController.getAllPhases);
+  apiRoutes.get('/phase/:id', phaseController.getPhase);
   apiRoutes.get('/phase/:id/categories', phaseController.getPhaseCategories);
 
   apiRoutes.post('/authenticate', userController.authenticate);
@@ -97,14 +98,15 @@ module.exports = function(app) {
   apiRoutes.post('/grade', gradeController.createGrade);
   apiRoutes.delete('/grade', gradeController.deleteGrade);
   apiRoutes.get('/category/:id/grades', gradeController.getCategoryGrade);
+  apiRoutes.get('/phase/:id/grades', gradeController.getPhaseGrade);
   apiRoutes.patch('/grade', gradeController.patchGrade);
 
   //Comment routes
   apiRoutes.get('/comments', commentController.getAllComments);
   apiRoutes.get('/comment/:id', commentController.findOneCommentById);
   apiRoutes.post('/comment', commentController.createComment);
-  apiRoutes.delete('/comment', commentController.deleteComment);
-  apiRoutes.get('/grade/:id/comments', commentController.getCommentsGrade)
+  apiRoutes.delete('/comment/:id', commentController.deleteComment);
+  apiRoutes.get('/category/:id/comments', commentController.getCommentsCategory)
   apiRoutes.patch('/comment', commentController.patchComment);
   //apiRoutes.post('/user', user.createUser);
 

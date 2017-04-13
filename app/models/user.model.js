@@ -7,6 +7,11 @@ module.exports = mongoose.model('User', new Schema({
   firstname: String,
   lastname: String,
   email: String,
+  type: String,
+  _validator: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   password: String,
-  salt: String
+  salt: String,
 }));
