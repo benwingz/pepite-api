@@ -17,7 +17,8 @@ function generateToken(user) {
     email: user.email,
     firstname: user.firstname,
     lastname: user.lastname,
-    type: user.type
+    type: user.type,
+    _validator: user._validator
   }
   var newToken = jwt.sign(payload, config[process.env.ENV].secret, {
     expiresIn: 60*60*24*7 //expires in 7 days
