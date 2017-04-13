@@ -35,11 +35,12 @@ exports.findOneCommentById = function(req, res){
 };
 
 exports.createComment = function(req, res) {
-  if (!req.body.user || !req.body.grade || !req.body.content) {
+  console.log('req body', req.body);
+  if (!req.body.user || !req.body.category || !req.body.content) {
     errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'évaluation");
   } else {
     var newComment = new Comment({
-      _grade: req.body.grade,
+      _category: req.body.category,
       _user: req.body.user,
       content: req.body.content,
       date: new Date()
@@ -55,18 +56,36 @@ exports.createComment = function(req, res) {
 };
 
 exports.deleteComment = function(req, res) {
-  Comment.deleteOne({ _id: req.body.id }, function(err) {
-    if (err) {
-      errorHandler.error(res, "Impossible de supprimer ce commentaire");
-    } else {
-      res.json({success: true, message: "Commentaire supprimée"});
-    }
+  var user = authRequest.returnUser(req);
+  switch (user.type) {
+    case 'admin':
+    case 'pepite-admin':
+      Comment.deleteOne({ _id: req.body.id }, function(err) {
+        if (err) {
+          errorHandler.error(res, "Impossible de supprimer ce commentaire");
+        } else {
+          res.json({success: true, message: "Commentaire supprimée"});
+        }
+      })
+      break;
+    default:
+      Comment.deleteOne({ _id: req.body.id, _user: user._id }, function(err, query) {
+        if (err || query.deletedCount == 0) {
+          errorHandler.error(res, "Impossible de supprimer ce commentaire");
+        } else {
+          res.json({success: true, message: "Commentaire supprimée"});
+        }
+      })
 
-  })
+  }
 };
 
-exports.getCommentsGrade = function(req, res) {
-  Comment.find({_grade: req.params.id}).populate('_user').exec(function(err, comments) {
+exports.getCommentsCategory = function(req, res) {
+  var user = authRequest.returnUser(req);
+  Comment.find({_category: req.params.id})
+    .populate('_user', '-salt -password -type')
+    .where('_user == ' + user._id)
+    .exec(function(err, comments) {
     if (err) {
       errorHandler.error(res, "Impossible de récupérer les commentaires de cette évaluation");
     } else {

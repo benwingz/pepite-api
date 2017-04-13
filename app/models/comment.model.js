@@ -4,9 +4,9 @@ var Schema = mongoose.Schema;
 
 // Set up a mongoose model and pass it using module.exports
 module.exports = mongoose.model('Comment', new Schema({
-  _grade: {
+  _category: {
     type: Schema.Types.ObjectId,
-    ref:'Grade'
+    ref:'Category'
   },
   _user: {
     type: Schema.Types.ObjectId,

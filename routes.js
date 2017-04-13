@@ -106,7 +106,7 @@ module.exports = function(app) {
   apiRoutes.get('/comment/:id', commentController.findOneCommentById);
   apiRoutes.post('/comment', commentController.createComment);
   apiRoutes.delete('/comment', commentController.deleteComment);
-  apiRoutes.get('/grade/:id/comments', commentController.getCommentsGrade)
+  apiRoutes.get('/category/:id/comments', commentController.getCommentsCategory)
   apiRoutes.patch('/comment', commentController.patchComment);
   //apiRoutes.post('/user', user.createUser);
 
