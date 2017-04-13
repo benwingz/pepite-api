@@ -35,7 +35,6 @@ exports.findOneCommentById = function(req, res){
 };
 
 exports.createComment = function(req, res) {
-  console.log('req body', req.body);
   if (!req.body.user || !req.body.category || !req.body.content) {
     errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'évaluation");
   } else {
@@ -60,7 +59,7 @@ exports.deleteComment = function(req, res) {
   switch (user.type) {
     case 'admin':
     case 'pepite-admin':
-      Comment.deleteOne({ _id: req.body.id }, function(err) {
+      Comment.deleteOne({ _id: req.params.id }, function(err) {
         if (err) {
           errorHandler.error(res, "Impossible de supprimer ce commentaire");
         } else {
@@ -69,7 +68,7 @@ exports.deleteComment = function(req, res) {
       })
       break;
     default:
-      Comment.deleteOne({ _id: req.body.id, _user: user._id }, function(err, query) {
+      Comment.deleteOne({ _id: req.params.id, _user: user._id }, function(err, query) {
         if (err || query.deletedCount == 0) {
           errorHandler.error(res, "Impossible de supprimer ce commentaire");
         } else {
@@ -82,9 +81,12 @@ exports.deleteComment = function(req, res) {
 
 exports.getCommentsCategory = function(req, res) {
   var user = authRequest.returnUser(req);
-  Comment.find({_category: req.params.id})
+  console.log('user:', user);
+  Comment.find({
+    _category: req.params.id,
+    $or: [ {_user: user._id}, {_user: user._validator} ]
+  })
     .populate('_user', '-salt -password -type')
-    .where('_user == ' + user._id)
     .exec(function(err, comments) {
     if (err) {
       errorHandler.error(res, "Impossible de récupérer les commentaires de cette évaluation");
