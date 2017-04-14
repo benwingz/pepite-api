@@ -159,8 +159,7 @@ exports.createGrade = function(req, res) {
 };
 
 exports.deleteGrade = function(req, res) {
-  var req = authRequest.concatRequestWithAuth(req, { _id: req.body.id });
-  Grade.deleteOne(req, function(err) {
+  Grade.deleteOne({ _id: req.params.id }, function(err) {
     if (err) {
       errorHandler.error(res, "Impossible de supprimer cette évaluation");
     } else {
@@ -296,8 +295,7 @@ exports.patchGrade = function(req, res) {
   } else {
     delete req.body['validator_eval.value'];
   }
-  var req = authRequest.concatRequestWithAuth(req, {_id: req.body.id});
-  Grade.update(req, req.body, function(err, raw) {
+  Grade.update({_id: req.body.id}, req.body, function(err, raw) {
     if (err) {
       errorHandler(res, "Impossible de mettre à jour cette évaluation");
     } else {

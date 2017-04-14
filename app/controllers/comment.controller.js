@@ -81,7 +81,6 @@ exports.deleteComment = function(req, res) {
 
 exports.getCommentsCategory = function(req, res) {
   var user = authRequest.returnUser(req);
-  console.log('user:', user);
   Comment.find({
     _category: req.params.id,
     $or: [ {_user: user._id}, {_user: user._validator} ]

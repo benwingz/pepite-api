@@ -26,7 +26,7 @@ module.exports = function(app) {
     res.contentType('application/json');
 
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Origin');
 
     // intercept OPTIONS method
@@ -96,7 +96,7 @@ module.exports = function(app) {
   apiRoutes.get('/user/:id/grades', gradeController.getAllGradesByUser);
   apiRoutes.get('/grade/:id', gradeController.findOneGradeById);
   apiRoutes.post('/grade', gradeController.createGrade);
-  apiRoutes.delete('/grade', gradeController.deleteGrade);
+  apiRoutes.delete('/grade/:id', gradeController.deleteGrade);
   apiRoutes.get('/category/:id/grades', gradeController.getCategoryGrade);
   apiRoutes.get('/phase/:id/grades', gradeController.getPhaseGrade);
   apiRoutes.patch('/grade', gradeController.patchGrade);
