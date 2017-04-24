@@ -54,3 +54,18 @@ exports.getPhaseCategories = function(req, res) {
       }
     });
 };
+
+exports.getCategories = function(req, res) {
+  Category.find().then(
+    function(categories) {
+      if(categories.length > 0) {
+        res.json(categories);
+      } else {
+        res.json([]);
+      }
+    },
+    function(err) {
+      errorHandler.error(res, 'Impossible de récupérer les categories');
+    }
+  )
+}
