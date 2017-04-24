@@ -67,11 +67,11 @@ exports.authenticate = function(req, res){
             user_id: user._id
           });
         } else {
-          res.status(401).send({error: 'Mot de passe erroné'});
+          res.status(401).send({error: 'Mot de passe invalide'});
         }
       } else {
         if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.type) {
-          errorHandler.error(res, "Il manque un paramètre");
+          errorHandler.error(res, "Ce compte n'existe pas");
         } else {
           doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.type)
             .then((user) => {
