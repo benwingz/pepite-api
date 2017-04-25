@@ -151,16 +151,19 @@ exports.createGrade = function(req, res) {
         var newGrade = new Grade({
           _category: req.body.category,
           _user: req.body.user,
-          _validator: req.body.validator,
           user_eval: {
             value: req.body.value,
             date: new Date()
-          },
-          validator_eval: {
+          }
+        });
+        if (req.body.validator && req.body.validator_value) {
+          newGrade._validator = req.body.validator;
+          newGrade.validator_eval = {
             value: req.body.validator_value,
             date: new Date()
           }
-        });
+        }
+
         newGrade.save(function(err){
           if (err) {
             errorHandler.error(res, "L'évaluation n'a pas pu être créé");
@@ -308,7 +311,7 @@ exports.patchGrade = function(req, res) {
   if (req.body['validator_eval.value'] && req.body._validator) {
     req.body['validator_eval.date'] = new Date();
   } else {
-    delete req.body['validator_eval.value'];
+    delete req.body['validator_eval'];
   }
   console.log('params passed:', req.body);
   Grade.update({_id: req.body.id}, req.body, function(err, raw) {
