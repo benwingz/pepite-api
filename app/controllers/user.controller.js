@@ -119,8 +119,8 @@ exports.getAllUser = function(req, res){
       break;
     case 'pepite-admin':
       queryBuilder.buildQueryFind(User,{
-        find: {_validator: user._id},
-        select: '-password -salt -type'})
+        find: {_pepite: user._pepite},
+        select: '-password -salt'})
         .then(
           function(users) {
             responseUsers(users, res);
