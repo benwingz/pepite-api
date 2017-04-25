@@ -80,19 +80,27 @@ exports.deleteComment = function(req, res) {
 };
 
 exports.getCommentsCategory = function(req, res) {
+  var query;
   var user = authRequest.returnUser(req);
-  Comment.find({
-    _category: req.params.id,
-    $or: [ {_user: user._id}, {_user: user._validator} ]
-  })
-    .populate('_user', '-salt -password -type')
-    .exec(function(err, comments) {
+  if (req.query.user) {
+    query = Comment.find({
+      _category: req.params.id,
+      $or:[{_user: user._id},{_user: req.query.user}]
+    })
+  } else {
+    query = Comment.find({
+      _category: req.params.id,
+      $or:[{_user: user._id},{_user: user._validator}]
+    })
+  }
+  query.populate('_user', '-salt -password -type')
+  .exec(function(err, comments) {
     if (err) {
       errorHandler.error(res, "Impossible de récupérer les commentaires de cette évaluation");
     } else {
       res.json(comments);
     }
-  })
+  });
 }
 
 exports.patchComment = function(req, res) {
