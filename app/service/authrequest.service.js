@@ -1,6 +1,5 @@
 var config = require('../../config');
 var jwt = require('jsonwebtoken');
-var concatObject = require('concat-object');
 var User = require('../models/user.model');
 
 exports.returnUser = function(httpRequest) {

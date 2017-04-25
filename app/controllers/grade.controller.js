@@ -20,6 +20,7 @@ var responseGrades = function(grades, res) {
 
 exports.getAllGrades = function(req, res){
   let user = authRequest.returnUser(req);
+  console.log('user type', user.type);
   switch (user.type) {
     case 'admin':
         queryBuilder.buildQueryFind(Grade,{
@@ -61,13 +62,22 @@ exports.getAllGrades = function(req, res){
     queryBuilder.buildQueryFind(User,{find: {_validator: user._id}})
       .then(
         function(users) {
-          queryBuilder.buildQueryFind(Grade, {
-            find: {},
-            populate: [
-              {field: '_user', filter:'-password -salt -type'},
-              {field: '_validator', filter:'-password -salt -type'}],
-            where: {_user: {$in: users}}
-          }).then(
+          var query;
+          if (!req.query.user) {
+            query = queryBuilder.buildQueryFind(Grade, {
+              find: {},
+              populate: [
+                {field: '_user', filter:'-password -salt -type'},
+                {field: '_validator', filter:'-password -salt -type'}],
+              where: {_user: {$in: users}}
+            });
+          } else {
+            query = queryBuilder.buildQueryFind(Grade, {
+              find: {},
+              where: {_user: req.query.user}
+            });
+          }
+          query.then(
             function(grades) {
               responseGrades(grades, res);
             },
@@ -141,8 +151,13 @@ exports.createGrade = function(req, res) {
         var newGrade = new Grade({
           _category: req.body.category,
           _user: req.body.user,
+          _validator: req.body.validator,
           user_eval: {
             value: req.body.value,
+            date: new Date()
+          },
+          validator_eval: {
+            value: req.body.validator_value,
             date: new Date()
           }
         });
@@ -295,6 +310,7 @@ exports.patchGrade = function(req, res) {
   } else {
     delete req.body['validator_eval.value'];
   }
+  console.log('params passed:', req.body);
   Grade.update({_id: req.body.id}, req.body, function(err, raw) {
     if (err) {
       errorHandler(res, "Impossible de mettre à jour cette évaluation");
