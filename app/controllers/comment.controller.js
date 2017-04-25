@@ -35,15 +35,17 @@ exports.findOneCommentById = function(req, res){
 };
 
 exports.createComment = function(req, res) {
-  if (!req.body.user || !req.body.category || !req.body.content) {
+  if (!req.body.user || !req.body.category || !req.body.content || !req.body.userlink) {
     errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'évaluation");
   } else {
     var newComment = new Comment({
+      userlink: req.body.userlink,
       _category: req.body.category,
       _user: req.body.user,
       content: req.body.content,
       date: new Date()
     });
+    console.log(newComment);
     newComment.save(function(err){
       if (err) {
         errorHandler.error(res, "Le commentaire n'a pas pû être ajouté");
@@ -87,14 +89,18 @@ exports.getCommentsCategory = function(req, res) {
       _category: req.params.id,
       $or:[{_user: user._id},{_user: req.query.user}]
     })
+    .where('userlink').equals(req.query.user);
   } else {
     query = Comment.find({
       _category: req.params.id,
       $or:[{_user: user._id},{_user: user._validator}]
     })
+    .where('userlink').equals(user._id);
   }
   query.populate('_user', '-salt -password -type')
+  .sort('date')
   .exec(function(err, comments) {
+    console.log('comments', comments)
     if (err) {
       errorHandler.error(res, "Impossible de récupérer les commentaires de cette évaluation");
     } else {
