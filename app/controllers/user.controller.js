@@ -118,18 +118,25 @@ exports.getAllUser = function(req, res){
         );
       break;
     case 'pepite-admin':
-      queryBuilder.buildQueryFind(User,{
-        find: {_pepite: user._pepite},
-        select: '-password -salt',
-        sort: '-type'})
-        .then(
-          function(users) {
-            responseUsers(users, res);
-          },
-          function(error) {
-            errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
-          }
-        );
+      var query;
+      if (req.query.user) {
+        query = queryBuilder.buildQueryFind(User,{
+          find: {_validator: req.query.user},
+          select: '-password -salt -type'})
+      } else {
+        query = queryBuilder.buildQueryFind(User,{
+          find: {_pepite: user._pepite},
+          select: '-password -salt',
+          sort: '-type'})
+      }
+      query.then(
+        function(users) {
+          responseUsers(users, res);
+        },
+        function(error) {
+          errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
+        }
+      );
       break;
     case 'validator':
       queryBuilder.buildQueryFind(User,{
