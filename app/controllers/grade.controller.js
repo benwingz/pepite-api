@@ -305,15 +305,16 @@ exports.getPhaseGrade = function(req, res) {
 };
 
 exports.patchGrade = function(req, res) {
-  if (req.body['user_eval.value']) {
-    req.body['user_eval.date'] = new Date();
+  if (req.body.user_eval && req.body.user_eval.value) {
+    req.body.user_eval.date = new Date();
   }
-  if (req.body['validator_eval.value'] && req.body._validator) {
-    req.body['validator_eval.date'] = new Date();
+  if (req.body.validator_eval && req.body.validator_eval.value && req.body._validator) {
+    req.body.validator_eval.date = new Date();
+  } else if (req.body.validator_eval && req.body.validator_eval.value == 0) {
+    req.body.validator_eval.date = new Date();
   } else {
     delete req.body['validator_eval'];
   }
-  console.log('params passed:', req.body);
   Grade.update({_id: req.body.id}, req.body, function(err, raw) {
     if (err) {
       errorHandler(res, "Impossible de mettre à jour cette évaluation");
