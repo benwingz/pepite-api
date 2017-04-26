@@ -19,6 +19,10 @@ exports.buildQueryFind = function(model, queryParams) {
     query.where(queryParams.where);
   }
 
+  if (queryParams['sort']) {
+    query.sort(queryParams.sort);
+  }
+
   return new Promise(function(resolve, reject) {
     query.exec(function(error, result) {
       if (error) {
