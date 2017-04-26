@@ -32,7 +32,7 @@ exports.getAllPepites = function(req, res) {
 
 exports.findOnePepite = function(req, res){
   var user = authRequest.returnUser(req);
-  if (['admin'].indexOf(user.type) > -1 && user._pepite == req.params.id) {
+  if (['admin', 'pepite-admin'].indexOf(user.type) > -1) {
     Pepite.findById(req.params.id)
       .populate('_admin', '-password -salt')
       .exec(function(err, pepite) {
