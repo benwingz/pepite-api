@@ -35,7 +35,8 @@ function doCreateUser(userInfo) {
     email: userInfo.email,
     type: (userInfo.type) ? userInfo.type : 'user',
     firstname: (userInfo.firstname) ? userInfo.firstname: '',
-    lastname: (userInfo.lastname) ? userInfo.lastname: ''
+    lastname: (userInfo.lastname) ? userInfo.lastname: '',
+    _pepite: (userInfo._pepite) ? userInfo._pepite: null,
   });
   if (userInfo.password) passwordService.setUserPassword(newUser, userInfo.password);
   return newUser.save();
@@ -186,14 +187,13 @@ exports.createUser = function(req, res) {
         } else {
           doCreateUser({
             email: req.body.email,
-            type: req.body.type
+            type: req.body.type,
+            _pepite: req.body.pepite
           }).then((user) => {
               if (user.firstname == '') {
-                console.log('user to record');
                 var newAccountToken = new Account({
                   _user: user._id
                 });
-                console.log('new token', newAccountToken);
                 newAccountToken.save(function(err, token) {
                   if(!err) {
                     mailer.mailtoActivate(user, 'Activez votre compte pépite', token._id);
@@ -250,3 +250,13 @@ exports.patchUser = function(req, res) {
     errorHandler.error(res, 'Impossible de modifier cet utilisateur');
   }
 };
+
+exports.getUserToActivate = function(req, res) {
+  Account.findById(req.params.id).populate('_user').then((account) => {
+    if (account._user._id) {
+      res.json(account._user);
+    } else {
+      errorHandler.error(res, "Impossible d'activer cet utilisateur");
+    }
+  })
+}
