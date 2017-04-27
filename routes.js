@@ -50,6 +50,7 @@ module.exports = function(app) {
   apiRoutes.get('/categories', phaseController.getCategories);
 
   apiRoutes.get('/activate/:id', userController.getUserToActivate);
+  apiRoutes.post('/activate', userController.activateUser);
 
   apiRoutes.post('/authenticate', userController.authenticate);
 

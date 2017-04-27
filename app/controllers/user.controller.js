@@ -209,7 +209,20 @@ exports.createUser = function(req, res) {
         }
       });
     } else {
-      console.log('patch existing user');
+      doCreateUser({
+        email:req.body.email,
+        type: req.body.type,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        _pepite: req.body._pepite,
+        password: req.body.password
+      }).then((user) => {
+        if (user) {
+          res.json({ success: true, message: 'Utilisateur enregistré'});
+        } else {
+          errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
+        }
+      })
     }
   } else {
     errorHandler.error(res, 'Impossible de créer cet utilisateur');
@@ -253,10 +266,31 @@ exports.patchUser = function(req, res) {
 
 exports.getUserToActivate = function(req, res) {
   Account.findById(req.params.id).populate('_user').then((account) => {
-    if (account._user._id) {
+    console.log(account);
+    if (account) {
       res.json(account._user);
     } else {
       errorHandler.error(res, "Impossible d'activer cet utilisateur");
     }
+  })
+}
+
+exports.activateUser = function(req, res) {
+  User.findOne({email: req.body.email}).then((user) => {
+    if (!user.password && req.body.password) passwordService.setUserPassword(user, req.body.password);
+    req.body.password = user.password;
+    req.body.salt = user.salt;
+    var accoundId = req.body.activationAccountId;
+    delete req.body.activationAccountId;
+    User.update({_id: user._id}, req.body, function(err, raw) {
+      if(err) {
+        console.log(err);
+        errorHandler.error(res, 'Impossible de modifier cet utilisateur');
+      } else {
+        Account.deleteOne({_id: accoundId}, function(err) {
+          (err) ? res.json(err) : res.json(raw);
+        });
+      }
+    });
   })
 }
