@@ -13,7 +13,7 @@ exports.getAllComments = function(req, res){
       if (comments.length > 0) {
         res.json(comments);
       } else {
-        errorHandler.error(res, "Aucuns commentaires");
+        errorHandler.error(res, "Aucun commentaire");
       }
     },
     function(error){
@@ -65,7 +65,7 @@ exports.deleteComment = function(req, res) {
         if (err) {
           errorHandler.error(res, "Impossible de supprimer ce commentaire");
         } else {
-          res.json({success: true, message: "Commentaire supprimée"});
+          res.json({success: true, message: "Commentaire supprimé"});
         }
       })
       break;
@@ -74,7 +74,7 @@ exports.deleteComment = function(req, res) {
         if (err || query.deletedCount == 0) {
           errorHandler.error(res, "Impossible de supprimer ce commentaire");
         } else {
-          res.json({success: true, message: "Commentaire supprimée"});
+          res.json({success: true, message: "Commentaire supprimé"});
         }
       })
 

@@ -166,7 +166,7 @@ exports.createGrade = function(req, res) {
 
         newGrade.save(function(err){
           if (err) {
-            errorHandler.error(res, "L'évaluation n'a pas pu être créé");
+            errorHandler.error(res, "L'évaluation n'a pas pu être créée");
           } else {
             res.json({ success: true, message: 'Évaluation enregistrée'});
           }

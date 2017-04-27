@@ -67,7 +67,7 @@ exports.createPepite = function(req, res) {
             if (err) {
               res.json(res, 'Impossible de créer la pépite');
             } else {
-              res.json({success: true, message:'La pépite a été créé'});
+              res.json({success: true, message:'La pépite a été créée'});
             }
           });
         }
@@ -85,7 +85,7 @@ exports.deletePepite = function(req, res) {
       if (err) {
         errorHandler.error(res, "Impossible de supprimer cette pépite");
       } else {
-        res.json({success: true, message: "Pépite supprimé"});
+        res.json({success: true, message: "Pépite supprimée"});
       }
 
     })
