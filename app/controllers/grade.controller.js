@@ -41,13 +41,22 @@ exports.getAllGrades = function(req, res){
       queryBuilder.buildQueryFind(User,{find: {_pepite: user._pepite}})
         .then(
           function(users) {
-            queryBuilder.buildQueryFind(Grade, {
-              find: {},
-              populate: [
-                {field: '_user', filter:'-password -salt -type'},
-                {field: '_validator', filter:'-password -salt -type'}],
-              where: {_user: {$in: users}}
-            }).then(
+            var query;
+            if (!req.query.user) {
+              query = queryBuilder.buildQueryFind(Grade, {
+                find: {},
+                populate: [
+                  {field: '_user', filter:'-password -salt -type'},
+                  {field: '_validator', filter:'-password -salt -type'}],
+                where: {_user: {$in: users}}
+              });
+            } else {
+              query = queryBuilder.buildQueryFind(Grade, {
+                find: {},
+                where: {_user: req.query.user}
+              });
+            }
+            query.then(
               function(grades) {
                 responseGrades(grades, res);
               },
