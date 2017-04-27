@@ -20,6 +20,7 @@ var responseGrades = function(grades, res) {
 
 exports.getAllGrades = function(req, res){
   let user = authRequest.returnUser(req);
+  console.log('user type', user.type);
   switch (user.type) {
     case 'admin':
         queryBuilder.buildQueryFind(Grade,{
@@ -40,13 +41,22 @@ exports.getAllGrades = function(req, res){
       queryBuilder.buildQueryFind(User,{find: {_pepite: user._pepite}})
         .then(
           function(users) {
-            queryBuilder.buildQueryFind(Grade, {
-              find: {},
-              populate: [
-                {field: '_user', filter:'-password -salt -type'},
-                {field: '_validator', filter:'-password -salt -type'}],
-              where: {_user: {$in: users}}
-            }).then(
+            var query;
+            if (!req.query.user) {
+              query = queryBuilder.buildQueryFind(Grade, {
+                find: {},
+                populate: [
+                  {field: '_user', filter:'-password -salt -type'},
+                  {field: '_validator', filter:'-password -salt -type'}],
+                where: {_user: {$in: users}}
+              });
+            } else {
+              query = queryBuilder.buildQueryFind(Grade, {
+                find: {},
+                where: {_user: req.query.user}
+              });
+            }
+            query.then(
               function(grades) {
                 responseGrades(grades, res);
               },
@@ -61,13 +71,22 @@ exports.getAllGrades = function(req, res){
     queryBuilder.buildQueryFind(User,{find: {_validator: user._id}})
       .then(
         function(users) {
-          queryBuilder.buildQueryFind(Grade, {
-            find: {},
-            populate: [
-              {field: '_user', filter:'-password -salt -type'},
-              {field: '_validator', filter:'-password -salt -type'}],
-            where: {_user: {$in: users}}
-          }).then(
+          var query;
+          if (!req.query.user) {
+            query = queryBuilder.buildQueryFind(Grade, {
+              find: {},
+              populate: [
+                {field: '_user', filter:'-password -salt -type'},
+                {field: '_validator', filter:'-password -salt -type'}],
+              where: {_user: {$in: users}}
+            });
+          } else {
+            query = queryBuilder.buildQueryFind(Grade, {
+              find: {},
+              where: {_user: req.query.user}
+            });
+          }
+          query.then(
             function(grades) {
               responseGrades(grades, res);
             },
@@ -146,9 +165,17 @@ exports.createGrade = function(req, res) {
             date: new Date()
           }
         });
+        if (req.body.validator && req.body.validator_value) {
+          newGrade._validator = req.body.validator;
+          newGrade.validator_eval = {
+            value: req.body.validator_value,
+            date: new Date()
+          }
+        }
+
         newGrade.save(function(err){
           if (err) {
-            errorHandler.error(res, "L'évaluation n'a pas pu être créé");
+            errorHandler.error(res, "L'évaluation n'a pas pu être créée");
           } else {
             res.json({ success: true, message: 'Évaluation enregistrée'});
           }
@@ -159,8 +186,7 @@ exports.createGrade = function(req, res) {
 };
 
 exports.deleteGrade = function(req, res) {
-  var req = authRequest.concatRequestWithAuth(req, { _id: req.body.id });
-  Grade.deleteOne(req, function(err) {
+  Grade.deleteOne({ _id: req.params.id }, function(err) {
     if (err) {
       errorHandler.error(res, "Impossible de supprimer cette évaluation");
     } else {
@@ -288,16 +314,17 @@ exports.getPhaseGrade = function(req, res) {
 };
 
 exports.patchGrade = function(req, res) {
-  if (req.body['user_eval.value']) {
-    req.body['user_eval.date'] = new Date();
+  if (req.body.user_eval && req.body.user_eval.value) {
+    req.body.user_eval.date = new Date();
   }
-  if (req.body['validator_eval.value'] && req.body._validator) {
-    req.body['validator_eval.date'] = new Date();
+  if (req.body.validator_eval && req.body.validator_eval.value && req.body._validator) {
+    req.body.validator_eval.date = new Date();
+  } else if (req.body.validator_eval && req.body.validator_eval.value == 0) {
+    req.body.validator_eval.date = new Date();
   } else {
-    delete req.body['validator_eval.value'];
+    delete req.body['validator_eval'];
   }
-  var req = authRequest.concatRequestWithAuth(req, {_id: req.body.id});
-  Grade.update(req, req.body, function(err, raw) {
+  Grade.update({_id: req.body.id}, req.body, function(err, raw) {
     if (err) {
       errorHandler(res, "Impossible de mettre à jour cette évaluation");
     } else {

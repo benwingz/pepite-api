@@ -21,7 +21,7 @@
 			},
 			"response": [
 				{
-					"id": "4ae6e906-c35e-4a28-bba4-ae89cede1444",
+					"id": "512bd69c-d48a-4b5e-a4ff-92e23ea16e42",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api",
@@ -156,7 +156,7 @@
 			},
 			"response": [
 				{
-					"id": "62bc9b40-d548-4fa1-8f65-2e57fd8a982a",
+					"id": "e692ef76-b795-4d96-ac90-063e602a0497",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/authenticate/",
@@ -285,7 +285,7 @@
 			},
 			"response": [
 				{
-					"id": "a9cc8fea-351d-4741-bdea-bd5e30c13e0f",
+					"id": "54082ffa-60b9-4241-a460-e635e6e16bad",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -362,7 +362,7 @@
 					"body": "[{\"_id\":\"58ca9645304609075babf8e4\",\"lastname\":\"Blanc\",\"firstname\":\"Nicolas\",\"_comment\":\"virgin student for auto-eval scenario\"},{\"_id\":\"58caba32b0f0d870e464e589\",\"firstname\":\"Ben\",\"lastname\":\"Roullet\",\"__v\":0},{\"_id\":\"58cb9f4314d81a0919acb2b0\",\"firstname\":\"Romain\",\"lastname\":\"Tête\",\"__v\":0}]"
 				},
 				{
-					"id": "bee219b4-4316-4655-979d-132c052c5878",
+					"id": "00681186-9d09-45a2-ad82-c2f0037858b8",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/users/",
@@ -463,7 +463,7 @@
 			},
 			"response": [
 				{
-					"id": "2760eefb-f364-4776-8cfd-b1a57a68e26d",
+					"id": "182094c8-5912-4195-b21e-cf149d123ded",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/58dbc5c5277baf2574ea916d",
@@ -597,7 +597,7 @@
 			},
 			"response": [
 				{
-					"id": "c0f1a804-18f2-4d88-8718-54c83bd0579a",
+					"id": "9dfa642e-801c-4980-b707-6d1c057e0af3",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -726,7 +726,7 @@
 			},
 			"response": [
 				{
-					"id": "dd758155-693b-479a-817d-bb45d7652ba0",
+					"id": "086231e7-d7f5-4db9-b166-fccf2ffa5a75",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user",
@@ -873,7 +873,7 @@
 			},
 			"response": [
 				{
-					"id": "3b5ec3ac-d719-4d17-9f2c-b7acbedb5e4a",
+					"id": "603e763b-cfd9-44f4-9953-6fdc17c229ef",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/user/",
@@ -1009,7 +1009,7 @@
 			},
 			"response": [
 				{
-					"id": "c1167989-7332-44f8-b504-d17a3b003556",
+					"id": "950b64ec-8913-4301-a9d1-9e971d54d61d",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -1086,7 +1086,7 @@
 					"body": "[{\"_id\":\"58cbf51666828a4c94e5b48a\",\"title\":\"Avoir un comportement entrepreneurial\",\"__v\":0,\"categories\":[]}]"
 				},
 				{
-					"id": "e0603055-2ece-4385-956e-2deacca427a6",
+					"id": "9349e73c-cc33-4e68-949c-76fe819d23fd",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phases",
@@ -1175,7 +1175,7 @@
 			},
 			"response": [
 				{
-					"id": "6a62d376-2a42-44ba-9a2e-f0c1bdea26a1",
+					"id": "4c97ccbd-3665-4789-9d6c-dbd16ae128ec",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/phase/58cbf51666828a4c94e5b48a",
@@ -1263,7 +1263,7 @@
 			},
 			"response": [
 				{
-					"id": "5b7c13e3-d50a-45a3-91ff-dc19b155bc02",
+					"id": "39c9dadf-bf57-4d77-9f42-8f81bbc3ade9",
 					"name": "Default",
 					"originalRequest": {
 						"url": "localhost:8080/api/phase/58cbf51666828a4c94e5b48a/categories",
@@ -1361,7 +1361,7 @@
 			},
 			"response": [
 				{
-					"id": "91a6cc4a-702e-4e06-ad4b-8fcb1834e87f",
+					"id": "f40344e6-a5c0-4678-9409-7ce2fa1cd663",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grades",
@@ -1459,7 +1459,7 @@
 			},
 			"response": [
 				{
-					"id": "19b7274c-7bae-4bc2-87d4-9215dfb1c7a9",
+					"id": "52a77669-cc75-48f9-b281-1fb22561a163",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/user/58dbc5c5277baf2574ea916d/grades",
@@ -1568,7 +1568,7 @@
 			},
 			"response": [
 				{
-					"id": "a4472eac-780d-4b0a-93ee-baac003bf6f6",
+					"id": "aefd7ee1-e47f-4113-a464-908475fd2219",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d2861681c13b14abe4d326",
@@ -1696,7 +1696,7 @@
 			},
 			"response": [
 				{
-					"id": "ea679424-01fe-4c9a-b7a8-5ab6ad26e93d",
+					"id": "a5796dab-b047-457b-a0c0-09b2504a3133",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1800,9 +1800,9 @@
 			]
 		},
 		{
-			"name": "DELETE /grade",
+			"name": "DELETE /grade/:id",
 			"request": {
-				"url": "localhost:8080/api/grade",
+				"url": "localhost:8080/api/grade/58d2827f908bc013ff916fa7",
 				"method": "DELETE",
 				"header": [
 					{
@@ -1820,10 +1820,10 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "id",
-							"value": "58d2827f908bc013ff916fa7",
+							"key": "",
+							"value": "",
 							"type": "text",
-							"enabled": true
+							"enabled": false
 						}
 					]
 				},
@@ -1831,7 +1831,7 @@
 			},
 			"response": [
 				{
-					"id": "138a4291-5eea-41e6-8c1e-026b5c359e54",
+					"id": "2b1de5bd-f7b1-4632-bd7e-d4a6fc2e4ead",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade",
@@ -1972,7 +1972,7 @@
 			},
 			"response": [
 				{
-					"id": "2f084d3a-dff2-42c8-845e-e95074753788",
+					"id": "d107d12a-13c5-4d07-a05c-570db00f2209",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/grade",
@@ -2098,7 +2098,7 @@
 			},
 			"response": [
 				{
-					"id": "0a80eee2-ad9a-4d71-a1f8-6dbb02c1422e",
+					"id": "0ee2ad2f-c987-4372-a93a-0c970108770d",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/grades",
@@ -2193,7 +2193,7 @@
 			},
 			"response": [
 				{
-					"id": "37a46259-00a8-4dc3-a7ba-bd76d1f5ed69",
+					"id": "67060e98-b078-4715-bfda-28336a8b8d38",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/phase/58cbf51666828a4c94e5b48a/grades",
@@ -2295,7 +2295,7 @@
 			},
 			"response": [
 				{
-					"id": "e94d5630-b0a8-41e2-b5cf-c6051480afae",
+					"id": "0a276f7e-9b96-4716-b10f-1f1c0faf8a65",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comments",
@@ -2414,14 +2414,14 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "grade",
-							"value": "58d285ea81c13b14abe4d325",
+							"key": "category",
+							"value": "58cbef162cf6ff44cf7e52a4",
 							"type": "text",
 							"enabled": true
 						},
 						{
 							"key": "user",
-							"value": "58caba32b0f0d870e464e589",
+							"value": "58dbc51b277baf2574ea916c",
 							"type": "text",
 							"enabled": true
 						},
@@ -2437,7 +2437,7 @@
 			},
 			"response": [
 				{
-					"id": "4262ae65-b571-4b33-b1da-cf04725a09d9",
+					"id": "69431f61-b113-4151-bbd0-82241058cf60",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/comment",
@@ -2541,9 +2541,9 @@
 			]
 		},
 		{
-			"name": "GET /grade/:id/comments",
+			"name": "GET /category/:id/comments",
 			"request": {
-				"url": "localhost:8080/api/grade/58d285ea81c13b14abe4d325/comments",
+				"url": "localhost:8080/api/category/58cbef162cf6ff44cf7e52a4/comments",
 				"method": "GET",
 				"header": [
 					{
@@ -2552,15 +2552,12 @@
 						"description": ""
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"description": "API endpoint to get all comments on a specific grade"
 			},
 			"response": [
 				{
-					"id": "754761ca-9b93-4025-aa93-f99fab376597",
+					"id": "29d89e6d-06a8-4bc3-8b02-1586a5dc59d3",
 					"name": "default",
 					"originalRequest": {
 						"url": "localhost:8080/api/grade/58d285ea81c13b14abe4d325/comments",
@@ -2645,9 +2642,9 @@
 			]
 		},
 		{
-			"name": "DELETE /comment",
+			"name": "DELETE /comment/:id",
 			"request": {
-				"url": "http://localhost:8080/api/comment",
+				"url": "http://localhost:8080/api/comment/58d28eb9d7dd821b8490dc4c",
 				"method": "DELETE",
 				"header": [
 					{
@@ -2666,9 +2663,9 @@
 					"urlencoded": [
 						{
 							"key": "id",
-							"value": "58d28eb9d7dd821b8490dc4c",
+							"value": "",
 							"type": "text",
-							"enabled": true
+							"enabled": false
 						}
 					]
 				},
@@ -2676,7 +2673,7 @@
 			},
 			"response": [
 				{
-					"id": "53d4c229-063f-4d5f-a9e3-8474bb96904d",
+					"id": "d7ba8198-3ec6-482a-908b-dadffb5a5ece",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/comment",
@@ -2805,7 +2802,7 @@
 			},
 			"response": [
 				{
-					"id": "92c876fc-86d6-4a5d-902f-f10056a6e3b4",
+					"id": "58697642-b67f-4555-be30-ebbcd84d8d25",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/comment",
@@ -2919,7 +2916,7 @@
 			},
 			"response": [
 				{
-					"id": "a8a1ee8c-e625-4505-9781-0179069cc06f",
+					"id": "c62f4ebf-248e-4c83-961a-8cdec8f8a66c",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/pepites",
@@ -3056,7 +3053,7 @@
 			},
 			"response": [
 				{
-					"id": "185750af-6e57-4062-b665-ca89427b35f1",
+					"id": "ab4a5484-6a7c-4a29-b167-fbcd2049e950",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/pepite/",
@@ -3192,7 +3189,7 @@
 			},
 			"response": [
 				{
-					"id": "7857bf50-480d-4326-838b-783613f76646",
+					"id": "3c7b3f78-c12c-4dae-8ccb-065a63ce6194",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/pepite",
@@ -3328,7 +3325,7 @@
 			},
 			"response": [
 				{
-					"id": "f097bdb0-84f8-4980-9249-e007ed2985a1",
+					"id": "369a102b-b94a-4df2-8623-2d03617f58d3",
 					"name": "default",
 					"originalRequest": {
 						"url": "http://localhost:8080/api/pepite",

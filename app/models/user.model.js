@@ -8,10 +8,23 @@ module.exports = mongoose.model('User', new Schema({
   lastname: String,
   email: String,
   type: String,
+  _pepite: {
+    type: Schema.Types.ObjectId,
+    ref: 'Pepite'
+  },
   _validator: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
   password: String,
   salt: String,
+  gender: String,
+  birthdate: Date,
+  ine: String,
+  studyLevel: Number,
+  studyType: String,
+  address: String,
+  cp: Number,
+  town: String,
+  country: String
 }));

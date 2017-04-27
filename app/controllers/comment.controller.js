@@ -13,7 +13,7 @@ exports.getAllComments = function(req, res){
       if (comments.length > 0) {
         res.json(comments);
       } else {
-        errorHandler.error(res, "Aucuns commentaires");
+        errorHandler.error(res, "Aucun commentaire");
       }
     },
     function(error){
@@ -35,15 +35,17 @@ exports.findOneCommentById = function(req, res){
 };
 
 exports.createComment = function(req, res) {
-  if (!req.body.user || !req.body.category || !req.body.content) {
+  if (!req.body.user || !req.body.category || !req.body.content || !req.body.userlink) {
     errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'évaluation");
   } else {
     var newComment = new Comment({
+      userlink: req.body.userlink,
       _category: req.body.category,
       _user: req.body.user,
       content: req.body.content,
       date: new Date()
     });
+    console.log(newComment);
     newComment.save(function(err){
       if (err) {
         errorHandler.error(res, "Le commentaire n'a pas pû être ajouté");
@@ -63,7 +65,7 @@ exports.deleteComment = function(req, res) {
         if (err) {
           errorHandler.error(res, "Impossible de supprimer ce commentaire");
         } else {
-          res.json({success: true, message: "Commentaire supprimée"});
+          res.json({success: true, message: "Commentaire supprimé"});
         }
       })
       break;
@@ -72,7 +74,7 @@ exports.deleteComment = function(req, res) {
         if (err || query.deletedCount == 0) {
           errorHandler.error(res, "Impossible de supprimer ce commentaire");
         } else {
-          res.json({success: true, message: "Commentaire supprimée"});
+          res.json({success: true, message: "Commentaire supprimé"});
         }
       })
 
@@ -80,20 +82,31 @@ exports.deleteComment = function(req, res) {
 };
 
 exports.getCommentsCategory = function(req, res) {
+  var query;
   var user = authRequest.returnUser(req);
-  console.log('user:', user);
-  Comment.find({
-    _category: req.params.id,
-    $or: [ {_user: user._id}, {_user: user._validator} ]
-  })
-    .populate('_user', '-salt -password -type')
-    .exec(function(err, comments) {
+  if (req.query.user) {
+    query = Comment.find({
+      _category: req.params.id,
+      $or:[{_user: user._id},{_user: req.query.user}]
+    })
+    .where('userlink').equals(req.query.user);
+  } else {
+    query = Comment.find({
+      _category: req.params.id,
+      $or:[{_user: user._id},{_user: user._validator}]
+    })
+    .where('userlink').equals(user._id);
+  }
+  query.populate('_user', '-salt -password -type')
+  .sort('date')
+  .exec(function(err, comments) {
+    console.log('comments', comments)
     if (err) {
       errorHandler.error(res, "Impossible de récupérer les commentaires de cette évaluation");
     } else {
       res.json(comments);
     }
-  })
+  });
 }
 
 exports.patchComment = function(req, res) {

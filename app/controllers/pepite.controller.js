@@ -32,7 +32,7 @@ exports.getAllPepites = function(req, res) {
 
 exports.findOnePepite = function(req, res){
   var user = authRequest.returnUser(req);
-  if (['admin'].indexOf(user.type) > -1 && user._pepite == req.params.id) {
+  if (['admin', 'pepite-admin'].indexOf(user.type) > -1) {
     Pepite.findById(req.params.id)
       .populate('_admin', '-password -salt')
       .exec(function(err, pepite) {
@@ -67,7 +67,7 @@ exports.createPepite = function(req, res) {
             if (err) {
               res.json(res, 'Impossible de créer la pépite');
             } else {
-              res.json({success: true, message:'La pépite a été créé'});
+              res.json({success: true, message:'La pépite a été créée'});
             }
           });
         }
@@ -85,7 +85,7 @@ exports.deletePepite = function(req, res) {
       if (err) {
         errorHandler.error(res, "Impossible de supprimer cette pépite");
       } else {
-        res.json({success: true, message: "Pépite supprimé"});
+        res.json({success: true, message: "Pépite supprimée"});
       }
 
     })

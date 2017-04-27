@@ -138,11 +138,11 @@
 {"success":true,"message":"Évaluation enregistré"}
 ```
 
-* **DELETE /grade**
+* **DELETE /grade/:id**
   * Description: API endpoint to delete a specific grade
   * Parmeters requested:
 ```
--id:text (example: 58d2827f908bc013ff916fa7)```
+-:text (example: )```
   * Output exemple:
 ```
 {"success":true,"message":"Évaluation supprimé"}
@@ -192,9 +192,9 @@
   * Description: APi endpoint to add comment on a grade
   * Parmeters requested:
 ```
--grade:text (example: 58d285ea81c13b14abe4d325)```
+-category:text (example: 58cbef162cf6ff44cf7e52a4)```
 ```
--user:text (example: 58caba32b0f0d870e464e589)```
+-user:text (example: 58dbc51b277baf2574ea916c)```
 ```
 -content:text (example: Hey this is an  awesome comment)```
   * Output exemple:
@@ -202,18 +202,18 @@
 {"success":true,"message":"Commentaire ajouté"}
 ```
 
-* **GET /grade/:id/comments**
+* **GET /category/:id/comments**
   * Description: API endpoint to get all comments on a specific grade
   * Output exemple:
 ```
 [{"_id":"58d28dd25d3efc1b48e3d9ee","_grade":"58d285ea81c13b14abe4d325","_user":{"_id":"58dbc5c5277baf2574ea916d","firstname":"ben","lastname":"roullet","email":"ben.rou@skilvioo.com","password":"31eab866d9cad84ea20e7a66f009af939c8476d88a93d25fbdb44e3f08a433cf2cb91a40c1a10199c1f36a51e8da7f2d15cfeb2b82219a59088a9856965f7769","__v":0},"content":"J'ai un tatouage à plusieurs dimensions !!!","date":"2017-03-29T12:43:25.689Z","__v":0}]
 ```
 
-* **DELETE /comment**
+* **DELETE /comment/:id**
   * Description: API endpoint to delete comment
   * Parmeters requested:
 ```
--id:text (example: 58d28eb9d7dd821b8490dc4c)```
+-id:text (example: )```
   * Output exemple:
 ```
 {"success":true,"message":"Commentaire supprimée"}

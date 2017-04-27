@@ -4,11 +4,13 @@ var jwt = require('jsonwebtoken');
 
 var config = require('../../config');
 var User = require('../models/user.model');
+var Account = require('../models/account.model');
 
 var errorHandler = require('../service/error.service');
 var passwordService = require('../service/password.service');
 var authRequest = require('../service/authrequest.service');
 var queryBuilder = require('../service/queryBuilder.service');
+var mailer = require('../service/mailer.service');
 
 
 function generateToken(user) {
@@ -18,7 +20,8 @@ function generateToken(user) {
     firstname: user.firstname,
     lastname: user.lastname,
     type: user.type,
-    _validator: user._validator
+    _validator: user._validator,
+    _pepite: user._pepite
   }
   var newToken = jwt.sign(payload, config[process.env.ENV].secret, {
     expiresIn: 60*60*24*7 //expires in 7 days
@@ -27,14 +30,15 @@ function generateToken(user) {
   return newToken;
 }
 
-function doCreateUser(firstname, lastname, email, password, type) {
+function doCreateUser(userInfo) {
   var newUser = new User({
-    firstname: firstname,
-    lastname: lastname,
-    email: email,
-    type: (type) ? type : 'user'
+    email: userInfo.email,
+    type: (userInfo.type) ? userInfo.type : 'user',
+    firstname: (userInfo.firstname) ? userInfo.firstname: '',
+    lastname: (userInfo.lastname) ? userInfo.lastname: '',
+    _pepite: (userInfo._pepite) ? userInfo._pepite: null,
   });
-  passwordService.setUserPassword(newUser, password);
+  if (userInfo.password) passwordService.setUserPassword(newUser, userInfo.password);
   return newUser.save();
 }
 
@@ -62,19 +66,24 @@ exports.authenticate = function(req, res){
         if (passwordService.checkPassword(user, req.body.password)) {
           res.json({
             success: true,
-            message: 'Authentification réuissite',
+            message: 'Authentification réuissie',
             token: generateToken(user),
             user_id: user._id
           });
         } else {
-          res.status(401).send({error: 'Mot de passe erroné'});
+          res.status(401).send({error: 'Mot de passe invalide'});
         }
       } else {
         if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.type) {
-          errorHandler.error(res, "Il manque un paramètre");
+          errorHandler.error(res, "Ce compte n'existe pas");
         } else {
-          doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.type)
-            .then((user) => {
+          doCreateUser({
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            password: req.body.password,
+            type: req.body.type
+          }).then((user) => {
               if (user) {
                 res.json({
                   success: true,
@@ -96,7 +105,7 @@ var responseUsers = function(users, res) {
   if(users.length > 0) {
     res.json(users);
   } else {
-    errorHandler.error(res, 'Aucuns utilisateurs présent');
+    errorHandler.error(res, 'Aucun utilisateur présent');
   }
 }
 
@@ -117,22 +126,31 @@ exports.getAllUser = function(req, res){
         );
       break;
     case 'pepite-admin':
-      queryBuilder.buildQueryFind(User,{
-        find: {_validator: user._id},
-        select: '-password -salt -type'})
-        .then(
-          function(users) {
-            responseUsers(users, res);
-          },
-          function(error) {
-            errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
-          }
-        );
+      var query;
+      if (req.query.user) {
+        query = queryBuilder.buildQueryFind(User,{
+          find: {_validator: req.query.user},
+          select: '-password -salt -type'})
+      } else {
+        query = queryBuilder.buildQueryFind(User,{
+          find: {_pepite: user._pepite},
+          populate: [{field: '_validator', filter:'-password -salt -type'}],
+          select: '-password -salt',
+          sort: '-type'})
+      }
+      query.then(
+        function(users) {
+          responseUsers(users, res);
+        },
+        function(error) {
+          errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
+        }
+      );
       break;
     case 'validator':
       queryBuilder.buildQueryFind(User,{
         find: {_validator: user._id},
-        select: '-password -salt -type'})
+        select: '-password -salt'})
         .then(
           function(users) {
             responseUsers(users, res);
@@ -161,15 +179,28 @@ exports.findUserById = function(req, res){
 exports.createUser = function(req, res) {
   var user = authRequest.returnUser(req);
   if (['admin', 'pepite-admin'].indexOf(user.type) != -1) {
-    if(!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.type) {
+    if(!req.body.email || !req.body.type) {
       errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'utilisateur");
-    } else {
+    } else if(!req.body.firstname) {
       User.findOne({email: req.body.email}, function(err, user){
         if (user) {
           errorHandler.error(res, 'Un utilisateur similaire existe déjà');
         } else {
-          doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
-            .then((user) => {
+          doCreateUser({
+            email: req.body.email,
+            type: req.body.type,
+            _pepite: req.body.pepite
+          }).then((user) => {
+              if (user.firstname == '') {
+                var newAccountToken = new Account({
+                  _user: user._id
+                });
+                newAccountToken.save(function(err, token) {
+                  if(!err) {
+                    mailer.mailtoActivate(user, 'Activez votre compte pépite', token._id);
+                  }
+                });
+              }
               if (user) {
                 res.json({ success: true, message: 'Utilisateur enregistré'});
               } else {
@@ -178,9 +209,24 @@ exports.createUser = function(req, res) {
             });
         }
       });
+    } else {
+      doCreateUser({
+        email:req.body.email,
+        type: req.body.type,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        _pepite: req.body._pepite,
+        password: req.body.password
+      }).then((user) => {
+        if (user) {
+          res.json({ success: true, message: 'Utilisateur enregistré'});
+        } else {
+          errorHandler.error(res, "L'utilisateur n'a pas pu être créé");
+        }
+      })
     }
   } else {
-    errorHandler.error(res, 'Impossible de modifier cet utilisateur');
+    errorHandler.error(res, 'Impossible de créer cet utilisateur');
   }
 };
 
@@ -218,3 +264,34 @@ exports.patchUser = function(req, res) {
     errorHandler.error(res, 'Impossible de modifier cet utilisateur');
   }
 };
+
+exports.getUserToActivate = function(req, res) {
+  Account.findById(req.params.id).populate('_user').then((account) => {
+    console.log(account);
+    if (account) {
+      res.json(account._user);
+    } else {
+      errorHandler.error(res, "Impossible d'activer cet utilisateur");
+    }
+  })
+}
+
+exports.activateUser = function(req, res) {
+  User.findOne({email: req.body.email}).then((user) => {
+    if (!user.password && req.body.password) passwordService.setUserPassword(user, req.body.password);
+    req.body.password = user.password;
+    req.body.salt = user.salt;
+    var accoundId = req.body.activationAccountId;
+    delete req.body.activationAccountId;
+    User.update({_id: user._id}, req.body, function(err, raw) {
+      if(err) {
+        console.log(err);
+        errorHandler.error(res, 'Impossible de modifier cet utilisateur');
+      } else {
+        Account.deleteOne({_id: accoundId}, function(err) {
+          (err) ? res.json(err) : res.json(raw);
+        });
+      }
+    });
+  })
+}
