@@ -4,11 +4,13 @@ var jwt = require('jsonwebtoken');
 
 var config = require('../../config');
 var User = require('../models/user.model');
+var Account = require('../models/account.model');
 
 var errorHandler = require('../service/error.service');
 var passwordService = require('../service/password.service');
 var authRequest = require('../service/authrequest.service');
 var queryBuilder = require('../service/queryBuilder.service');
+var mailer = require('../service/mailer.service');
 
 
 function generateToken(user) {
@@ -28,14 +30,14 @@ function generateToken(user) {
   return newToken;
 }
 
-function doCreateUser(firstname, lastname, email, password, type) {
+function doCreateUser(userInfo) {
   var newUser = new User({
-    firstname: firstname,
-    lastname: lastname,
-    email: email,
-    type: (type) ? type : 'user'
+    email: userInfo.email,
+    type: (userInfo.type) ? userInfo.type : 'user',
+    firstname: (userInfo.firstname) ? userInfo.firstname: '',
+    lastname: (userInfo.lastname) ? userInfo.lastname: ''
   });
-  passwordService.setUserPassword(newUser, password);
+  if (userInfo.password) passwordService.setUserPassword(newUser, userInfo.password);
   return newUser.save();
 }
 
@@ -74,8 +76,13 @@ exports.authenticate = function(req, res){
         if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.type) {
           errorHandler.error(res, "Ce compte n'existe pas");
         } else {
-          doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.type)
-            .then((user) => {
+          doCreateUser({
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            password: req.body.password,
+            type: req.body.type
+          }).then((user) => {
               if (user) {
                 res.json({
                   success: true,
@@ -170,15 +177,29 @@ exports.findUserById = function(req, res){
 exports.createUser = function(req, res) {
   var user = authRequest.returnUser(req);
   if (['admin', 'pepite-admin'].indexOf(user.type) != -1) {
-    if(!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.type) {
+    if(!req.body.email || !req.body.type) {
       errorHandler.error(res, "Il manque un paramètre pour compléter la creation de l'utilisateur");
-    } else {
+    } else if(!req.body.firstname) {
       User.findOne({email: req.body.email}, function(err, user){
         if (user) {
           errorHandler.error(res, 'Un utilisateur similaire existe déjà');
         } else {
-          doCreateUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
-            .then((user) => {
+          doCreateUser({
+            email: req.body.email,
+            type: req.body.type
+          }).then((user) => {
+              if (user.firstname == '') {
+                console.log('user to record');
+                var newAccountToken = new Account({
+                  _user: user._id
+                });
+                console.log('new token', newAccountToken);
+                newAccountToken.save(function(err, token) {
+                  if(!err) {
+                    mailer.mailtoActivate(user, 'Activé votre compte pépité', token._id);
+                  }
+                });
+              }
               if (user) {
                 res.json({ success: true, message: 'Utilisateur enregistré'});
               } else {
@@ -187,9 +208,11 @@ exports.createUser = function(req, res) {
             });
         }
       });
+    } else {
+      console.log('patch existing user');
     }
   } else {
-    errorHandler.error(res, 'Impossible de modifier cet utilisateur');
+    errorHandler.error(res, 'Impossible de créer cet utilisateur');
   }
 };
 
