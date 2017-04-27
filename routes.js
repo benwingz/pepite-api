@@ -10,6 +10,7 @@ module.exports = function(app) {
   var gradeController = require('./app/controllers/grade.controller');
   var commentController = require('./app/controllers/comment.controller');
   var pepiteController = require('./app/controllers/pepite.controller');
+  var exportController = require('./app/controllers/export.controller.js');
 
   var User = require('./app/models/user.model');
 
@@ -113,6 +114,16 @@ module.exports = function(app) {
   apiRoutes.get('/category/:id/comments', commentController.getCommentsCategory)
   apiRoutes.patch('/comment', commentController.patchComment);
   //apiRoutes.post('/user', user.createUser);
+
+  // Export routes
+  apiRoutes.get('/export/full/:id', exportController.getExportFull);    
+  apiRoutes.get('/export/full', exportController.getExportFull);  
+
+  apiRoutes.get('/export/self-evaluated/:id', exportController.getExportEvaluated);
+  apiRoutes.get('/export/self-evaluated', exportController.getExportEvaluated);
+  
+  apiRoutes.get('/export/validated/:id', exportController.getExportValidated);
+  apiRoutes.get('/export/validated', exportController.getExportValidated);  
 
   app.use('/api', apiRoutes);
 }
