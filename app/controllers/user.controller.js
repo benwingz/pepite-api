@@ -250,3 +250,13 @@ exports.patchUser = function(req, res) {
     errorHandler.error(res, 'Impossible de modifier cet utilisateur');
   }
 };
+
+exports.getUserToActivate = function(req, res) {
+  Account.findById(req.params.id).populate('_user').then((account) => {
+    if (account._user._id) {
+      res.json(account._user);
+    } else {
+      errorHandler.error(res, "Impossible d'activer cet utilisateur");
+    }
+  })
+}
