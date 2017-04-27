@@ -134,6 +134,7 @@ exports.getAllUser = function(req, res){
       } else {
         query = queryBuilder.buildQueryFind(User,{
           find: {_pepite: user._pepite},
+          populate: [{field: '_validator', filter:'-password -salt -type'}],
           select: '-password -salt',
           sort: '-type'})
       }
@@ -149,7 +150,7 @@ exports.getAllUser = function(req, res){
     case 'validator':
       queryBuilder.buildQueryFind(User,{
         find: {_validator: user._id},
-        select: '-password -salt -type'})
+        select: '-password -salt'})
         .then(
           function(users) {
             responseUsers(users, res);
