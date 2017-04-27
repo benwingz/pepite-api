@@ -4,7 +4,8 @@
   "description": "Pepite project api",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha ./test/test.js --reporter spec"
+    "test": "./node_modules/.bin/mocha ./test/test.js --reporter spec",
+    "start": "./node_modules/nodemon/bin/nodemon.js server.js"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,8 @@
     "morgan": "^1.8.1",
     "nodemailer": "^4.0.1",
     "should": "^11.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

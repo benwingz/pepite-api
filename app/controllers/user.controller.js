@@ -66,7 +66,7 @@ exports.authenticate = function(req, res){
         if (passwordService.checkPassword(user, req.body.password)) {
           res.json({
             success: true,
-            message: 'Authentification réuissite',
+            message: 'Authentification réuissie',
             token: generateToken(user),
             user_id: user._id
           });
@@ -105,7 +105,7 @@ var responseUsers = function(users, res) {
   if(users.length > 0) {
     res.json(users);
   } else {
-    errorHandler.error(res, 'Aucuns utilisateurs présent');
+    errorHandler.error(res, 'Aucun utilisateur présent');
   }
 }
 
@@ -196,7 +196,7 @@ exports.createUser = function(req, res) {
                 });
                 newAccountToken.save(function(err, token) {
                   if(!err) {
-                    mailer.mailtoActivate(user, 'Activé votre compte pépité', token._id);
+                    mailer.mailtoActivate(user, 'Activez votre compte pépite', token._id);
                   }
                 });
               }
