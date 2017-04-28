@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
 
-// var PDFDocument = require('pdfkit');
+var PDFDocument = require('pdfkit');
 
 var Phase = require('../models/phase.model');
 var Category = require('../models/category.model');
@@ -27,70 +27,111 @@ function getExportedUser(req) {
     return Promise.resolve(user);
 }
 
-function structureByPhase(categories) {
-    var phases = [];
-
-    categories.forEach(function(category) {
-        var phaseOrder = category.phase.order;
-        if (!phases[phaseOrder]) {
-            phases[phaseOrder] = {
-                title: category._phase.title,
-                categories: []
-            }
-
-            phases[phaseOrder].categories.push(category);
+function exportPDF(res, user, phases) {
+    var pdf = new PDFDocument({
+        margins: {
+            top: 40,
+            bottom: 40,
+            left: 35,
+            right: 35
         }
     });
 
-    return phases;
+
+    pdf
+        .fontSize(28)
+        .text('Profile Pépite Skilvioo', {align: 'center'})
+        .moveDown(0)
+
+        .fontSize(20)
+        .text(`${user.firstname} ${user.lastname}`, { align: 'center'})
+        .moveDown(3);
+    
+    phases.forEach( printPhase.bind(pdf) );
+
+    res.set({
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': 'inline; filename="profile_pepite.pdf"'
+    });
+
+    pdf.pipe(res);
+    pdf.end();
 }
 
-// function exportPDF(stream, user, categories) {
-//     var pdf = new PDFDocument({
-//         Title: 'Compétences Pépite - ${user.firstname} ${user.lastname}',
-//         Author: 'Skilvioo - Pépite'
-//     });
+/**
+ * this = pdf document
+ * @param {*} phase 
+ */
+function printPhase(phase, phaseIndex) {
+    if(phaseIndex != 0) {
+        this.addPage({margins: {
+            top: 90,
+            bottom: 40,
+            left: 35,
+            right: 35
+        }});
+    }
 
-//     pdf.pipe(stream);
+    this
+      .fontSize(18)
+      .fillColor('#15a1c5')
+      .text(phase.title, { align: 'left' })
+      .moveDown(1);
 
-//     var phases = structureByPhase(categories);
+    phase.categories.forEach( printCategory.bind(this) );
+}
+
+/**
+ * this = pdf document
+ * @param {*} category 
+ */
+function printCategory( category, index ) {
+
+    this
+        .fontSize(16)
+        .fillColor('black')
+        .text(category.title)
+        .moveDown(0.15)
+        drawLine.call(this)
+        .moveDown(0.35)
+    // @TODO print category stars
+
+    category.skills.forEach( printSkill.bind(this, category.skills.length-1))
+}
+
+function printSkill(lastIndex, skill, index) {
+    this
+        .fontSize(12)
+        .fillColor('black')
+        .text('- '+skill);
+
+    if (lastIndex == index) {
+        this.moveDown(2);
+    } else {
+        this.moveDown(0.15)
+        drawLine.call(this)
+        .moveDown(0.35);
+    }
+
+}
+
+function drawLine() {
+    this
+        .moveTo(35,this.y)
+        .strokeColor('#cccccc')
+        .lineTo(577, this.y)
+
+        .lineWidth(1)
+        .stroke();
     
-//     // @TODO Print title
-
-//     phases.forEach( exportPhase.bind(pdf) );
-
-//     pdf.end();
-
-//     return file;
-// }
-
-// /**
-//  * this = pdf document
-//  * @param {*} phase 
-//  */
-// function exportPhase(phase) {
-//     // a phase : { title: string, categories: [category] }
-
-//     this.addPage();
-//     // @TODO write title to doc
-//     phase.categories.forEach( exportCategory.bind(this) )
-// }
-
-// /**
-//  * this = pdf document
-//  * @param {*} category 
-//  */
-// function exportCategory(category) {
-
-//     // @TODO print category title
-//     // @TODO print category stars
-//     // @TODO print details (skills)
-
-// }
+    return this;
+}
 
 function getUserGrades(user, evaluatedBy) {
     var userGrades = Grade
-        .find({ _user: user._id }, '_user _category');
+        .find({ _user: user._id }, '_user _category')
+        .sort({ order: 1 })
+    ;   
 
     switch(evaluatedBy) {
         case 'anyone': 
@@ -110,15 +151,15 @@ function getUserGrades(user, evaluatedBy) {
 function getPhases() {
     return Phase.find({}, 'title _id').sort({ order: 1 }).then(function(phases) {
         
-        // resolve with an array of phases, containings its categories
+        // resolve with an array of phases, populated with its categories
         return Promise.all(phases.map(function(phase) {
 
-            // select phase's categories and add them to the phase intance
+            // select phase's categories to populate the phase intance
             return Category
                 .find( { _phase: phase._id} )
                 .select('title skills _id')
                 .then(function(categories) {
-                    // create new objects as promise returned values are immutable
+                    // rebuild a phase object as promise returned values are immutable
                     return {
                         title: phase.title,
                         categories: categories.map(function(category) {
@@ -189,18 +230,14 @@ function fetchExportDataForUser(user, evaluatedBy) {
     
 }
 
-function filterUnevaluatedCategories(categories, by) {
-    by = by || 'self'; // 'self' || 'others'
-
-    return categories;
-}
-
 function getExport(evaluatedBy, req, res) {
     var user = getExportedUser(req);
 
     user.then(function(user) {
         fetchExportDataForUser(user, evaluatedBy).then(function(data){
-            res.json(data);
+
+            exportPDF(res, user, data); // will send the response
+
         });
     }, function() {
         errorHandler.error(res, "Une erreur s'est produite, impossible de générer le PDF");
@@ -209,4 +246,4 @@ function getExport(evaluatedBy, req, res) {
 
 exports.getExportFull = getExport.bind({}, 'anyone');
 exports.getExportEvaluated = getExport.bind({}, 'self');
-exports.getExportValidated = getExport.bind({}, 'validated');
+exports.getExportValidated = getExport.bind({}, 'validator');

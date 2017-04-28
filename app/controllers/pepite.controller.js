@@ -81,7 +81,7 @@ exports.createPepite = function(req, res) {
 exports.deletePepite = function(req, res) {
   var user = authRequest.returnUser(req);
   if (['admin'].indexOf(user.type) > -1) {
-    Pepite.deleteOne({ _id: req.body.id }, function(err) {
+    Pepite.deleteOne({ _id: req.params.id }, function(err) {
       if (err) {
         errorHandler.error(res, "Impossible de supprimer cette pépite");
       } else {
