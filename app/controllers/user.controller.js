@@ -115,7 +115,8 @@ exports.getAllUser = function(req, res){
     case 'admin':
       queryBuilder.buildQueryFind(User,
         {find: {},
-        select: '-password -salt'})
+        select: '-password -salt',
+        sort: 'type'})
         .then(
           function(users) {
             responseUsers(users, res);
