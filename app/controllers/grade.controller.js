@@ -23,19 +23,29 @@ exports.getAllGrades = function(req, res){
   console.log('user type', user.type);
   switch (user.type) {
     case 'admin':
-        queryBuilder.buildQueryFind(Grade,{
+      var query;
+      if (!req.query.user) {
+        query = queryBuilder.buildQueryFind(Grade, {
           find: {},
           populate: [
             {field: '_user', filter:'-password -salt -type'},
-            {field: '_validator', filter:'-password -salt -type'}]
-        }).then(
-          function(grades) {
-            responseGrades(grades, res);
-          },
-          function(error) {
-            errorHandler.error(res, "Impossible de récupérer les évaluations");
-          }
-        );
+            {field: '_validator', filter:'-password -salt -type'}],
+          where: {_user: {$in: users}}
+        });
+      } else {
+        query = queryBuilder.buildQueryFind(Grade, {
+          find: {},
+          where: {_user: req.query.user}
+        });
+      }
+      query.then(
+        function(grades) {
+          responseGrades(grades, res);
+        },
+        function(error) {
+          errorHandler.error(res, "Impossible de récupérer les évaluations");
+        }
+      );
       break;
     case 'pepite-admin':
       queryBuilder.buildQueryFind(User,{find: {_pepite: user._pepite}})
@@ -257,6 +267,7 @@ exports.getCategoryGrade = function(req, res) {
   }
 };
 
+
 exports.getPhaseGrade = function(req, res) {
   var user = authRequest.returnUser(req);
   queryBuilder.buildQueryFind(Category, {
@@ -272,7 +283,8 @@ exports.getPhaseGrade = function(req, res) {
                 find: {_category: category.id},
                 populate: [
                   {field: '_user', filter:'-password -salt -type'},
-                  {field: '_validator', filter:'-password -salt -type'}]
+                  {field: '_validator', filter:'-password -salt -type'}],
+                where: {_user: req.query.user}
               }));
               break;
             case 'pepite-admin':
