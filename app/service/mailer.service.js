@@ -18,7 +18,7 @@ exports.mailtoActivate = function(user, subject, token) {
 
   mailOptions.to = user.email, // list of receivers
   mailOptions.subject = subject, // Subject line
-  mailOptions.html = 'Voici le lien pour activer votre compte : <a href="http://localhost:4200/activate/' + token + '">Cliquez ici</a>' // html body
+  mailOptions.html = 'Voici le lien pour activer votre compte : <a href="http://pepite.sandbox.skilvioo.com/activate/' + token + '">Cliquez ici</a>' // html body
 
   // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
