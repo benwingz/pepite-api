@@ -84,16 +84,9 @@ exports.getCommentsCategory = function(req, res) {
   var query;
   var user = authRequest.returnUser(req);
   if (req.query.user) {
-    if(user.type == 'admin') {
-      query = Comment.find({
-        _category: req.params.id
-      })
-    } else {
-      query = Comment.find({
-        _category: req.params.id,
-        $or:[{_user: user._id},{_user: req.query.user}]
-      })
-    }
+    query = Comment.find({
+      _category: req.params.id
+    })
     query.where('userlink').equals(req.query.user);
   } else {
     query = Comment.find({

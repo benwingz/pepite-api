@@ -218,20 +218,6 @@ exports.getCategoryGrade = function(req, res) {
   let user = authRequest.returnUser(req);
   switch (user.type) {
     case 'admin':
-      queryBuilder.buildQueryFind(Grade,{
-        find: {_category: req.params.id},
-        populate: [
-          {field: '_user', filter:'-password -salt -type'},
-          {field: '_validator', filter:'-password -salt -type'}]
-      }).then(
-        function(grades) {
-          responseGrades(grades, res);
-        },
-        function(error) {
-          errorHandler.error(res, 'Aucune note pour cette catégorie');
-        }
-      );
-      break;
     case 'pepite-admin':
     case 'validator':
       queryBuilder.buildQueryFind(Grade,{
@@ -301,8 +287,8 @@ exports.getPhaseGrade = function(req, res) {
               phaseGradePromises.push(queryBuilder.buildQueryFind(Grade,{
                 find: {_category: category.id},
                 populate: [
-                  {field: '_user', filter:'-password'},
-                  {field: '_validator', filter:'-password'}],
+                  {field: '_user', filter:'-password -salt -type'},
+                  {field: '_validator', filter:'-password -salt -type'}],
                 where: {_user: user._id}
               }));
           }
