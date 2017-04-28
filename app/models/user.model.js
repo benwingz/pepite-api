@@ -18,4 +18,13 @@ module.exports = mongoose.model('User', new Schema({
   },
   password: String,
   salt: String,
+  gender: String,
+  birthdate: Date,
+  ine: String,
+  studyLevel: Number,
+  studyType: String,
+  address: String,
+  cp: Number,
+  town: String,
+  country: String
 }));
