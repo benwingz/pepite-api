@@ -268,7 +268,6 @@ exports.patchUser = function(req, res) {
 
 exports.getUserToActivate = function(req, res) {
   Account.findById(req.params.id).populate('_user').then((account) => {
-    console.log(account);
     if (account) {
       res.json(account._user);
     } else {
