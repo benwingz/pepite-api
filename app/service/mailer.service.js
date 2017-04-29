@@ -14,15 +14,13 @@ var mailOptions = {
     from: '"Pepite" <noreply@pepite.com>', // sender address
 };
 
+var mailContent = 'Voici le lien pour activer votre compte : <a href=""' + (process.env.ENV == 'DEV') ? 'http://localhost:4200': 'http://pepite.sandbox.skilvioo.com' + '/activate/' + token + '">Cliquez ici</a>';
+
 exports.mailtoActivate = function(user, subject, token) {
 
   mailOptions.to = user.email, // list of receivers
   mailOptions.subject = subject, // Subject line
-  if (process.env.ENV == 'DEV') {
-    mailOptions.html = 'Voici le lien pour activer votre compte : <a href="http://localhost:4200/activate/' + token + '">Cliquez ici</a>' // html body
-  } else {
-    mailOptions.html = 'Voici le lien pour activer votre compte : <a href="http://pepite.sandbox.skilvioo.com/activate/' + token + '">Cliquez ici</a>' // html body
-  }
+  mailOptions.html =  mailContent// html body
 
   // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
