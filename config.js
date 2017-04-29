@@ -7,7 +7,7 @@ module.exports = {
   'TEST': {
     'secret': 'jwtsecretdtest',
     'database': "localhost:27017/test"
-  }
+  },
   'PROD': {
       'secret': 'jwtsecretdev',
       'database': "localhost:27017/local"
