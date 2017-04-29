@@ -14,7 +14,7 @@ var mailOptions = {
     from: '"Pepite" <noreply@pepite.com>', // sender address
 };
 
-var mailContent = 'Voici le lien pour activer votre compte : <a href=""' + (process.env.ENV == 'DEV') ? 'http://localhost:4200': 'http://pepite.sandbox.skilvioo.com' + '/activate/' + token + '">Cliquez ici</a>';
+var mailContent = 'Voici le lien pour activer votre compte : <a href=""' + (process.env.ENV == 'DEV') ? 'http://localhost:4200': 'http://pepite.skilvioo.com' + '/activate/' + token + '">Cliquez ici</a>';
 
 exports.mailtoActivate = function(user, subject, token) {
 
