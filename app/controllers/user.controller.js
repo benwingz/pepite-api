@@ -234,7 +234,7 @@ exports.createUser = function(req, res) {
 exports.deleteUser = function(req, res) {
   var user = authRequest.returnUser(req);
   if (['admin', 'pepite-admin'].indexOf(user.type) != -1) {
-    User.deleteOne({ _id: req.body.id }, function(err) {
+    User.deleteOne({ _id: req.params.id }, function(err) {
       if (err) {
         errorHandler.error(res, "Impossible de supprimer cet utilisateur");
       } else {
