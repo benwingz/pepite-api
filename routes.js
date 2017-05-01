@@ -86,7 +86,7 @@ module.exports = function(app) {
   apiRoutes.get('/users', userController.getAllUser);
   apiRoutes.get('/user/:id', userController.findUserById);
   apiRoutes.post('/user', userController.createUser);
-  apiRoutes.delete('/user', userController.deleteUser);
+  apiRoutes.delete('/user/:id', userController.deleteUser);
   apiRoutes.patch('/user', userController.patchUser);
 
   //Pepite routes
