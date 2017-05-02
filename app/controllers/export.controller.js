@@ -37,10 +37,17 @@ function exportPDF(res, user, phases) {
         }
     });
 
+    var starEmpty = '\uE83A';
+    var starFull = '\uE838';
 
+    pdf.registerFont('Roboto', 'resources/fonts/roboto/Roboto-Regular.ttf');
+    pdf.registerFont('Roboto-Italic', 'resources/fonts/roboto/Roboto-Italic.ttf');
+    pdf.registerFont('Material-Design', 'resources/fonts/material-design/MaterialIcons-Regular.ttf')
+    
     pdf
         .fontSize(28)
-        .text('Profile Pépite Skilvioo', {align: 'center'})
+        .font('Roboto')
+        .text('Profile Pépite Skilvioo ', {align: 'center'})
         .moveDown(0)
 
         .fontSize(20)
@@ -74,6 +81,7 @@ function printPhase(phase, phaseIndex) {
 
     this
       .fontSize(18)
+      .font('Roboto')
       .fillColor('#15a1c5')
       .text(phase.title, { align: 'left' })
       .moveDown(1);
@@ -86,32 +94,89 @@ function printPhase(phase, phaseIndex) {
  * @param {*} category 
  */
 function printCategory( category, index ) {
+    console.log(this.y);
+
+    if (this.y > 700) {
+        console.log('passe');
+        this.addPage();
+    }
 
     this
         .fontSize(16)
+        .font('Roboto-Italic')
         .fillColor('black')
-        .text(category.title)
+        .text(category.title, { width: 400, align: 'left'});
+
+    printEvaluation.call(this, category.user_eval, category.validator_eval);
+
+    this
         .moveDown(0.15)
         drawLine.call(this)
         .moveDown(0.35)
+
     // @TODO print category stars
 
     category.skills.forEach( printSkill.bind(this, category.skills.length-1))
 }
 
 function printSkill(lastIndex, skill, index) {
+
     this
         .fontSize(12)
+        .font('Roboto')
         .fillColor('black')
-        .text('- '+skill);
+        .text('- '+skill, this.page.margins.left, this.y);
 
     if (lastIndex == index) {
         this.moveDown(2);
     } else {
-        this.moveDown(0.15)
+        this.moveDown(0.30)
         drawLine.call(this)
-        .moveDown(0.35);
+        .moveDown(0.50);
     }
+}
+
+function printEvaluation(autoEval, eval) {
+    var grade = 0;
+    var isValidated = false;
+    
+    var starEmpty = '\uE83A';
+    var starFull = '\uE838';
+    var check = '\uE5CA';
+
+    if (eval) {
+        grade = eval.value;
+        isValidated = true;
+    } else if(autoEval) {
+        grade = autoEval.value;
+    } else {
+        grade = 0;
+    }
+
+    var stars = [];
+
+     this
+        .moveUp()
+        .font('Material-Design');
+
+    if (isValidated && grade > 0) {
+        this
+            .fillColor('green')
+            .text(check, 470, this.y, {continued: true})
+    }
+
+    for (var i = 1 ; i <= 5 ; i++) {
+        if (i <= grade) {
+            stars.push(starFull)
+        } else {
+            stars.push(starEmpty);
+        }
+    }
+
+    this
+        .fillColor('gray')
+        .text(stars.join(""), { align: 'right' })
+        .moveDown();
 
 }
 
@@ -138,10 +203,16 @@ function getUserGrades(user, evaluatedBy) {
             userGrades.select('user_eval validator_eval');
             break;
         case 'self':
-            userGrades.where('user_eval').ne(null).select('user_eval');
+            userGrades
+                .where('user_eval').ne(null)
+                .gt('user_eval.value', 0)
+                .select('user_eval');
             break;
         case 'validator':
-            userGrades.where('validator_eval').ne(null).select('validator_eval');
+            userGrades
+                .where('validator_eval').ne(null)
+                .gt('validator_eval.value', 0)
+                .select('validator_eval');
             break;
     }
 
