@@ -26,5 +26,10 @@ module.exports = mongoose.model('User', new Schema({
   address: String,
   cp: Number,
   town: String,
-  country: String
+  country: String,
+  phone: Number,
+  school: String,
+  schoolType: String,
+  project: String,
+  certified: Boolean
 }));

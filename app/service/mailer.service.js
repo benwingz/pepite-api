@@ -18,7 +18,7 @@ exports.mailtoActivate = function(user, subject, token) {
 
   mailOptions.to = user.email, // list of receivers
   mailOptions.subject = subject, // Subject line
-  mailOptions.html = 'Voici le lien pour activer votre compte : <a href="http://localhost:4200/activate/' + token + '">Cliquez ici</a>' // html body
+  mailOptions.html =  generateContent(token)// html body
 
   // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
@@ -27,4 +27,10 @@ exports.mailtoActivate = function(user, subject, token) {
       }
       console.log('Message %s sent: %s', info.messageId, info.response);
   });
+}
+
+function generateContent(token) {
+  var url = ((process.env.ENV == 'DEV') ? 'http://localhost:4200': 'http://pepite.skilvioo.com') + '/activate/' + token;
+  var mailContent = 'Voici le lien pour activer votre compte : <a href="' + url + '">Cliquez ici</a>';
+  return mailContent;
 }

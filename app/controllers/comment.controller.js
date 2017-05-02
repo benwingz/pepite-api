@@ -45,7 +45,6 @@ exports.createComment = function(req, res) {
       content: req.body.content,
       date: new Date()
     });
-    console.log(newComment);
     newComment.save(function(err){
       if (err) {
         errorHandler.error(res, "Le commentaire n'a pas pû être ajouté");
@@ -86,10 +85,9 @@ exports.getCommentsCategory = function(req, res) {
   var user = authRequest.returnUser(req);
   if (req.query.user) {
     query = Comment.find({
-      _category: req.params.id,
-      $or:[{_user: user._id},{_user: req.query.user}]
+      _category: req.params.id
     })
-    .where('userlink').equals(req.query.user);
+    query.where('userlink').equals(req.query.user);
   } else {
     query = Comment.find({
       _category: req.params.id,
@@ -100,7 +98,6 @@ exports.getCommentsCategory = function(req, res) {
   query.populate('_user', '-salt -password -type')
   .sort('date')
   .exec(function(err, comments) {
-    console.log('comments', comments)
     if (err) {
       errorHandler.error(res, "Impossible de récupérer les commentaires de cette évaluation");
     } else {

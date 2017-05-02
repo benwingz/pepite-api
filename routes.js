@@ -86,14 +86,14 @@ module.exports = function(app) {
   apiRoutes.get('/users', userController.getAllUser);
   apiRoutes.get('/user/:id', userController.findUserById);
   apiRoutes.post('/user', userController.createUser);
-  apiRoutes.delete('/user', userController.deleteUser);
+  apiRoutes.delete('/user/:id', userController.deleteUser);
   apiRoutes.patch('/user', userController.patchUser);
 
   //Pepite routes
   apiRoutes.get('/pepites', pepiteController.getAllPepites);
   apiRoutes.get('/pepite/:id', pepiteController.findOnePepite);
   apiRoutes.post('/pepite', pepiteController.createPepite);
-  apiRoutes.delete('/pepite', pepiteController.deletePepite);
+  apiRoutes.delete('/pepite/:id', pepiteController.deletePepite);
   apiRoutes.patch('/pepite', pepiteController.patchPepite);
 
   //Grade routes
@@ -116,14 +116,14 @@ module.exports = function(app) {
   //apiRoutes.post('/user', user.createUser);
 
   // Export routes
-  apiRoutes.get('/export/full/:id', exportController.getExportFull);    
-  apiRoutes.get('/export/full', exportController.getExportFull);  
+  apiRoutes.get('/export/full/:id', exportController.getExportFull);
+  apiRoutes.get('/export/full', exportController.getExportFull);
 
   apiRoutes.get('/export/self-evaluated/:id', exportController.getExportEvaluated);
   apiRoutes.get('/export/self-evaluated', exportController.getExportEvaluated);
-  
+
   apiRoutes.get('/export/validated/:id', exportController.getExportValidated);
-  apiRoutes.get('/export/validated', exportController.getExportValidated);  
+  apiRoutes.get('/export/validated', exportController.getExportValidated);
 
   app.use('/api', apiRoutes);
 }
