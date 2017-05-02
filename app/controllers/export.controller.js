@@ -62,6 +62,7 @@ function exportPDF(res, user, phases) {
     });
 
     pdf.pipe(res);
+
     pdf.end();
 }
 
@@ -94,10 +95,8 @@ function printPhase(phase, phaseIndex) {
  * @param {*} category 
  */
 function printCategory( category, index ) {
-    console.log(this.y);
 
     if (this.y > 700) {
-        console.log('passe');
         this.addPage();
     }
 
@@ -144,10 +143,10 @@ function printEvaluation(autoEval, eval) {
     var starFull = '\uE838';
     var check = '\uE5CA';
 
-    if (eval) {
+    if (eval && eval != "undefined") {
         grade = eval.value;
         isValidated = true;
-    } else if(autoEval) {
+    } else if(autoEval && autoEval != "undefined") {
         grade = autoEval.value;
     } else {
         grade = 0;
@@ -165,7 +164,7 @@ function printEvaluation(autoEval, eval) {
             .text(check, 470, this.y, {continued: true})
     }
 
-    for (var i = 1 ; i <= 5 ; i++) {
+    for (var i = 1 ; i <= 4 ; i++) {
         if (i <= grade) {
             stars.push(starFull)
         } else {
@@ -252,12 +251,12 @@ function filterPhases(phases, evaluatedBy) {
     }
 
     if (evaluatedBy == 'self') { 
-        categoryFilter = function keelOnlySelfEvaluated(category) {
-            return category.user_eval != null;
+        categoryFilter = function keepOnlySelfEvaluated(category) {
+            return category.user_eval != null && category.user_eval != "undefined";
         }
     } else if (evaluatedBy == 'validator') {
         categoryFilter = function keepOnlyValidated(category) {
-            return category.validator_eval != null;
+            return category.validator_eval != null && category.validator_eval != "undefined";
         }
     }
 
@@ -268,7 +267,7 @@ function filterPhases(phases, evaluatedBy) {
         })
         .filter(function(phase) {
             return phase.categories.length > 0; // discard phases for which no category was kept
-        })
+        });
 
 }
 
@@ -277,6 +276,7 @@ function fetchExportDataForUser(user, evaluatedBy) {
 
     var grades = getUserGrades(user, evaluatedBy);
     return getPhases().then(function(phases){
+
         // create a map of categories to make next step o(n + m) instead of o(n * m)
         var categoriesMap = {};
         phases.forEach(function(phase) {
@@ -288,8 +288,14 @@ function fetchExportDataForUser(user, evaluatedBy) {
         grades.then(function(grades) {
             grades.forEach(function(grade) {
                 var category = categoriesMap[grade._category];
-                category.user_eval = grade.user_eval;
-                category.validator_eval = grade.validator_eval;
+                
+                if (grade.user_eval && grade.user_eval != "undefined" ) {
+                    category.user_eval = grade.user_eval;
+                }
+
+                if (grade.validator_eval && grade.validator_eval != "undefined") {
+                    category.validator_eval = grade.validator_eval;
+                }
             })
         });
 
