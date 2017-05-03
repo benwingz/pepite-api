@@ -27,7 +27,7 @@ function getExportedUser(req) {
     return Promise.resolve(user);
 }
 
-function exportPDF(res, user, phases) {
+function exportPDF(res, user, phases, evaluatedBy) {
     var pdf = new PDFDocument({
         margins: {
             top: 40,
@@ -43,17 +43,28 @@ function exportPDF(res, user, phases) {
     pdf.registerFont('Roboto', 'resources/fonts/roboto/Roboto-Regular.ttf');
     pdf.registerFont('Roboto-Italic', 'resources/fonts/roboto/Roboto-Italic.ttf');
     pdf.registerFont('Material-Design', 'resources/fonts/material-design/MaterialIcons-Regular.ttf')
-    
+    var typeProfile = '';
+    switch (evaluatedBy) {
+      case 'anyone':
+        typeProfile = 'complet'
+        break;
+      case 'self':
+        typeProfile = 'auto-évalué'
+        break;
+      default:
+        typeProfile = 'validé'
+
+    }
     pdf
         .fontSize(28)
         .font('Roboto')
-        .text('Profile Pépite Skilvioo ', {align: 'center'})
+        .text('Profil ' + typeProfile + ' Pépite Skilvioo ', {align: 'center'})
         .moveDown(0)
 
         .fontSize(20)
         .text(`${user.firstname} ${user.lastname}`, { align: 'center'})
         .moveDown(3);
-    
+
     phases.forEach( printPhase.bind(pdf) );
 
     res.set({
@@ -67,7 +78,7 @@ function exportPDF(res, user, phases) {
 
 /**
  * this = pdf document
- * @param {*} phase 
+ * @param {*} phase
  */
 function printPhase(phase, phaseIndex) {
     if(phaseIndex != 0) {
@@ -91,7 +102,7 @@ function printPhase(phase, phaseIndex) {
 
 /**
  * this = pdf document
- * @param {*} category 
+ * @param {*} category
  */
 function printCategory( category, index ) {
     console.log(this.y);
@@ -139,7 +150,7 @@ function printSkill(lastIndex, skill, index) {
 function printEvaluation(autoEval, eval) {
     var grade = 0;
     var isValidated = false;
-    
+
     var starEmpty = '\uE83A';
     var starFull = '\uE838';
     var check = '\uE5CA';
@@ -188,7 +199,7 @@ function drawLine() {
 
         .lineWidth(1)
         .stroke();
-    
+
     return this;
 }
 
@@ -196,10 +207,10 @@ function getUserGrades(user, evaluatedBy) {
     var userGrades = Grade
         .find({ _user: user._id }, '_user _category')
         .sort({ order: 1 })
-    ;   
+    ;
 
     switch(evaluatedBy) {
-        case 'anyone': 
+        case 'anyone':
             userGrades.select('user_eval validator_eval');
             break;
         case 'self':
@@ -221,7 +232,7 @@ function getUserGrades(user, evaluatedBy) {
 
 function getPhases() {
     return Phase.find({}, 'title _id').sort({ order: 1 }).then(function(phases) {
-        
+
         // resolve with an array of phases, populated with its categories
         return Promise.all(phases.map(function(phase) {
 
@@ -234,10 +245,10 @@ function getPhases() {
                     return {
                         title: phase.title,
                         categories: categories.map(function(category) {
-                            return { 
-                                title: category.title, 
-                                skills: category.skills, 
-                                _id: category._id 
+                            return {
+                                title: category.title,
+                                skills: category.skills,
+                                _id: category._id
                             };
                         })
                     }
@@ -251,7 +262,7 @@ function filterPhases(phases, evaluatedBy) {
         return true;
     }
 
-    if (evaluatedBy == 'self') { 
+    if (evaluatedBy == 'self') {
         categoryFilter = function keelOnlySelfEvaluated(category) {
             return category.user_eval != null;
         }
@@ -298,7 +309,7 @@ function fetchExportDataForUser(user, evaluatedBy) {
     }).then(function(phases) {
         return filterPhases(phases, evaluatedBy); // phases now contain a collection of categories, with the user's evaluation data attached
     });
-    
+
 }
 
 function getExport(evaluatedBy, req, res) {
@@ -307,7 +318,7 @@ function getExport(evaluatedBy, req, res) {
     user.then(function(user) {
         fetchExportDataForUser(user, evaluatedBy).then(function(data){
 
-            exportPDF(res, user, data); // will send the response
+            exportPDF(res, user, data, evaluatedBy); // will send the response
 
         });
     }, function() {
