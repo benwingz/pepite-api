@@ -11,7 +11,7 @@ var transporter = nodemailer.createTransport({
 
 // setup email data with unicode symbols
 var mailOptions = {
-    from: '"Pepite" <noreply@pepite.com>', // sender address
+    from: '"Pepite" <pepite@skilvioo.com>', // sender address
 };
 
 exports.mailtoActivate = function(user, subject, token) {
