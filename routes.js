@@ -53,17 +53,6 @@ module.exports = function(app) {
   apiRoutes.get('/activate/:id', userController.getUserToActivate);
   apiRoutes.post('/activate', userController.activateUser);
 
-
-  // Export routes
-  apiRoutes.get('/export/full/:id', exportController.getExportFull);
-  apiRoutes.get('/export/full', exportController.getExportFull);
-
-  apiRoutes.get('/export/self-evaluated/:id', exportController.getExportEvaluated);
-  apiRoutes.get('/export/self-evaluated', exportController.getExportEvaluated);
-
-  apiRoutes.get('/export/validated/:id', exportController.getExportValidated);
-  apiRoutes.get('/export/validated', exportController.getExportValidated);
-
   apiRoutes.post('/authenticate', userController.authenticate);
 
   apiRoutes.use(function(req,res,next){
@@ -125,6 +114,16 @@ module.exports = function(app) {
   apiRoutes.get('/category/:id/comments', commentController.getCommentsCategory)
   apiRoutes.patch('/comment', commentController.patchComment);
   //apiRoutes.post('/user', user.createUser);
+
+  // Export routes
+  apiRoutes.get('/export/full/:id', exportController.getExportFull);
+  apiRoutes.get('/export/full', exportController.getExportFull);
+
+  apiRoutes.get('/export/self-evaluated/:id', exportController.getExportEvaluated);
+  apiRoutes.get('/export/self-evaluated', exportController.getExportEvaluated);
+
+  apiRoutes.get('/export/validated/:id', exportController.getExportValidated);
+  apiRoutes.get('/export/validated', exportController.getExportValidated);
 
 
   app.use('/api', apiRoutes);
