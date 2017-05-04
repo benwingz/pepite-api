@@ -113,18 +113,26 @@ exports.getAllUser = function(req, res){
   var user = authRequest.returnUser(req);
   switch (user.type) {
     case 'admin':
-      queryBuilder.buildQueryFind(User,
-        {find: {},
-        select: '-password -salt',
-        sort: 'type'})
-        .then(
-          function(users) {
-            responseUsers(users, res);
-          },
-          function(error) {
-            errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
-          }
-        );
+      var query;
+      if(req.query.pepite) {
+        query = queryBuilder.buildQueryFind(User,
+            {find: {_pepite: req.query.pepite},
+            select: '-password -salt',
+            sort: 'type'})
+      } else {
+        query = queryBuilder.buildQueryFind(User,
+          {find: {},
+          select: '-password -salt',
+          sort: 'type'})
+      }
+      query.then(
+        function(users) {
+          responseUsers(users, res);
+        },
+        function(error) {
+          errorHandler.error(res, 'Impossible de récuperer les utilisateurs');
+        }
+      );
       break;
     case 'pepite-admin':
       var query;
