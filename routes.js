@@ -125,6 +125,8 @@ module.exports = function(app) {
   apiRoutes.get('/export/validated/:id', exportController.getExportValidated);
   apiRoutes.get('/export/validated', exportController.getExportValidated);
 
+  apiRoutes.get('/export/certificate/:id', exportController.getExportCertified);
+
 
   app.use('/api', apiRoutes);
 }
