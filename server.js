@@ -4,7 +4,7 @@ var morgan = require('morgan');
 
 var port = process.env.PORT || 8080;
 
-app.use(morgan('dev'));
+app.use(morgan('common'));
 
 require('./routes')(app);
 
