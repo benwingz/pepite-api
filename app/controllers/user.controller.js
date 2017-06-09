@@ -293,7 +293,7 @@ exports.activateUser = function(req, res) {
     delete req.body.activationAccountId;
     User.update({_id: user._id}, req.body, function(err, raw) {
       if(err) {
-        console.log(err);
+        console.log('ACTIVATE USER ERROR', err);
         errorHandler.error(res, 'Impossible de modifier cet utilisateur');
       } else {
         Account.deleteOne({_id: accoundId}, function(err) {
