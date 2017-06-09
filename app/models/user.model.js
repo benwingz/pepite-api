@@ -27,7 +27,7 @@ module.exports = mongoose.model('User', new Schema({
   cp: Number,
   town: String,
   country: String,
-  phone: Number,
+  phone: String,
   school: String,
   schoolType: String,
   project: String,
