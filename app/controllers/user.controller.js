@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
+var moment = require('moment');
 
 
 var config = require('../../config');
@@ -290,6 +291,7 @@ exports.activateUser = function(req, res) {
     req.body.password = user.password;
     req.body.salt = user.salt;
     var accoundId = req.body.activationAccountId;
+    req.body.birthdate = moment(req.body.birthdate);
     delete req.body.activationAccountId;
     User.update({_id: user._id}, req.body, function(err, raw) {
       if(err) {
