@@ -53,6 +53,9 @@ module.exports = function(app) {
   apiRoutes.get('/activate/:id', userController.getUserToActivate);
   apiRoutes.post('/activate', userController.activateUser);
 
+  apiRoutes.post('/resetpassword', userController.getResetPassword);
+  apiRoutes.patch('/resetpassword/:id', userController.resetPassword);
+
   apiRoutes.post('/authenticate', userController.authenticate);
 
   apiRoutes.use(function(req,res,next){

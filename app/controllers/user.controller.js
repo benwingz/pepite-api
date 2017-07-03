@@ -6,6 +6,7 @@ var moment = require('moment');
 var config = require('../../config');
 var User = require('../models/user.model');
 var Account = require('../models/account.model');
+var Reset = require('../models/reset.model');
 
 var errorHandler = require('../service/error.service');
 var passwordService = require('../service/password.service');
@@ -295,7 +296,6 @@ exports.activateUser = function(req, res) {
     delete req.body.activationAccountId;
     User.update({_id: user._id}, req.body, function(err, raw) {
       if(err) {
-        console.log('ACTIVATE USER ERROR', err);
         errorHandler.error(res, 'Impossible de modifier cet utilisateur');
       } else {
         Account.deleteOne({_id: accoundId}, function(err) {
@@ -304,4 +304,47 @@ exports.activateUser = function(req, res) {
       }
     });
   })
+}
+
+exports.getResetPassword = function(req, res) {
+  User.findOne({email: req.body.email}).then( user => {
+    if (!user) {
+      errorHandler.error(res, "Navré, cette adresse email n'est pas dans notre base de donnée");
+    } else {
+      let resetToken = new Reset({
+        _user: user._id
+      });
+      resetToken.save(function(err, token) {
+        if (!err) {
+          mailer.mailtoResetPassword(user, 'Pépite re-initilaisation de mot de passe', token._id);
+          res.json({success: true});
+        } else {
+          errorHandler.error(res, "Le mail permettant de ré-initialiser votre mot de passe n'a pas pu être envoyer");
+        }
+      });
+    }
+  });
+}
+
+exports.resetPassword = function(req, res) {
+  Reset.findById(req.params.id).populate('_user').then(resetPassword => {
+    if (resetPassword) {
+      let user = resetPassword._user;
+      if(req.body.password) {
+        passwordService.setUserPassword(user, req.body.password);
+      }
+      req.body = user;
+      User.update({_id: user._id}, req.body, function(err, raw) {
+        if(err) {
+          errorHandler.error(res, 'Impossible de modifier cet utilisateur');
+        } else {
+          Reset.deleteOne({_id: req.params.id}, function(err) {
+            (err) ? res.json(err) : res.json(raw);
+          });
+        }
+      });
+    } else {
+      errorHandler.error(res, 'Impossible de modifier le mot de passe de cet utilisateur')
+    }
+  });
 }
