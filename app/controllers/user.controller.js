@@ -39,6 +39,8 @@ function doCreateUser(userInfo) {
     firstname: (userInfo.firstname) ? userInfo.firstname: '',
     lastname: (userInfo.lastname) ? userInfo.lastname: '',
     _pepite: (userInfo._pepite) ? userInfo._pepite: null,
+    created_at: moment().format(),
+    updated_at: moment().format()
   });
   if (userInfo.password) passwordService.setUserPassword(newUser, userInfo.password);
   return newUser.save();
@@ -52,7 +54,17 @@ exports.authenticate = function(req, res){
         res.status(403).json({error: "Token invalid"});
       } else {
         var user = decoded;
-
+        User.findOne({_id: user._id}, function(err, user) {
+          if(user) {
+            user.last_login_at = moment();
+            console.log('user',user);
+            User.update({_id: user._id}, user, function(err, raw) {
+              if (err) {
+                console.log(err);
+              }
+            });
+          }
+        });
         res.json({
           success: true,
           message: 'Authentification réuissite',
@@ -65,6 +77,13 @@ exports.authenticate = function(req, res){
     User.findOne({email: req.body.email}, function(err, user) {
       if (err) throw err;
       if (user) {
+        user.last_login_at = moment();
+        console.log('user',user);
+        User.update({_id: user._id}, user, function(err, raw) {
+          if (err) {
+            console.log(err);
+          }
+        });
         if (passwordService.checkPassword(user, req.body.password)) {
           res.json({
             success: true,
@@ -86,6 +105,14 @@ exports.authenticate = function(req, res){
             password: req.body.password,
             type: req.body.type
           }).then((user) => {
+              user.created_at = moment();
+              user.updated_at = moment();
+              user.last_login_at = moment();
+              User.update({_id: user._id}, user, function(err, raw) {
+                if (err) {
+                  console.log(err);
+                }
+              });
               if (user) {
                 res.json({
                   success: true,
@@ -263,6 +290,7 @@ exports.patchUser = function(req, res) {
     if(req.body.password) {
       passwordService.setUserPassword(req.body, req.body.password);
     }
+    req.body.updated_at = moment();
     User.update({_id: req.body.id}, req.body, function(err, raw) {
       if(err) {
         errorHandler.error(res, 'Impossible de modifier cet utilisateur');
@@ -293,6 +321,7 @@ exports.activateUser = function(req, res) {
     req.body.salt = user.salt;
     var accoundId = req.body.activationAccountId;
     req.body.birthdate = moment(req.body.birthdate);
+    req.body.updated_at = moment();
     delete req.body.activationAccountId;
     User.update({_id: user._id}, req.body, function(err, raw) {
       if(err) {
@@ -334,6 +363,7 @@ exports.resetPassword = function(req, res) {
         passwordService.setUserPassword(user, req.body.password);
       }
       req.body = user;
+      req.body.updated_at = moment();
       User.update({_id: user._id}, req.body, function(err, raw) {
         if(err) {
           errorHandler.error(res, 'Impossible de modifier cet utilisateur');
