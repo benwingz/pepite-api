@@ -23,5 +23,7 @@ module.exports = mongoose.model('Grade', new Schema({
   validator_eval: {
     value: Number,
     date: Date
-  }
+  },
+  created_at: Date,
+  updated_at: Date
 }));
