@@ -324,7 +324,6 @@ exports.patchGrade = function(req, res) {
   } else {
     delete req.body['validator_eval'];
   }
-  console.log('body', req.body);
   req.body.updated_at = moment();
   Grade.update({_id: req.body.id}, req.body, function(err, raw) {
     if (err) {
