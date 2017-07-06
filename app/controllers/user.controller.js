@@ -320,7 +320,11 @@ exports.activateUser = function(req, res) {
     req.body.password = user.password;
     req.body.salt = user.salt;
     var accoundId = req.body.activationAccountId;
-    req.body.birthdate = moment(req.body.birthdate);
+    if (moment(req.body.birthdate, 'DD/MM/YYYY').isValid()) {
+      req.body.birthdate = moment(req.body.birthdate, 'DD/MM/YYYY');
+    } else {
+      req.body.birthdate = moment(req.body.birthdate);
+    }
     req.body.updated_at = moment();
     delete req.body.activationAccountId;
     User.update({_id: user._id}, req.body, function(err, raw) {
