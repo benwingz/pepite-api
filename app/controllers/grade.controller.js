@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var BlueBirdPromise = require('bluebird');
 var config = require('../../config');
+var moment = require('moment');
 
 var Grade = require('../models/grade.model');
 var User = require('../models/user.model');
@@ -20,7 +21,7 @@ var responseGrades = function(grades, res) {
 
 exports.getAllGrades = function(req, res){
   let user = authRequest.returnUser(req);
-  console.log('user type', user.type);
+  //console.log('user type', user.type);
   switch (user.type) {
     case 'admin':
       var query;
@@ -173,7 +174,8 @@ exports.createGrade = function(req, res) {
           user_eval: {
             value: req.body.value,
             date: new Date()
-          }
+          },
+          created_at: moment()
         });
         if (req.body.validator && req.body.validator_value) {
           newGrade._validator = req.body.validator;
@@ -322,6 +324,7 @@ exports.patchGrade = function(req, res) {
   } else {
     delete req.body['validator_eval'];
   }
+  req.body.updated_at = moment();
   Grade.update({_id: req.body.id}, req.body, function(err, raw) {
     if (err) {
       errorHandler(res, "Impossible de mettre à jour cette évaluation");

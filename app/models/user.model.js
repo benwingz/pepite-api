@@ -31,5 +31,8 @@ module.exports = mongoose.model('User', new Schema({
   school: String,
   schoolType: String,
   project: String,
-  certified: Boolean
+  certified: Boolean,
+  created_at: Date,
+  updated_at: Date,
+  last_login_at: Date
 }));
