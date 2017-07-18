@@ -81,7 +81,6 @@ exports.authenticate = function(req, res){
       if (err) throw err;
       if (user) {
         user.last_login_at = moment();
-        console.log('user',user);
         User.update({_id: user._id}, user, function(err, raw) {
           if (err) {
             console.log(err);
