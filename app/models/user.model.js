@@ -34,5 +34,6 @@ module.exports = mongoose.model('User', new Schema({
   certified: Boolean,
   created_at: Date,
   updated_at: Date,
-  last_login_at: Date
+  last_login_at: Date,
+  otheremail: String
 }));
