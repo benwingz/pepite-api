@@ -74,11 +74,13 @@ exports.authenticate = function(req, res){
       }
     });
   } else {
-    User.findOne({email: req.body.email}, function(err, user) {
+    User.findOne({$or: [
+      {email: req.body.email},
+      {otheremail: req.body.email}
+    ]}, function(err, user) {
       if (err) throw err;
       if (user) {
         user.last_login_at = moment();
-        console.log('user',user);
         User.update({_id: user._id}, user, function(err, raw) {
           if (err) {
             console.log(err);
