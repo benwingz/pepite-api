@@ -19,7 +19,9 @@ exports.mailtoActivate = function(user, subject, token) {
   mailOptions.to = user.email, // list of receivers
   mailOptions.subject = subject, // Subject line
   mailOptions.html = generateContent(
-    'Voici le lien pour activer votre compte : ',
+    `<p>Bonjour,</p>
+     <p>Bienvenue sur votre plateforme d’évaluation de compétences PEPITE SKILLS,</p>
+     <p>Afin d’activer votre compte, merci de suivre ce lien :</p>`,
     token,
     '/activate/')// html body
 
@@ -33,14 +35,13 @@ exports.mailtoActivate = function(user, subject, token) {
 }
 
 exports.mailtoResetPassword = function(user, subject, token) {
-  console.log('here');
   mailOptions.to = user.email, // list of receivers
   mailOptions.subject = subject, // Subject line
   mailOptions.html = generateContent(
-    'Voici le lien pour re-initialiser votre mot de passe : ',
+    `<p>Bonjour,</p>
+     <p>Afin de réinitialiser votre mot de passe pour accéder à la plateforme PEPITE SKILLS,  merci de suivre ce lien :</p>`,
     token,
-    '/reset/')// html body
-  console.log('mail token', token);
+    '/reset/');
   // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -52,6 +53,8 @@ exports.mailtoResetPassword = function(user, subject, token) {
 
 function generateContent(content, token, url) {
   var url = ((process.env.ENV == 'DEV') ? 'http://localhost:4200': 'http://pepite.skilvioo.com') + url + token;
-  var mailContent = content + '<a href="' + url + '">Cliquez ici</a>';
+  console.log('url:', url);
+  var mailContent = content + '<p><a href="' + url + '">Cliquez ici</a></p><p>Bien cordialement</p><p>Pépite France</p>';
+  console.log(mailContent);
   return mailContent;
 }
