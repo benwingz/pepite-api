@@ -134,6 +134,6 @@ module.exports = function(app) {
 
   apiRoutes.get('/export/certificate/:id', exportController.getExportCertified);
 
-  app.use('/loaderio-032eebc63ddf56b217460f24b428bcc3', rootPath);
+  app.use('/loaderio-5bebb55de80d7def688ef61a506763f1', rootPath);
   app.use('/api', apiRoutes);
 }
