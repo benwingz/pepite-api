@@ -24,7 +24,7 @@ module.exports = function(app) {
   var rootPath = express.Router();
 
   rootPath.get('/', function(req, res) {
-    res.sendFile(__dirname + '/loaderio-032eebc63ddf56b217460f24b428bcc3.txt');
+    res.sendFile(__dirname + '/loaderio-5bebb55de80d7def688ef61a506763f1.txt');
   });
   //Middleware CORS
   apiRoutes.use(function(req,res,next){
