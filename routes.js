@@ -21,7 +21,11 @@ module.exports = function(app) {
   app.use(bodyParser.json());
 
   var apiRoutes = express.Router();
+  var rootPath = express.Router();
 
+  rootPath.get('/', function(req, res) {
+    res.sendFile(__dirname + '/loaderio-032eebc63ddf56b217460f24b428bcc3.txt');
+  });
   //Middleware CORS
   apiRoutes.use(function(req,res,next){
     res.contentType('application/json');
@@ -130,6 +134,6 @@ module.exports = function(app) {
 
   apiRoutes.get('/export/certificate/:id', exportController.getExportCertified);
 
-
+  app.use('/loaderio-032eebc63ddf56b217460f24b428bcc3', rootPath);
   app.use('/api', apiRoutes);
 }
