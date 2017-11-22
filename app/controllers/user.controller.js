@@ -142,12 +142,14 @@ var responseUsers = function(users, res) {
 
 exports.getAllUser = function(req, res){
   var user = authRequest.returnUser(req);
+  console.log(user.type);
   switch (user.type) {
     case 'admin':
       var query;
       if(req.query.pepite) {
         query = queryBuilder.buildQueryFind(User,
             {find: {_pepite: req.query.pepite},
+            populate: [{field: '_pepite'}],
             select: '-password -salt',
             sort: 'type'})
       } else {
@@ -156,6 +158,7 @@ exports.getAllUser = function(req, res){
           select: '-password -salt',
           sort: 'type'})
       }
+      console.log('query', query);
       query.then(
         function(users) {
           responseUsers(users, res);
