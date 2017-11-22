@@ -142,7 +142,6 @@ var responseUsers = function(users, res) {
 
 exports.getAllUser = function(req, res){
   var user = authRequest.returnUser(req);
-  console.log(user.type);
   switch (user.type) {
     case 'admin':
       var query;
@@ -158,7 +157,6 @@ exports.getAllUser = function(req, res){
           select: '-password -salt',
           sort: 'type'})
       }
-      console.log('query', query);
       query.then(
         function(users) {
           responseUsers(users, res);
