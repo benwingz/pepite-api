@@ -57,7 +57,6 @@ exports.authenticate = function(req, res){
         User.findOne({_id: user._id}, function(err, user) {
           if(user) {
             user.last_login_at = moment();
-            console.log('user',user);
             User.update({_id: user._id}, user, function(err, raw) {
               if (err) {
                 console.log(err);
@@ -322,6 +321,7 @@ exports.activateUser = function(req, res) {
     if (!user.password && req.body.password) passwordService.setUserPassword(user, req.body.password);
     req.body.password = user.password;
     req.body.salt = user.salt;
+    if (user._pepite) req.body._pepite = user._pepite;
     var accoundId = req.body.activationAccountId;
     if (moment(req.body.birthdate, 'DD/MM/YYYY').isValid()) {
       req.body.birthdate = moment(req.body.birthdate, 'DD/MM/YYYY');
