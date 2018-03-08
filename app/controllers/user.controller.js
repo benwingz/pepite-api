@@ -147,12 +147,13 @@ exports.getAllUser = function(req, res){
       if(req.query.pepite) {
         query = queryBuilder.buildQueryFind(User,
             {find: {_pepite: req.query.pepite},
-            populate: [{field: '_pepite'}],
+            populate: [{field: '_validator', filter:'-password -salt'}],
             select: '-password -salt',
             sort: 'type'})
       } else {
         query = queryBuilder.buildQueryFind(User,
           {find: {},
+          populate: [{field: '_validator', filter:'-password -salt'}],
           select: '-password -salt',
           sort: 'type'})
       }
@@ -168,10 +169,12 @@ exports.getAllUser = function(req, res){
     case 'pepite-admin':
       var query;
       if (req.query.user) {
+        console.log('or here');
         query = queryBuilder.buildQueryFind(User,{
           find: {_validator: req.query.user},
           select: '-password -salt'})
       } else {
+        console.log('here');
         query = queryBuilder.buildQueryFind(User,{
           find: {_pepite: user._pepite},
           populate: [{field: '_validator', filter:'-password -salt'}],

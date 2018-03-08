@@ -1,0 +1,5 @@
+[{"_id":{"$oid":"5909d26b8d1b5e22dcfd0c51"},"name":"Nantes","creation_date":{"$date":"2017-05-03T12:54:09.227Z"},"__v":0,"_admin":{"$oid":"5909d2c78d1b5e22dcfd0c59"}},
+{"_id":{"$oid":"5909d2858d1b5e22dcfd0c54"},"name":"Poitiers","creation_date":{"$date":"2017-05-03T12:54:35.918Z"},"__v":0,"_admin":{"$oid":"5909d2df8d1b5e22dcfd0c5d"}},
+{"_id":{"$oid":"5909f4d48d1b5e22dcfd0c5f"},"name":"Lille","creation_date":{"$date":"2017-05-03T15:19:03.603Z"},"__v":0,"_admin":{"$oid":"5909f4e08d1b5e22dcfd0c60"}},
+{"_id":{"$oid":"594be1588578d076db7c1eec"},"name":"Grenoble","creation_date":{"$date":"2017-06-22T15:25:30.747Z"},"__v":0,"_admin":{"$oid":"594be1628578d076db7c1eed"}},
+{"_id":{"$oid":"59553f4c8578d076db7c1f35"},"name":"Bougogne Franche-Compté","creation_date":{"$date":"2017-06-29T17:56:58.878Z"},"__v":0,"_admin":{"$oid":"59553f638578d076db7c1f36"}}]
